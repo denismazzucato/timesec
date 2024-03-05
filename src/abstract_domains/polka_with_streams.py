@@ -1,0 +1,110 @@
+
+from copy import deepcopy
+from typing import Callable
+
+from apronpy.polka import PyPolka
+from apronpy.tcons1 import PyTcons1Array
+
+from src.abstract_domains.polka import Polka
+from src.frontend.abstract_syntax_tree import increment
+from src.frontend.symbolic import (
+  MyBinaryExpression,
+  MyBinaryOperator,
+  MyVariableExpression,
+  my_one,
+)
+from src.frontend.symbolic_to_apron import (
+  arithmetic_to_apron,
+  condition_to_apron,
+  variable_to_apron,
+)
+from src.proto.abstract_value_domain import AnalysisDirection
+
+
+def resolve_input_streams(expr, direction):
+  def inner(func):
+    def wrapper(core):
+      input_streams = expr.contains_input_streams()
+      if not input_streams:
+        return func(core)
+
+      core_without_input_streams = core.forget(
+        [variable_to_apron(stream) for stream in input_streams])
+      if core_without_input_streams == core:
+        new_core = func(core)
+      else:
+        new_core_without_input_streams = func(core_without_input_streams)
+        new_core = core_without_input_streams.join(new_core_without_input_streams)
+
+      for stream in input_streams:
+        counter = stream.to_counter()
+        counter_plus_one = MyBinaryExpression(
+          MyBinaryOperator.ADD,
+          MyVariableExpression(counter),
+          my_one)
+        if direction == AnalysisDirection.FORWARD:
+          new_core = new_core.assign(
+            variable_to_apron(counter),
+            arithmetic_to_apron(counter_plus_one))
+        else:
+          new_core = new_core.substitute(
+            variable_to_apron(counter),
+            arithmetic_to_apron(counter_plus_one))
+      return new_core
+    return wrapper
+  return inner
+
+class PolkaWithStreams(Polka):
+  def __deepcopy__(self, memodict=None) -> "PolkaWithStreams":
+    new_polka = PolkaWithStreams([])
+    new_polka.core = deepcopy(self.core)
+    return new_polka
+
+  def _compute_new(self, operation: "Callable[[PyPolka], PyPolka]") -> "PolkaWithStreams":
+    new_polka = deepcopy(self)
+    new_polka.core = operation(new_polka.core)
+    return new_polka
+
+  def _join(self, other: "PolkaWithStreams") -> "PolkaWithStreams":
+    return self._compute_new(
+      lambda x: x.join(other.core)
+    )
+
+  def _meet(self, other: "PolkaWithStreams") -> "PolkaWithStreams":
+    return self._compute_new(
+      lambda x: x.meet(other.core)
+    )
+
+  def _less_equal(self, other: "PolkaWithStreams") -> bool:
+    return self.core <= other.core
+
+  def _widening(self, other: "PolkaWithStreams") -> "PolkaWithStreams":
+    return self._compute_new(
+      lambda x: x.widening(other.core)
+    )
+
+  def assign(self, lhs, rhs, direction) -> "PolkaWithStreams":
+    @resolve_input_streams(rhs, direction)
+    def _assign(x):
+      if direction == AnalysisDirection.FORWARD:
+        return x.assign(variable_to_apron(lhs), arithmetic_to_apron(rhs))
+      return x.substitute(variable_to_apron(lhs), arithmetic_to_apron(rhs))
+    return self._compute_new(_assign)
+
+  def filter(self, cond, direction) -> "PolkaWithStreams":
+    @resolve_input_streams(cond, direction)
+    def _filter(x):
+      return x.meet(PyTcons1Array(condition_to_apron(cond)))
+    return self._compute_new(_filter)
+
+  @staticmethod
+  def bottom() -> "PolkaWithStreams":
+    self = PolkaWithStreams([])
+    self.core = PyPolka.bottom(PolkaWithStreams.man, self.env)
+    return self
+
+  @staticmethod
+  def top() -> "PolkaWithStreams":
+    self = PolkaWithStreams([])
+    self.core = PyPolka.top(PolkaWithStreams.man, self.env)
+    return self

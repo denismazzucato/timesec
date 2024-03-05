@@ -1,0 +1,9 @@
+[FORMAT]
+indent-string='  '
+max-line-length=100
+[MAIN]
+check-quote-consistency=yes
+[MASTER]
+ignore-patterns=(.)*_test\.py,test_(.)*\.py
+[MESSAGES CONTROL]
+disable = C0111, C0121, C0410, W0107

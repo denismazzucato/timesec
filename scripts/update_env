@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+ENV_NAME="quantit"
+
+# Update the environment using the environment.yml file
+conda env update --name ${ENV_NAME} --file environment.yml --prune
+conda run -n ${ENV_NAME} python -m pip install -r requirements.dev
+conda run -n ${ENV_NAME} python -m pip install -e ../apronpy
