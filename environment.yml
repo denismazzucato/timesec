@@ -1,9 +1,9 @@
-name: quantit
+name: timesec
 channels:
   - defaults
   - conda-forge
 dependencies:
-  - python >=3.12
+  - python >=3.11
   - numpy
   - scipy
   - colorlog
@@ -17,5 +17,4 @@ dependencies:
     - typing-extensions
     - pynput
     - pydot
-  # - pip:
-  #   - git+https://github.com/caterinaurban/apronpy.git@refs/pull/7/head
+    - git+https://github.com/caterinaurban/apronpy.git@refs/pull/7/head

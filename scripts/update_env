@@ -2,9 +2,9 @@
 
 set -e
 
-ENV_NAME="quantit"
+ENV_NAME="timesec"
 
 # Update the environment using the environment.yml file
 conda env update --name ${ENV_NAME} --file environment.yml --prune
-conda run -n ${ENV_NAME} python -m pip install -r requirements.dev
+conda run -n ${ENV_NAME} python -m pip install -r ./scripts/requirements.dev
 conda run -n ${ENV_NAME} python -m pip install -e ../apronpy

@@ -1,23 +1,78 @@
-# QuantIt
+# TimeSec
 
-## Assumptions on bignum sourcecode
+##  Install
 
-- no return, exit at the end of the function
-- no break, one loop rewritten in bignum_add
-- no goto, four loops rewritten in bignum_amontredc, bignum_coprime, bignum_montredc
-- smashed returns in bignum_ge, bignum_add, bignum_gt, bignum_le, bignum_lt
-- add helper for types (defined in include/bignum_types.h)
-- ltmp0 returns void only
-- resolved expr list in bignum_cmul, bignum_cmadd, bignum_cmnegadd, bignum_coprime, bignum_copy_row_from_table_8n_neon, bignum_copy_row_from_table, bignum_modinv, bignum_shi_small, bignum_shr_small
-- resolved boolean variable in bignum_shr_small, bignum_modifier, word_divstep59, bignum_modinv, bignum_ge, bignum_coprime, bignum_lt, bignum_le, bignum_gt, bignum_eq, bignum_amontifier, and others...
-- array dereferencing rewriting in bignum_madd, bignum_modinv, bignum_coprime
-- removed bignum_modexp
+We require [conda](https://docs.conda.io/en/latest/miniconda.html) and [apron](https://antoinemine.github.io/Apron/doc/) to be installed.
+Otherwise, you can install the dependencies with the following command:
 
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh -b
+rm -f Miniconda3-latest-Linux-x86_64.sh
+conda --version
+```
 
-## Missing
+```bash
+apt-get install opam
+opam init
+opam install apron
+```
 
-[ ] caching ast operations for faster analysis, problem freezing lists
+Then, clone this repository and install the dependencies from `environment.yml`:
 
-## benchmarks:
+```bash
+conda env create -f environment.yml
+conda activate timesec
+```
 
-- bignum:
+### Docker
+
+You can also use the provided Dockerfile to build a docker image of timesec:
+
+```bash
+docker build -t timesec .
+```
+
+Then, you can access the image with:
+
+```bash
+docker run -it timesec
+```
+
+## Usage
+
+To show the help message, run:
+
+```bash
+python timesec.py --help
+```
+
+To run the tool, for example on the bignum benchmark, run:
+
+```bash
+python timesec.py benchmarks/bignum
+```
+
+## Benchmarks
+
+The benchmarks are located in the `benchmarks` directory:
+- `bignum`: disassembled code from the cryptographic library [s2n-bignum](https://github.com/awslabs/s2n-bignum)
+- `sv-benchmarks/termination-crafted`: benchmarks from the 13th Software Verification Competition [SV-COMP](https://sv-comp.sosy-lab.org/2024/), category `termination`
+- `sv-benchmarks/termination-crafted-lit`: benchmarks from the 13th Software Verification Competition [SV-COMP](https://sv-comp.sosy-lab.org/2024/), category `termination`
+- `sv-benchmarks/termination-15`: benchmarks from the 15th Software Verification Competition [SV-COMP](https://sv-comp.sosy-lab.org/2026/), category `termination`
+
+## Project Structure
+
+- `timesec.py`: main entry point of the tool
+- `README.md`: this file
+- `Dockerfile`: docker file
+- `environment.yml`: conda environment file
+- `requirements.dev`: file containing the development requirements
+- `TODO.md`: file containing the TODO list
+- `LICENSE`: file containing the license
+- `.gitignore`: file containing the gitignore rules
+- `.pylintrc`: file containing the pylint rules
+- `src`: directory containing the source code
+- `benchmarks`: directory containing the benchmarks
+- `examples`: directory containing crafted C programs
+- `scripts`: directory containing scripts to help with the development

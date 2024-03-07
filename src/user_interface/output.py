@@ -68,6 +68,8 @@ def write_result(
 def write_failure(output: Path, input_file: Path, function: str, error: Exception):
   if ".json" != output.suffix:
     raise ValueError("Output file must be a .json file")
+  if output is None:
+    return
 
   try:
     with open(output, "r", encoding="utf-8") as output_file:

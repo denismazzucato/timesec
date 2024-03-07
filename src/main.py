@@ -2,7 +2,6 @@
 from logging import debug
 from traceback import print_exception
 
-from src.abstract_domains.polka import Polka
 from src.abstract_domains.polka_with_streams import PolkaWithStreams
 from src.engine.dependency_analysis import dependency_analysis
 from src.engine.fixpoint import iterator
@@ -70,10 +69,7 @@ def main(args: list[str] | None = None):
       input_parameters.repeat,
       input_parameters.output)
   else:
-    if input_parameters.output is None:
-      raise ValueError("Output file must be specified when analyzing a folder")
-
-    it = list(input_parameters.input.glob("*.c"))
+    it = sorted(input_parameters.input.glob("*.c"), key=lambda f: f.name)
     for i, file in enumerate(it):
       progress = f"{i + 1: <2}/{len(it)} "
       print(progress + title("Analyzing") + file.name)
