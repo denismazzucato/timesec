@@ -6,8 +6,6 @@ from logging import warning
 from src.utils.counter import Counter
 from src.utils.globals import (
   INPUT_FUNCTION_NAME,
-  INPUT_STREAM_COUNTER_LENGTH_VARIABLE_PREFIX,
-  INPUT_STREAM_COUNTER_VARIABLE_PREFIX,
   INPUT_STREAM_VARIABLE_PREFIX,
   SYMBOLIC_VARIABLE_PREFIX,
 )
@@ -119,17 +117,17 @@ class MyVariable:
   def base(self) -> "MyVariable":
     return MyVariable(self.name)
 
-  def to_counter(self) -> "MyVariable":
-    if not self.name.startswith(INPUT_STREAM_VARIABLE_PREFIX):
-      raise ValueError(f"Invalid user input variable: {self.name}")
-    idx = self.name[len(INPUT_STREAM_VARIABLE_PREFIX):]
-    return MyVariable(INPUT_STREAM_COUNTER_VARIABLE_PREFIX + idx)
+  # def to_counter(self) -> "MyVariable":
+  #   if not self.name.startswith(INPUT_STREAM_VARIABLE_PREFIX):
+  #     raise ValueError(f"Invalid user input variable: {self.name}")
+  #   idx = self.name[len(INPUT_STREAM_VARIABLE_PREFIX):]
+  #   return MyVariable(INPUT_STREAM_COUNTER_VARIABLE_PREFIX + idx)
 
-  def to_counter_length(self) -> "MyVariable":
-    if not self.name.startswith(INPUT_STREAM_VARIABLE_PREFIX):
-      raise ValueError(f"Invalid user input variable: {self.name}")
-    idx = self.name[len(INPUT_STREAM_VARIABLE_PREFIX):]
-    return MyVariable(INPUT_STREAM_COUNTER_LENGTH_VARIABLE_PREFIX + idx)
+  # def to_counter_length(self) -> "MyVariable":
+  #   if not self.name.startswith(INPUT_STREAM_VARIABLE_PREFIX):
+  #     raise ValueError(f"Invalid user input variable: {self.name}")
+  #   idx = self.name[len(INPUT_STREAM_VARIABLE_PREFIX):]
+  #   return MyVariable(INPUT_STREAM_COUNTER_LENGTH_VARIABLE_PREFIX + idx)
 
 
 @dataclass(frozen=True)
@@ -310,8 +308,8 @@ class MyFunctionCallExpression(MyExpression):
       raise ValueError(f"Invalid arguments for function call {self.name}: {self.arguments}")
 
     if self.name == INPUT_FUNCTION_NAME:
-      stream = self.to_user_input_variable()
-      stream.to_counter()
+      self.to_user_input_variable()
+      # stream.to_counter()
 
   def __str__(self):
     return f"{self.name}({", ".join(map(str, self.arguments))})"
@@ -328,7 +326,8 @@ class MyFunctionCallExpression(MyExpression):
   def variables(self):
     if self.name == INPUT_FUNCTION_NAME:
       stream = self.to_user_input_variable()
-      return { stream, stream.to_counter() }
+      return { stream }
+      # return { stream, stream.to_counter() }
     return {x for arg in self.arguments for x in arg.variables}
 
 my_zero = MyConstantExpression(0)

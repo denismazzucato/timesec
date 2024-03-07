@@ -23,14 +23,11 @@ from src.frontend.abstract_syntax_tree import (
   MyStatement,
   MyWhile,
 )
-from src.frontend.symbolic import MyEnvironment, MyVariable
+from src.frontend.symbolic import MyFunctionCallExpression, MyVariable
 from src.proto.abstract_value_domain import AnalysisDirection
 from src.user_interface.logging import debug1
 from src.utils.colors import title
-from src.utils.globals import (
-  INPUT_STREAM_COUNTER_LENGTH_VARIABLE_PREFIX,
-  SYMBOLIC_VARIABLE_NAME,
-)
+from src.utils.globals import SYMBOLIC_VARIABLE_NAME
 from src.utils.time import Timeit
 
 
@@ -44,6 +41,9 @@ class Iterator:
       post_deps: SyntacticDependencies) -> SyntacticDependencies:
     pre_deps = post_deps
     match ast:
+      case MyAssign(lhs, MyFunctionCallExpression("__print_deps", args, coord=coord)):
+        keyword = " " + str(args[0]) if args else ""
+        debug(title(f"Dependencies{keyword} at l{coord[0]} c{coord[1]}") + str(post_deps))
       case MyAssign(lhs, rhs):
         pre_deps = post_deps.assign(lhs, rhs, AnalysisDirection.BACKWARD)
       case MyAssume(condition):
@@ -100,7 +100,7 @@ class Iterator:
 def dependency_analysis(function: MyFunction) -> UsageAbstractDomain:
   initial_deps = SyntacticDependencies.initialize({
     MyVariable(SYMBOLIC_VARIABLE_NAME)
-  } | {x for x in MyEnvironment.my_input_streams() if x.name.startswith(INPUT_STREAM_COUNTER_LENGTH_VARIABLE_PREFIX)})
+  })
   iterator = Iterator()
   input_deps = iterator.fixpoint_iterator_for_composed(function.body, initial_deps).last()
   debug1(function.str_with_dependencies())

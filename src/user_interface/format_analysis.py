@@ -30,9 +30,7 @@ def get_str_data(
 
   input_streams_data = []
   for k in input_streams_codes:
-    v = max(
-      impacts[MyVariable(INPUT_STREAM_VARIABLE_PREFIX + k)],
-      impacts[MyVariable(INPUT_STREAM_COUNTER_LENGTH_VARIABLE_PREFIX + k)])
+    v = impacts[MyVariable(INPUT_STREAM_VARIABLE_PREFIX + k)]
     input_streams_data.append((
       INPUT_STREAM_VARIABLE_PREFIX + k,
       "Input Stream",

@@ -1,19 +1,14 @@
 
 from copy import deepcopy
+from logging import warning
 from typing import Callable
 
 from apronpy.polka import PyPolka
 from apronpy.tcons1 import PyTcons1Array
 
 from src.abstract_domains.polka import Polka
-from src.frontend.abstract_syntax_tree import increment
-from src.frontend.symbolic import (
-  MyBinaryExpression,
-  MyBinaryOperator,
-  MyVariableExpression,
-  my_one,
-)
 from src.frontend.symbolic_to_apron import (
+  SymbolicToApronError,
   arithmetic_to_apron,
   condition_to_apron,
   variable_to_apron,
@@ -21,7 +16,7 @@ from src.frontend.symbolic_to_apron import (
 from src.proto.abstract_value_domain import AnalysisDirection
 
 
-def resolve_input_streams(expr, direction):
+def resolve_input_streams(expr):
   def inner(func):
     def wrapper(core):
       input_streams = expr.contains_input_streams()
@@ -36,21 +31,32 @@ def resolve_input_streams(expr, direction):
         new_core_without_input_streams = func(core_without_input_streams)
         new_core = core_without_input_streams.join(new_core_without_input_streams)
 
-      for stream in input_streams:
-        counter = stream.to_counter()
-        counter_plus_one = MyBinaryExpression(
-          MyBinaryOperator.ADD,
-          MyVariableExpression(counter),
-          my_one)
-        if direction == AnalysisDirection.FORWARD:
-          new_core = new_core.assign(
-            variable_to_apron(counter),
-            arithmetic_to_apron(counter_plus_one))
-        else:
-          new_core = new_core.substitute(
-            variable_to_apron(counter),
-            arithmetic_to_apron(counter_plus_one))
+      # for stream in input_streams:
+      #   counter = stream.to_counter()
+      #   counter_plus_one = MyBinaryExpression(
+      #     MyBinaryOperator.ADD,
+      #     MyVariableExpression(counter),
+      #     my_one)
+      #   if direction == AnalysisDirection.FORWARD:
+      #     new_core = new_core.assign(
+      #       variable_to_apron(counter),
+      #       arithmetic_to_apron(counter_plus_one))
+      #   else:
+      #     new_core = new_core.substitute(
+      #       variable_to_apron(counter),
+      #       arithmetic_to_apron(counter_plus_one))
       return new_core
+    return wrapper
+  return inner
+
+def top_if_error(error_type):
+  def inner(func):
+    def wrapper(core):
+      try:
+        return func(core)
+      except error_type as e:
+        warning(f"raised SymbolicToApronError: {e}")
+        return PolkaWithStreams.top().core
     return wrapper
   return inner
 
@@ -84,7 +90,8 @@ class PolkaWithStreams(Polka):
     )
 
   def assign(self, lhs, rhs, direction) -> "PolkaWithStreams":
-    @resolve_input_streams(rhs, direction)
+    @resolve_input_streams(rhs)
+    @top_if_error(SymbolicToApronError)
     def _assign(x):
       if direction == AnalysisDirection.FORWARD:
         return x.assign(variable_to_apron(lhs), arithmetic_to_apron(rhs))
@@ -92,7 +99,8 @@ class PolkaWithStreams(Polka):
     return self._compute_new(_assign)
 
   def filter(self, cond, direction) -> "PolkaWithStreams":
-    @resolve_input_streams(cond, direction)
+    @resolve_input_streams(cond)
+    @top_if_error(SymbolicToApronError)
     def _filter(x):
       return x.meet(PyTcons1Array(condition_to_apron(cond)))
     return self._compute_new(_filter)

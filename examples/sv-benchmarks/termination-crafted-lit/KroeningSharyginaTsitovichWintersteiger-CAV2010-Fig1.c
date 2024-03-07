@@ -16,11 +16,13 @@ int main() {
 
 	while (x < 255) {
 		if (x % 2 != 0) {
+		// if (x % 2 != 0) {
 			x--;
 		} else {
 			x += 2;
 		}
-		if (debug != 0) {
+		if (debug > 0) {
+		// if (debug != 0) {
 			x = 0;
 		}
 	}

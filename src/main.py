@@ -1,4 +1,5 @@
 
+from logging import debug
 from traceback import print_exception
 
 from src.abstract_domains.polka import Polka
@@ -18,7 +19,17 @@ from src.user_interface.output import write_failure, write_result
 from src.utils.colors import title
 
 
+def debug_command_line(program, function_name):
+  debug(title("Command line") + " ".join([
+    "python", "timesec.py",
+    str(program),
+    "--function", function_name,
+    "--debug", "2"
+  ]))
+
 def single_run(program, function_name, k_widening, decreasing_chain, repeat, output):
+  debug_command_line(program, function_name)
+
   function = parse(program, function_name)
 
   points_to = points_to_analysis(function)

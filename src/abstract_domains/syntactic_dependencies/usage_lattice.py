@@ -36,6 +36,20 @@ class UsageLattice(Poset, Enum, metaclass=MyMetaClass):
       case x, y:
         return x <= y
 
+  def join(self, other: "UsageLattice") -> "UsageLattice":
+    if self >= other:
+      return self
+    if other >= self:
+      return other
+    return UsageLattice.USED
+
+  def meet(self, other: "UsageLattice") -> "UsageLattice":
+    if self <= other:
+      return self
+    if other <= self:
+      return other
+    return UsageLattice.UNUSED
+
   def __str__(self) -> str:
     match self:
       case UsageLattice.USED:
@@ -80,13 +94,13 @@ class UsageAbstractDomain(AbstractValueDomain):
   def _join(self, other: "UsageAbstractDomain") -> "UsageAbstractDomain":
     new_state = deepcopy(self)
     for k in new_state.map.keys():
-      new_state.map[k] = max(self.map[k], other.map[k])
+      new_state.map[k] = self.map[k].join(other.map[k])
     return new_state
 
   def _meet(self, other: "UsageAbstractDomain") -> "UsageAbstractDomain":
     new_state = deepcopy(self)
     for k in new_state.map.keys():
-      new_state.map[k] = min(self.map[k], other.map[k])
+      new_state.map[k] = self.map[k].meet(other.map[k])
     return new_state
 
   def assign(self, lhs, rhs, direction) -> "UsageAbstractDomain":

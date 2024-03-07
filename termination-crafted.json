@@ -1,0 +1,4407 @@
+{
+  "LexIndexValue-Array-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/LexIndexValue-Array-2.c",
+    "function": "main",
+    "error": "Unary operation p-- not supported for ArrayRef(name=ID(name='a'\n                 ),\n         subscript=ID(name='k'\n                      )\n         )"
+  },
+  "4NestedWith3Variables-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/4NestedWith3Variables-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Bangalore-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Bangalore-2.c",
+    "function": "main",
+    "loc": 24,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l17_c6": [],
+      "input_stream_l16_c6": []
+    },
+    "deps": [
+      "input_stream_l17_c6",
+      "input_stream_l16_c6",
+      "x",
+      "symbolic_goal",
+      "y",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l17_c6",
+      "symbolic_goal",
+      "input_stream_l16_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l17_c6": "inf",
+      "input_stream_l16_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l17_c6",
+      "input_stream_l16_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.025887166964821517,
+      "points_to_analysis": 3.891700180247426e-05,
+      "dependency_analysis": 0.006129166984464973,
+      "fixpoint_iterator": 0.028346875042188913,
+      "impact_analysis": 6.433296948671341e-05
+    }
+  },
+  "Benghazi_nondet-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Benghazi_nondet-1.c",
+    "function": "main",
+    "loc": 24,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "d1": [],
+      "d2": [],
+      "d1old": [],
+      "input_stream_l16_c10": [],
+      "input_stream_l15_c10": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "input_stream_l15_c10",
+      "d2",
+      "x",
+      "symbolic_goal",
+      "input_stream_l16_c10",
+      "d1",
+      "input_stream_l14_c9",
+      "symbolic_counter",
+      "d1old"
+    ],
+    "input_deps": [
+      "input_stream_l16_c10",
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c10"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "d2": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "d1": "0",
+      "symbolic_counter": "0",
+      "d1old": "0",
+      "input_stream_l16_c10": "inf",
+      "input_stream_l15_c10": "inf",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l16_c10",
+      "input_stream_l15_c10",
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "d2",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "d1",
+      "symbolic_counter",
+      "d1old"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.031457999954000115,
+      "points_to_analysis": 4.8084009904414415e-05,
+      "dependency_analysis": 0.011032374983187765,
+      "fixpoint_iterator": 0.06119633297203109,
+      "impact_analysis": 7.366604404523969e-05
+    }
+  },
+  "Binary_Search-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Binary_Search-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Division-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Division-2.c",
+    "function": "main",
+    "loc": 18,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "input_stream_l13_c10": []
+    },
+    "deps": [
+      "input_stream_l13_c10",
+      "symbolic_goal",
+      "y",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l13_c10",
+      "symbolic_goal"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "symbolic_goal": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_counter": "0",
+      "input_stream_l13_c10": "inf"
+    },
+    "input_variables": [
+      "input_stream_l13_c10"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "y",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03194308403180912,
+      "points_to_analysis": 3.4999975468963385e-05,
+      "dependency_analysis": 0.0026079590315930545,
+      "fixpoint_iterator": 0.024958541966043413,
+      "impact_analysis": 5.6334014516323805e-05
+    }
+  },
+  "Copenhagen_disj-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Copenhagen_disj-1.c",
+    "function": "main",
+    "loc": 22,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "x": [],
+      "oldx": [],
+      "input_stream_l15_c9": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "oldx",
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c9"
+    ],
+    "pre": "-1\u00b7input_stream_l14_c9 + 1\u00b7symbolic_goal - 1 >= 0",
+    "impacts": {
+      "oldx": "0",
+      "x": "0",
+      "symbolic_2": "0",
+      "y": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "oldx",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03070833400124684,
+      "points_to_analysis": 4.33750101365149e-05,
+      "dependency_analysis": 0.00601637497311458,
+      "fixpoint_iterator": 0.046064959024079144,
+      "impact_analysis": 0.0036705000093206763
+    }
+  },
+  "WhileFalse.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/WhileFalse.c",
+    "function": "main",
+    "loc": 17,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": []
+    },
+    "deps": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_goal": "0",
+      "symbolic_2": "0",
+      "symbolic_counter": "0",
+      "symbolic_impact_maximum_span": "0"
+    },
+    "input_variables": [],
+    "local_variables": [
+      "symbolic_goal",
+      "symbolic_counter",
+      "symbolic_2",
+      "symbolic_impact_maximum_span"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.029205166036263108,
+      "points_to_analysis": 3.516697324812412e-05,
+      "dependency_analysis": 0.001140542037319392,
+      "fixpoint_iterator": 0.011832917050924152,
+      "impact_analysis": 3.4958007745444775e-05
+    }
+  },
+  "Nyala-2lex-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Nyala-2lex-1.c",
+    "function": "main",
+    "loc": 25,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "x": [],
+      "input_stream_l21_c8": []
+    },
+    "deps": [
+      "x",
+      "y",
+      "symbolic_goal",
+      "input_stream_l21_c8",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l21_c8",
+      "y",
+      "symbolic_goal",
+      "x"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_goal": "0",
+      "symbolic_2": "0",
+      "symbolic_counter": "0",
+      "symbolic_impact_maximum_span": "0",
+      "input_stream_l21_c8": "inf",
+      "y": "inf",
+      "x": "inf"
+    },
+    "input_variables": [
+      "input_stream_l21_c8"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "y",
+      "x",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03366583399474621,
+      "points_to_analysis": 5.3667055908590555e-05,
+      "dependency_analysis": 0.006950790993869305,
+      "fixpoint_iterator": 0.04490312497364357,
+      "impact_analysis": 7.362500764429569e-05
+    }
+  },
+  "Cairo_step2-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Cairo_step2-1.c",
+    "function": "main",
+    "loc": 21,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03247720800573006,
+      "points_to_analysis": 3.8541038520634174e-05,
+      "dependency_analysis": 0.003664333955384791,
+      "fixpoint_iterator": 0.027202790952287614,
+      "impact_analysis": 6.900000153109431e-05
+    }
+  },
+  "SyntaxSupportPointer01-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/SyntaxSupportPointer01-1.c",
+    "function": "main",
+    "error": "Unsupported unary operator during extraction from ast: sizeof (at examples/sv-benchmarks/termination-crafted/SyntaxSupportPointer01-1.c:14:18)"
+  },
+  "Hanoi_2vars.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Hanoi_2vars.c",
+    "function": "main",
+    "loc": 16,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l10_c9": [],
+      "input_stream_l9_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "input_stream_l10_c9",
+      "y",
+      "input_stream_l9_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l10_c9",
+      "input_stream_l9_c9",
+      "symbolic_goal"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l10_c9": "inf",
+      "input_stream_l9_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l10_c9",
+      "input_stream_l9_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.04609591595362872,
+      "points_to_analysis": 4.33750101365149e-05,
+      "dependency_analysis": 0.004894540994428098,
+      "fixpoint_iterator": 0.06015608395682648,
+      "impact_analysis": 6.283301627263427e-05
+    }
+  },
+  "NonTerminationSimple5.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTerminationSimple5.c",
+    "function": "main",
+    "loc": 22,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "input_stream_l15_c7": [],
+      "input_stream_l13_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "input_stream_l15_c7",
+      "symbolic_counter",
+      "input_stream_l13_c9"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l15_c7",
+      "input_stream_l13_c9"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 >= 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c7": "inf",
+      "input_stream_l13_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c7",
+      "input_stream_l13_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03257054201094434,
+      "points_to_analysis": 3.820896381512284e-05,
+      "dependency_analysis": 0.006804957985877991,
+      "fixpoint_iterator": 0.04416008299449459,
+      "impact_analysis": 0.0032653340022079647
+    }
+  },
+  "Stockholm-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Stockholm-2.c",
+    "function": "main",
+    "loc": 27,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "b": [],
+      "a": [],
+      "input_stream_l20_c9": [],
+      "input_stream_l19_c9": [],
+      "input_stream_l18_c9": []
+    },
+    "deps": [
+      "input_stream_l20_c9",
+      "input_stream_l19_c9",
+      "x",
+      "symbolic_goal",
+      "b",
+      "a",
+      "input_stream_l18_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l18_c9",
+      "input_stream_l20_c9",
+      "input_stream_l19_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "a": "0",
+      "x": "0",
+      "symbolic_2": "0",
+      "symbolic_goal": "0",
+      "symbolic_impact_maximum_span": "0",
+      "b": "0",
+      "symbolic_counter": "0",
+      "input_stream_l19_c9": "inf",
+      "input_stream_l20_c9": "inf",
+      "input_stream_l18_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l18_c9",
+      "input_stream_l20_c9",
+      "input_stream_l19_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "b",
+      "a",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.036025249981321394,
+      "points_to_analysis": 3.950000973418355e-05,
+      "dependency_analysis": 0.007632500026375055,
+      "fixpoint_iterator": 0.036568084033206105,
+      "impact_analysis": 6.595801096409559e-05
+    }
+  },
+  "Singapore_v1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Singapore_v1.c",
+    "function": "main",
+    "loc": 23,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l15_c9": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03150491701671854,
+      "points_to_analysis": 4.358298610895872e-05,
+      "dependency_analysis": 0.006434083974454552,
+      "fixpoint_iterator": 0.03620162501465529,
+      "impact_analysis": 5.716702435165644e-05
+    }
+  },
+  "RecursiveNonterminating-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/RecursiveNonterminating-2.c",
+    "function": "main",
+    "error": "Node FuncCall(name=ID(name='rec'\n                 ),\n         args=ExprList(exprs=[ID(name='n'\n                                 ),\n                              BinaryOp(op='+',\n                                       left=ID(name='n'\n                                               ),\n                                       right=Constant(type='int',\n                                                      value='1'\n                                                      )\n                                       )\n                             ]\n                       )\n         ) not supported during ast generation"
+  },
+  "2Nested-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/2Nested-2.c",
+    "function": "main",
+    "loc": 24,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l18_c6": [],
+      "input_stream_l17_c6": []
+    },
+    "deps": [
+      "input_stream_l17_c6",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l18_c6",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l17_c6",
+      "symbolic_goal",
+      "input_stream_l18_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l17_c6": "inf",
+      "input_stream_l18_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l17_c6",
+      "input_stream_l18_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.030816290993243456,
+      "points_to_analysis": 3.98330157622695e-05,
+      "dependency_analysis": 0.005238083016593009,
+      "fixpoint_iterator": 0.033096957951784134,
+      "impact_analysis": 5.966599564999342e-05
+    }
+  },
+  "Mysore-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Mysore-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "RecursiveMultiplication-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/RecursiveMultiplication-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Arrays03-ValueRestictsIndex-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Arrays03-ValueRestictsIndex-2.c",
+    "function": "main",
+    "loc": 28,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "k": [],
+      "input_stream_l21_c12": [],
+      "a": [],
+      "input_stream_l16_c12": [],
+      "i": [],
+      "input_stream_l12_c10": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "input_stream_l21_c12",
+      "input_stream_l12_c10",
+      "k",
+      "i",
+      "a",
+      "input_stream_l16_c12",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l21_c12",
+      "input_stream_l12_c10",
+      "a",
+      "input_stream_l16_c12"
+    ],
+    "pre": "1\u00b7symbolic_goal - 1048 == 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "i": "0",
+      "symbolic_goal": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_counter": "0",
+      "k": "0",
+      "input_stream_l16_c12": "0",
+      "input_stream_l21_c12": "0",
+      "input_stream_l12_c10": "0",
+      "a": "0"
+    },
+    "input_variables": [
+      "input_stream_l16_c12",
+      "input_stream_l21_c12",
+      "input_stream_l12_c10"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "i",
+      "k",
+      "a",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.030959292023908347,
+      "points_to_analysis": 5.633395630866289e-05,
+      "dependency_analysis": 0.013945666956715286,
+      "fixpoint_iterator": 0.05623587500303984,
+      "impact_analysis": 0.007263624982442707
+    }
+  },
+  "NonTermination1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTermination1.c",
+    "function": "main",
+    "loc": 18,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "input_stream_l13_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "symbolic_counter",
+      "input_stream_l13_c9"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l13_c9"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 == 0 \u2227 -1\u00b7input_stream_l13_c9 + 1 >= 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l13_c9": "0"
+    },
+    "input_variables": [
+      "input_stream_l13_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03264858399052173,
+      "points_to_analysis": 3.712502075359225e-05,
+      "dependency_analysis": 0.0026160410488955677,
+      "fixpoint_iterator": 0.015258917002938688,
+      "impact_analysis": 0.0017416669870726764
+    }
+  },
+  "Copenhagen.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Copenhagen.c",
+    "function": "main",
+    "loc": 22,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "x": [],
+      "oldx": [],
+      "input_stream_l15_c6": [],
+      "input_stream_l14_c6": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "input_stream_l14_c6",
+      "y",
+      "input_stream_l15_c6",
+      "oldx",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c6",
+      "input_stream_l15_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "oldx": "0",
+      "x": "0",
+      "symbolic_2": "0",
+      "y": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l14_c6": "inf",
+      "input_stream_l15_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l14_c6",
+      "input_stream_l15_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "oldx",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.04979545797687024,
+      "points_to_analysis": 4.616600926965475e-05,
+      "dependency_analysis": 0.005776999983936548,
+      "fixpoint_iterator": 0.045664167031645775,
+      "impact_analysis": 6.699998630210757e-05
+    }
+  },
+  "McCarthy91_Iteration.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/McCarthy91_Iteration.c",
+    "function": "main",
+    "loc": 24,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "c": [],
+      "n": [],
+      "input_stream_l13_c7": []
+    },
+    "deps": [
+      "c",
+      "symbolic_goal",
+      "n",
+      "symbolic_counter",
+      "input_stream_l13_c7"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l13_c7"
+    ],
+    "pre": "1\u00b7symbolic_goal - 1 >= 0",
+    "impacts": {
+      "n": "0",
+      "symbolic_2": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "c": "0",
+      "input_stream_l13_c7": "inf"
+    },
+    "input_variables": [
+      "input_stream_l13_c7"
+    ],
+    "local_variables": [
+      "n",
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter",
+      "c"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03147654194617644,
+      "points_to_analysis": 4.875002196058631e-05,
+      "dependency_analysis": 0.008038542000576854,
+      "fixpoint_iterator": 0.05721562495455146,
+      "impact_analysis": 0.001888666010927409
+    }
+  },
+  "LexIndexValue-Pointer-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/LexIndexValue-Pointer-1.c",
+    "function": "main",
+    "error": "Unsupported unary operator during extraction from ast: sizeof (at examples/sv-benchmarks/termination-crafted/LexIndexValue-Pointer-1.c:15:25)"
+  },
+  "Waldkirch.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Waldkirch.c",
+    "function": "main",
+    "loc": 18,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "input_stream_l13_c10": []
+    },
+    "deps": [
+      "input_stream_l13_c10",
+      "x",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l13_c10",
+      "symbolic_goal"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 >= 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l13_c10": "inf"
+    },
+    "input_variables": [
+      "input_stream_l13_c10"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03308462497079745,
+      "points_to_analysis": 3.962503978982568e-05,
+      "dependency_analysis": 0.002615207980852574,
+      "fixpoint_iterator": 0.02293541602557525,
+      "impact_analysis": 0.0017299579922109842
+    }
+  },
+  "easy1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/easy1.c",
+    "function": "main",
+    "loc": 28,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "z": [],
+      "input_stream_l19_c9": []
+    },
+    "deps": [
+      "z",
+      "input_stream_l19_c9",
+      "x",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l19_c9"
+    ],
+    "pre": "-1\u00b7symbolic_goal + 40 >= 0 \u2227 1\u00b7symbolic_goal - 20 >= 0",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l19_c9": "20"
+    },
+    "input_variables": [
+      "input_stream_l19_c9"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.04300937498919666,
+      "points_to_analysis": 4.720798460766673e-05,
+      "dependency_analysis": 0.008071582997217774,
+      "fixpoint_iterator": 0.05254279199289158,
+      "impact_analysis": 0.002221041009761393
+    }
+  },
+  "LexIndexValue-Array-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/LexIndexValue-Array-1.c",
+    "function": "main",
+    "error": "Unary operation p-- not supported for ArrayRef(name=ID(name='a'\n                 ),\n         subscript=ID(name='k'\n                      )\n         )"
+  },
+  "Bangalore-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Bangalore-1.c",
+    "function": "main",
+    "loc": 23,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l16_c9": [],
+      "input_stream_l15_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l16_c9",
+      "input_stream_l15_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l15_c9",
+      "input_stream_l16_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l16_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l16_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.0328940839972347,
+      "points_to_analysis": 4.379195161163807e-05,
+      "dependency_analysis": 0.0061732089961878955,
+      "fixpoint_iterator": 0.027684499975293875,
+      "impact_analysis": 8.404196705669165e-05
+    }
+  },
+  "4NestedWith3Variables-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/4NestedWith3Variables-2.c",
+    "function": "main",
+    "loc": 29,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "q": [],
+      "a": [],
+      "b": [],
+      "olda": [],
+      "input_stream_l21_c6": [],
+      "input_stream_l20_c6": [],
+      "input_stream_l19_c6": []
+    },
+    "deps": [
+      "input_stream_l20_c6",
+      "symbolic_goal",
+      "b",
+      "q",
+      "input_stream_l21_c6",
+      "input_stream_l19_c6",
+      "a",
+      "symbolic_counter",
+      "olda"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l20_c6",
+      "input_stream_l19_c6",
+      "input_stream_l21_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "b": "0",
+      "q": "0",
+      "a": "0",
+      "symbolic_counter": "0",
+      "olda": "0",
+      "input_stream_l20_c6": "inf",
+      "input_stream_l19_c6": "inf",
+      "input_stream_l21_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l20_c6",
+      "input_stream_l19_c6",
+      "input_stream_l21_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "b",
+      "q",
+      "a",
+      "symbolic_counter",
+      "olda"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.033234375005122274,
+      "points_to_analysis": 4.8874993808567524e-05,
+      "dependency_analysis": 0.009385500045027584,
+      "fixpoint_iterator": 0.06292275001760572,
+      "impact_analysis": 7.629202445968986e-05
+    }
+  },
+  "Binary_Search-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Binary_Search-1.c",
+    "function": "main",
+    "error": "Node FuncCall(name=ID(name='binary_search'\n                 ),\n         args=ExprList(exprs=[ID(name='x'\n                                 ),\n                              ID(name='y'\n                                 )\n                             ]\n                       )\n         ) not supported during ast generation"
+  },
+  "Singapore_plus.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Singapore_plus.c",
+    "function": "main",
+    "loc": 23,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l15_c9": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.056239333003759384,
+      "points_to_analysis": 4.68340003862977e-05,
+      "dependency_analysis": 0.006578708009328693,
+      "fixpoint_iterator": 0.03767462499672547,
+      "impact_analysis": 6.437499541789293e-05
+    }
+  },
+  "Benghazi_nondet-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Benghazi_nondet-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Nyala-2lex-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Nyala-2lex-2.c",
+    "function": "main",
+    "loc": 27,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "x": [],
+      "input_stream_l23_c8": [],
+      "input_stream_l18_c7": [],
+      "input_stream_l17_c7": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l18_c7",
+      "input_stream_l23_c8",
+      "input_stream_l17_c7",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l17_c7",
+      "input_stream_l18_c7",
+      "input_stream_l23_c8"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 >= 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l17_c7": "inf",
+      "input_stream_l18_c7": "inf",
+      "input_stream_l23_c8": "inf"
+    },
+    "input_variables": [
+      "input_stream_l17_c7",
+      "input_stream_l18_c7",
+      "input_stream_l23_c8"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.06113262503640726,
+      "points_to_analysis": 5.1916984375566244e-05,
+      "dependency_analysis": 0.01018466695677489,
+      "fixpoint_iterator": 0.077237417048309,
+      "impact_analysis": 0.0052697499631904066
+    }
+  },
+  "Hanoi_plus.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Hanoi_plus.c",
+    "function": "main",
+    "loc": 22,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "z": [],
+      "input_stream_l15_c9": [],
+      "input_stream_l14_c9": [],
+      "input_stream_l13_c9": []
+    },
+    "deps": [
+      "z",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "symbolic_counter",
+      "input_stream_l13_c9"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c9",
+      "input_stream_l13_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l14_c9": "inf",
+      "input_stream_l13_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "input_stream_l13_c9"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03404629201395437,
+      "points_to_analysis": 4.333298420533538e-05,
+      "dependency_analysis": 0.008022083959076554,
+      "fixpoint_iterator": 0.04480787500506267,
+      "impact_analysis": 7.579196244478226e-05
+    }
+  },
+  "Cairo_step2-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Cairo_step2-2.c",
+    "function": "main",
+    "loc": 22,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 >= 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.04512475000228733,
+      "points_to_analysis": 4.0249957237392664e-05,
+      "dependency_analysis": 0.0038295419653877616,
+      "fixpoint_iterator": 0.026907207968179137,
+      "impact_analysis": 0.00181124999653548
+    }
+  },
+  "SyntaxSupportPointer01-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/SyntaxSupportPointer01-2.c",
+    "function": "main",
+    "error": "Unsupported unary operator during extraction from ast: sizeof (at examples/sv-benchmarks/termination-crafted/SyntaxSupportPointer01-2.c:13:18)"
+  },
+  "Collatz.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Collatz.c",
+    "function": "main",
+    "loc": 21,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "input_stream_l12_c10": []
+    },
+    "deps": [
+      "symbolic_counter",
+      "symbolic_goal",
+      "y",
+      "input_stream_l12_c10"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l12_c10"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "symbolic_goal": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_counter": "0",
+      "input_stream_l12_c10": "inf"
+    },
+    "input_variables": [
+      "input_stream_l12_c10"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "y",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.04462762497132644,
+      "points_to_analysis": 4.679197445511818e-05,
+      "dependency_analysis": 0.005570959008764476,
+      "fixpoint_iterator": 0.011417750036343932,
+      "impact_analysis": 6.295897765085101e-05
+    }
+  },
+  "Copenhagen_disj-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Copenhagen_disj-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "NestedRecursion_2c.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NestedRecursion_2c.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Stockholm-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Stockholm-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "WhileTrue.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/WhileTrue.c",
+    "function": "main",
+    "loc": 17,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": []
+    },
+    "deps": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 == 0",
+    "impacts": {
+      "symbolic_goal": "0",
+      "symbolic_2": "0",
+      "symbolic_counter": "0",
+      "symbolic_impact_maximum_span": "0"
+    },
+    "input_variables": [],
+    "local_variables": [
+      "symbolic_goal",
+      "symbolic_counter",
+      "symbolic_2",
+      "symbolic_impact_maximum_span"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03889408300165087,
+      "points_to_analysis": 5.8375007938593626e-05,
+      "dependency_analysis": 0.0013218329986557364,
+      "fixpoint_iterator": 0.005083459021989256,
+      "impact_analysis": 3.7209014408290386e-05
+    }
+  },
+  "Madrid.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Madrid.c",
+    "function": "main",
+    "loc": 18,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": []
+    },
+    "deps": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 == 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0"
+    },
+    "input_variables": [],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.039603250043001026,
+      "points_to_analysis": 6.412499351426959e-05,
+      "dependency_analysis": 0.0017803329974412918,
+      "fixpoint_iterator": 0.006025915965437889,
+      "impact_analysis": 4.3291947804391384e-05
+    }
+  },
+  "Singapore_v2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Singapore_v2.c",
+    "function": "main",
+    "loc": 23,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l15_c9": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.04161183297401294,
+      "points_to_analysis": 5.725002847611904e-05,
+      "dependency_analysis": 0.006957417004741728,
+      "fixpoint_iterator": 0.037863208970520645,
+      "impact_analysis": 6.891699740663171e-05
+    }
+  },
+  "NonTerminationSimple6.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTerminationSimple6.c",
+    "function": "main",
+    "loc": 19,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "c": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "symbolic_counter",
+      "c"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 == 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "c": "0",
+      "input_stream_l14_c9": "0"
+    },
+    "input_variables": [
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter",
+      "c"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03792074997909367,
+      "points_to_analysis": 5.05829812027514e-05,
+      "dependency_analysis": 0.004072875017300248,
+      "fixpoint_iterator": 0.02138475002720952,
+      "impact_analysis": 0.0020651250379160047
+    }
+  },
+  "NonTerminationSimple2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTerminationSimple2.c",
+    "function": "main",
+    "loc": 20,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "input_stream_l15_c9": []
+    },
+    "deps": [
+      "symbolic_counter",
+      "x",
+      "symbolic_goal",
+      "input_stream_l15_c9"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l15_c9"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 == 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "0"
+    },
+    "input_variables": [
+      "input_stream_l15_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.04511408298276365,
+      "points_to_analysis": 4.80839516967535e-05,
+      "dependency_analysis": 0.0038692919770255685,
+      "fixpoint_iterator": 0.020661875023506582,
+      "impact_analysis": 0.0019911249983124435
+    }
+  },
+  "Arrays03-ValueRestictsIndex-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Arrays03-ValueRestictsIndex-1.c",
+    "function": "main",
+    "loc": 24,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "k": [],
+      "input_stream_l17_c12": [],
+      "a": [],
+      "input_stream_l12_c10": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "input_stream_l12_c10",
+      "k",
+      "a",
+      "input_stream_l17_c12",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l17_c12",
+      "symbolic_goal",
+      "input_stream_l12_c10",
+      "a"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 == 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "k": "0",
+      "input_stream_l17_c12": "0",
+      "input_stream_l12_c10": "0",
+      "a": "0"
+    },
+    "input_variables": [
+      "input_stream_l17_c12",
+      "input_stream_l12_c10"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "k",
+      "a",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.04056579200550914,
+      "points_to_analysis": 5.024997517466545e-05,
+      "dependency_analysis": 0.009158250002656132,
+      "fixpoint_iterator": 0.025574500032234937,
+      "impact_analysis": 0.005286417028401047
+    }
+  },
+  "RecursiveMultiplication-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/RecursiveMultiplication-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "NonTermination2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTermination2.c",
+    "function": "main",
+    "loc": 19,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "oldx": [],
+      "x": [],
+      "input_stream_l16_c7": [],
+      "input_stream_l13_c9": []
+    },
+    "deps": [
+      "input_stream_l16_c7",
+      "x",
+      "symbolic_goal",
+      "oldx",
+      "symbolic_counter",
+      "input_stream_l13_c9"
+    ],
+    "input_deps": [
+      "input_stream_l13_c9",
+      "symbolic_goal",
+      "oldx",
+      "input_stream_l16_c7"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l16_c7": "inf",
+      "oldx": "inf",
+      "input_stream_l13_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l13_c9",
+      "input_stream_l16_c7"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "oldx",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03874562494456768,
+      "points_to_analysis": 4.954205360263586e-05,
+      "dependency_analysis": 0.004712667025160044,
+      "fixpoint_iterator": 0.03760708402842283,
+      "impact_analysis": 7.466599345207214e-05
+    }
+  },
+  "NonTerminationSimple8.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTerminationSimple8.c",
+    "function": "main",
+    "loc": 28,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "input_stream_l15_c7": [],
+      "input_stream_l17_c15": [],
+      "input_stream_l19_c15": [],
+      "input_stream_l21_c15": [],
+      "input_stream_l13_c9": []
+    },
+    "deps": [
+      "input_stream_l21_c15",
+      "input_stream_l19_c15",
+      "x",
+      "input_stream_l17_c15",
+      "symbolic_goal",
+      "input_stream_l15_c7",
+      "symbolic_counter",
+      "input_stream_l13_c9"
+    ],
+    "input_deps": [
+      "input_stream_l21_c15",
+      "input_stream_l19_c15",
+      "input_stream_l17_c15",
+      "symbolic_goal",
+      "input_stream_l15_c7",
+      "input_stream_l13_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l21_c15": "inf",
+      "input_stream_l19_c15": "inf",
+      "input_stream_l17_c15": "inf",
+      "input_stream_l15_c7": "inf",
+      "input_stream_l13_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l21_c15",
+      "input_stream_l15_c7",
+      "input_stream_l19_c15",
+      "input_stream_l17_c15",
+      "input_stream_l13_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03720000002067536,
+      "points_to_analysis": 4.370801616460085e-05,
+      "dependency_analysis": 0.030971832980867475,
+      "fixpoint_iterator": 0.1070627499721013,
+      "impact_analysis": 7.650000043213367e-05
+    }
+  },
+  "LexIndexValue-Pointer-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/LexIndexValue-Pointer-2.c",
+    "function": "main",
+    "error": "Unsupported unary operator during extraction from ast: sizeof (at examples/sv-benchmarks/termination-crafted/LexIndexValue-Pointer-2.c:16:25)"
+  },
+  "Hanoi_3vars.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Hanoi_3vars.c",
+    "function": "main",
+    "loc": 22,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "z": [],
+      "input_stream_l15_c9": [],
+      "input_stream_l14_c9": [],
+      "input_stream_l13_c9": []
+    },
+    "deps": [
+      "z",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "symbolic_counter",
+      "input_stream_l13_c9"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c9",
+      "input_stream_l13_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l14_c9": "inf",
+      "input_stream_l13_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "input_stream_l13_c9"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.032243499998003244,
+      "points_to_analysis": 4.5124965254217386e-05,
+      "dependency_analysis": 0.008160834026057273,
+      "fixpoint_iterator": 0.048200457997154444,
+      "impact_analysis": 7.61249684728682e-05
+    }
+  },
+  "NestedRecursion_1b.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NestedRecursion_1b.c",
+    "function": "main",
+    "error": "Node FuncCall(name=ID(name='rec2'\n                 ),\n         args=ExprList(exprs=[ID(name='x'\n                                 )\n                             ]\n                       )\n         ) not supported during ast generation"
+  },
+  "Parallel.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Parallel.c",
+    "function": "main",
+    "loc": 30,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "x": [],
+      "input_stream_l21_c6": [],
+      "input_stream_l20_c6": []
+    },
+    "deps": [
+      "input_stream_l20_c6",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l21_c6",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l20_c6",
+      "input_stream_l21_c6"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 >= 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l20_c6": "inf",
+      "input_stream_l21_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l20_c6",
+      "input_stream_l21_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.031352165970019996,
+      "points_to_analysis": 4.845898365601897e-05,
+      "dependency_analysis": 0.005860499979462475,
+      "fixpoint_iterator": 0.049022583989426494,
+      "impact_analysis": 0.0034079579636454582
+    }
+  },
+  "RecursiveNonterminating-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/RecursiveNonterminating-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "2Nested-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/2Nested-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Bangalore_v2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Bangalore_v2.c",
+    "function": "main",
+    "loc": 22,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l15_c9": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03142904205014929,
+      "points_to_analysis": 4.858296597376466e-05,
+      "dependency_analysis": 0.006019582971930504,
+      "fixpoint_iterator": 0.02922079199925065,
+      "impact_analysis": 7.633300265297294e-05
+    }
+  },
+  "Mysore-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Mysore-1.c",
+    "function": "main",
+    "loc": 25,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "c": [],
+      "x": [],
+      "input_stream_l17_c6": [],
+      "input_stream_l16_c6": []
+    },
+    "deps": [
+      "input_stream_l17_c6",
+      "input_stream_l16_c6",
+      "x",
+      "symbolic_goal",
+      "symbolic_counter",
+      "c"
+    ],
+    "input_deps": [
+      "input_stream_l17_c6",
+      "symbolic_goal",
+      "input_stream_l16_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "c": "0",
+      "input_stream_l17_c6": "inf",
+      "input_stream_l16_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l17_c6",
+      "input_stream_l16_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter",
+      "c"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.033035875007044524,
+      "points_to_analysis": 4.108401481062174e-05,
+      "dependency_analysis": 0.005148166965227574,
+      "fixpoint_iterator": 0.036629749985877424,
+      "impact_analysis": 6.920896703377366e-05
+    }
+  },
+  "Arrays01-EquivalentConstantIndices-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Arrays01-EquivalentConstantIndices-1.c",
+    "function": "main",
+    "loc": 21,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "a": [],
+      "input_stream_l14_c12": [],
+      "i": []
+    },
+    "deps": [
+      "input_stream_l14_c12",
+      "symbolic_goal",
+      "i",
+      "a",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "a",
+      "input_stream_l14_c12"
+    ],
+    "pre": "1\u00b7symbolic_goal - 1048 == 0 \u2227 -1\u00b7a - 1 >= 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "i": "0",
+      "input_stream_l14_c12": "0",
+      "a": "0"
+    },
+    "input_variables": [
+      "input_stream_l14_c12"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "a",
+      "symbolic_counter",
+      "i"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.0271354170399718,
+      "points_to_analysis": 4.3583044316619635e-05,
+      "dependency_analysis": 0.004948208050336689,
+      "fixpoint_iterator": 0.03595879202475771,
+      "impact_analysis": 0.003457917016930878
+    }
+  },
+  "MenloPark.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/MenloPark.c",
+    "function": "main",
+    "loc": 28,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "z": [],
+      "input_stream_l19_c6": []
+    },
+    "deps": [
+      "z",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l19_c6",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l19_c6"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 >= 0",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l19_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l19_c6"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.0324075409444049,
+      "points_to_analysis": 4.391703987494111e-05,
+      "dependency_analysis": 0.006534959014970809,
+      "fixpoint_iterator": 0.04860912496224046,
+      "impact_analysis": 0.0018985830247402191
+    }
+  },
+  "Piecewise.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Piecewise.c",
+    "function": "main",
+    "loc": 32,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "q": [],
+      "p": [],
+      "input_stream_l25_c8": [],
+      "input_stream_l28_c8": [],
+      "input_stream_l21_c6": [],
+      "input_stream_l20_c6": []
+    },
+    "deps": [
+      "input_stream_l20_c6",
+      "symbolic_goal",
+      "q",
+      "input_stream_l21_c6",
+      "p",
+      "input_stream_l25_c8",
+      "input_stream_l28_c8",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l20_c6",
+      "symbolic_goal",
+      "input_stream_l21_c6",
+      "input_stream_l25_c8",
+      "input_stream_l28_c8"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_counter": "0",
+      "symbolic_2": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "q": "0",
+      "p": "0",
+      "input_stream_l25_c8": "inf",
+      "input_stream_l20_c6": "inf",
+      "input_stream_l28_c8": "inf",
+      "input_stream_l21_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l25_c8",
+      "input_stream_l20_c6",
+      "input_stream_l21_c6",
+      "input_stream_l28_c8"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "q",
+      "p",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03128695796476677,
+      "points_to_analysis": 5.941704148426652e-05,
+      "dependency_analysis": 0.01645212504081428,
+      "fixpoint_iterator": 0.0796298339846544,
+      "impact_analysis": 7.591699250042439e-05
+    }
+  },
+  "easy2-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/easy2-2.c",
+    "function": "main",
+    "loc": 26,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "z": [],
+      "input_stream_l19_c9": []
+    },
+    "deps": [
+      "z",
+      "input_stream_l19_c9",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l19_c9"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 >= 0",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l19_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l19_c9"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03978112497134134,
+      "points_to_analysis": 4.695798270404339e-05,
+      "dependency_analysis": 0.004443583020474762,
+      "fixpoint_iterator": 0.03146204201038927,
+      "impact_analysis": 0.0019101660000160336
+    }
+  },
+  "Collatz_bounded.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Collatz_bounded.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Rotation180-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Rotation180-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "SyntaxSupportPointer01-3.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/SyntaxSupportPointer01-3.c",
+    "function": "main",
+    "error": "Unsupported unary operator during extraction from ast: sizeof (at examples/sv-benchmarks/termination-crafted/SyntaxSupportPointer01-3.c:14:18)"
+  },
+  "Cairo_step2-3.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Cairo_step2-3.c",
+    "function": "main",
+    "loc": 21,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0"
+    },
+    "input_variables": [],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03654008300509304,
+      "points_to_analysis": 3.679096698760986e-05,
+      "dependency_analysis": 0.003074416017625481,
+      "fixpoint_iterator": 0.021084000007249415,
+      "impact_analysis": 4.195800283923745e-05
+    }
+  },
+  "Arrays02-EquivalentConstantIndices.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Arrays02-EquivalentConstantIndices.c",
+    "function": "main",
+    "loc": 18,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "a": [],
+      "input_stream_l15_c12": [],
+      "input_stream_l11_c9": []
+    },
+    "deps": [
+      "input_stream_l11_c9",
+      "symbolic_goal",
+      "input_stream_l15_c12",
+      "a",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l11_c9",
+      "input_stream_l15_c12"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 == 0 \u2227 -1\u00b7a - 1 >= 0",
+    "impacts": {
+      "a": "0",
+      "symbolic_2": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l11_c9": "0",
+      "input_stream_l15_c12": "0"
+    },
+    "input_variables": [
+      "input_stream_l11_c9",
+      "input_stream_l15_c12"
+    ],
+    "local_variables": [
+      "a",
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03831616701791063,
+      "points_to_analysis": 3.8166006561368704e-05,
+      "dependency_analysis": 0.003924958989955485,
+      "fixpoint_iterator": 0.012017583008855581,
+      "impact_analysis": 0.003382875001989305
+    }
+  },
+  "NestedRecursion_2b.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NestedRecursion_2b.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "MutualRecursion_1b.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/MutualRecursion_1b.c",
+    "function": "main",
+    "error": "Node FuncCall(name=ID(name='g'\n                 ),\n         args=ExprList(exprs=[ID(name='x'\n                                 )\n                             ]\n                       )\n         ) not supported during ast generation"
+  },
+  "Ackermann-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Ackermann-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Gothenburg-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Gothenburg-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "NonTermination3-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTermination3-2.c",
+    "function": "main",
+    "loc": 22,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "a": [],
+      "i": [],
+      "input_stream_l19_c7": [],
+      "input_stream_l14_c10": [],
+      "n": [],
+      "input_stream_l10_c10": []
+    },
+    "deps": [
+      "input_stream_l19_c7",
+      "symbolic_goal",
+      "input_stream_l14_c10",
+      "i",
+      "n",
+      "a",
+      "input_stream_l10_c10",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l19_c7",
+      "input_stream_l14_c10",
+      "symbolic_goal",
+      "a",
+      "input_stream_l10_c10"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "n": "0",
+      "symbolic_2": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "i": "0",
+      "input_stream_l10_c10": "inf",
+      "input_stream_l19_c7": "inf",
+      "input_stream_l14_c10": "inf",
+      "a": "inf"
+    },
+    "input_variables": [
+      "input_stream_l10_c10",
+      "input_stream_l14_c10",
+      "input_stream_l19_c7"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "i",
+      "n",
+      "a",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03033991705160588,
+      "points_to_analysis": 3.995798761025071e-05,
+      "dependency_analysis": 0.008437624957878143,
+      "fixpoint_iterator": 0.05949545797193423,
+      "impact_analysis": 7.84999574534595e-05
+    }
+  },
+  "NonTerminationSimple7.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTerminationSimple7.c",
+    "function": "main",
+    "loc": 21,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "c": [],
+      "input_stream_l14_c6": [],
+      "input_stream_l13_c6": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "input_stream_l14_c6",
+      "input_stream_l13_c6",
+      "symbolic_counter",
+      "c"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c6",
+      "input_stream_l13_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "c": "0",
+      "input_stream_l14_c6": "inf",
+      "input_stream_l13_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l14_c6",
+      "input_stream_l13_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter",
+      "c"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03119433397660032,
+      "points_to_analysis": 3.887497587129474e-05,
+      "dependency_analysis": 0.00581487495219335,
+      "fixpoint_iterator": 0.028603832994122058,
+      "impact_analysis": 7.1291986387223e-05
+    }
+  },
+  "NestedRecursion_1a-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NestedRecursion_1a-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Toulouse-MultiBranchesToLoop-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Toulouse-MultiBranchesToLoop-1.c",
+    "function": "main",
+    "loc": 69,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "z": [],
+      "x": [],
+      "input_stream_l19_c9": [],
+      "input_stream_l18_c6": [],
+      "input_stream_l17_c6": []
+    },
+    "deps": [
+      "input_stream_l17_c6",
+      "z",
+      "input_stream_l19_c9",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l18_c6",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l17_c6",
+      "symbolic_goal",
+      "input_stream_l18_c6",
+      "input_stream_l19_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l17_c6": "inf",
+      "input_stream_l18_c6": "inf",
+      "input_stream_l19_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l17_c6",
+      "input_stream_l18_c6",
+      "input_stream_l19_c9"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.031517333001829684,
+      "points_to_analysis": 7.437501335516572e-05,
+      "dependency_analysis": 0.01974029204575345,
+      "fixpoint_iterator": 0.0771589590003714,
+      "impact_analysis": 7.087498670443892e-05
+    }
+  },
+  "Singapore-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Singapore-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "4BitCounterPointer.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/4BitCounterPointer.c",
+    "function": "main",
+    "error": "Unsupported unary operator during extraction from ast: sizeof (at examples/sv-benchmarks/termination-crafted/4BitCounterPointer.c:7:29)"
+  },
+  "Pure3Phase-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Pure3Phase-2.c",
+    "function": "main",
+    "loc": 33,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l24_c7": [],
+      "z": [],
+      "input_stream_l22_c9": [],
+      "input_stream_l21_c9": [],
+      "input_stream_l20_c9": []
+    },
+    "deps": [
+      "input_stream_l22_c9",
+      "z",
+      "input_stream_l20_c9",
+      "input_stream_l24_c7",
+      "x",
+      "symbolic_goal",
+      "y",
+      "symbolic_counter",
+      "input_stream_l21_c9"
+    ],
+    "input_deps": [
+      "input_stream_l22_c9",
+      "input_stream_l20_c9",
+      "input_stream_l24_c7",
+      "symbolic_goal",
+      "input_stream_l21_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l22_c9": "inf",
+      "input_stream_l24_c7": "inf",
+      "input_stream_l20_c9": "inf",
+      "input_stream_l21_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l22_c9",
+      "input_stream_l24_c7",
+      "input_stream_l20_c9",
+      "input_stream_l21_c9"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03172954102046788,
+      "points_to_analysis": 6.474996916949749e-05,
+      "dependency_analysis": 0.011598167009651661,
+      "fixpoint_iterator": 0.06917824997799471,
+      "impact_analysis": 7.754197577014565e-05
+    }
+  },
+  "Pure2Phase-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Pure2Phase-2.c",
+    "function": "main",
+    "loc": 28,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "z": [],
+      "input_stream_l22_c8": [],
+      "y": [],
+      "input_stream_l18_c6": [],
+      "input_stream_l17_c6": []
+    },
+    "deps": [
+      "input_stream_l17_c6",
+      "z",
+      "symbolic_goal",
+      "y",
+      "input_stream_l18_c6",
+      "input_stream_l22_c8",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l17_c6",
+      "symbolic_goal",
+      "input_stream_l18_c6",
+      "input_stream_l22_c8"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "symbolic_goal": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_counter": "0",
+      "input_stream_l17_c6": "inf",
+      "input_stream_l18_c6": "inf",
+      "input_stream_l22_c8": "inf"
+    },
+    "input_variables": [
+      "input_stream_l17_c6",
+      "input_stream_l18_c6",
+      "input_stream_l22_c8"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "y",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.031031166028697044,
+      "points_to_analysis": 5.83329820074141e-05,
+      "dependency_analysis": 0.008937500009778887,
+      "fixpoint_iterator": 0.05256191600346938,
+      "impact_analysis": 7.116695633158088e-05
+    }
+  },
+  "Lobnya-Boolean-Reordered-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Lobnya-Boolean-Reordered-1.c",
+    "function": "main",
+    "loc": 28,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "b": [],
+      "x": [],
+      "input_stream_l17_c6": [],
+      "input_stream_l16_c6": []
+    },
+    "deps": [
+      "input_stream_l17_c6",
+      "input_stream_l16_c6",
+      "x",
+      "symbolic_goal",
+      "b",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l17_c6",
+      "symbolic_goal",
+      "input_stream_l16_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_goal": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "input_stream_l19_c7": "0",
+      "b": "0",
+      "symbolic_counter": "0",
+      "input_stream_l17_c6": "inf",
+      "input_stream_l16_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l17_c6",
+      "input_stream_l19_c7",
+      "input_stream_l16_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "b",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03168745804578066,
+      "points_to_analysis": 4.170899046584964e-05,
+      "dependency_analysis": 0.00930674996925518,
+      "fixpoint_iterator": 0.054106792027596384,
+      "impact_analysis": 6.729102460667491e-05
+    }
+  },
+  "Cairo_nondet.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Cairo_nondet.c",
+    "function": "main",
+    "loc": 21,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "input_stream_l15_c10": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "input_stream_l15_c10",
+      "x",
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l15_c10",
+      "input_stream_l14_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c10": "inf",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c10",
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.031377125007566065,
+      "points_to_analysis": 4.033400909975171e-05,
+      "dependency_analysis": 0.003982416994404048,
+      "fixpoint_iterator": 0.024832958006300032,
+      "impact_analysis": 6.079103332012892e-05
+    }
+  },
+  "aaron2-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/aaron2-2.c",
+    "function": "main",
+    "loc": 28,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "tx": [],
+      "x": [],
+      "input_stream_l21_c7": [],
+      "input_stream_l19_c6": [],
+      "input_stream_l18_c6": [],
+      "input_stream_l17_c7": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l21_c7",
+      "input_stream_l18_c6",
+      "input_stream_l19_c6",
+      "input_stream_l17_c7",
+      "symbolic_counter",
+      "tx"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l21_c7",
+      "input_stream_l18_c6",
+      "input_stream_l19_c6",
+      "input_stream_l17_c7"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "tx": "0",
+      "input_stream_l19_c6": "inf",
+      "input_stream_l18_c6": "inf",
+      "input_stream_l17_c7": "inf",
+      "input_stream_l21_c7": "inf"
+    },
+    "input_variables": [
+      "input_stream_l19_c6",
+      "input_stream_l18_c6",
+      "input_stream_l17_c7",
+      "input_stream_l21_c7"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter",
+      "tx"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.030652083980385214,
+      "points_to_analysis": 4.187499871477485e-05,
+      "dependency_analysis": 0.010299000015947968,
+      "fixpoint_iterator": 0.05880862497724593,
+      "impact_analysis": 7.870799163356423e-05
+    }
+  },
+  "LexIndexValue-Pointer-3.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/LexIndexValue-Pointer-3.c",
+    "function": "main",
+    "error": "Unsupported unary operator during extraction from ast: sizeof (at examples/sv-benchmarks/termination-crafted/LexIndexValue-Pointer-3.c:17:25)"
+  },
+  "NonTerminationSimple9.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTerminationSimple9.c",
+    "function": "main",
+    "loc": 18,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "input_stream_l15_c11": [],
+      "input_stream_l13_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "input_stream_l15_c11",
+      "symbolic_counter",
+      "input_stream_l13_c9"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l15_c11",
+      "input_stream_l13_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c11": "inf",
+      "input_stream_l13_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c11",
+      "input_stream_l13_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.0310883330530487,
+      "points_to_analysis": 3.691698657348752e-05,
+      "dependency_analysis": 0.0035729160299524665,
+      "fixpoint_iterator": 0.022508207999635488,
+      "impact_analysis": 6.299995584413409e-05
+    }
+  },
+  "NonTerminationSimple3.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTerminationSimple3.c",
+    "function": "main",
+    "loc": 21,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "c": [],
+      "input_stream_l16_c6": [],
+      "input_stream_l15_c9": []
+    },
+    "deps": [
+      "input_stream_l16_c6",
+      "x",
+      "symbolic_goal",
+      "input_stream_l15_c9",
+      "symbolic_counter",
+      "c"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l15_c9",
+      "input_stream_l16_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "c": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l16_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l16_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter",
+      "c"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03048583399504423,
+      "points_to_analysis": 4.1457999031990767e-05,
+      "dependency_analysis": 0.004332958022132516,
+      "fixpoint_iterator": 0.025821375020314008,
+      "impact_analysis": 5.979195702821016e-05
+    }
+  },
+  "Toulouse-BranchesToLoop-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Toulouse-BranchesToLoop-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Bangalore_v3.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Bangalore_v3.c",
+    "function": "main",
+    "loc": 22,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l15_c9": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.029999624995980412,
+      "points_to_analysis": 4.237500252202153e-05,
+      "dependency_analysis": 0.005983582988847047,
+      "fixpoint_iterator": 0.0277377919992432,
+      "impact_analysis": 6.104196654632688e-05
+    }
+  },
+  "Gothenburg_v2-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Gothenburg_v2-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "aaron3-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/aaron3-2.c",
+    "function": "main",
+    "loc": 31,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "z": [],
+      "x": [],
+      "y": [],
+      "tx": [],
+      "input_stream_l25_c8": [],
+      "input_stream_l22_c7": [],
+      "input_stream_l20_c7": [],
+      "input_stream_l19_c6": [],
+      "input_stream_l18_c6": [],
+      "input_stream_l17_c6": []
+    },
+    "deps": [
+      "input_stream_l22_c7",
+      "symbolic_counter",
+      "tx",
+      "input_stream_l17_c6",
+      "z",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l20_c7",
+      "input_stream_l25_c8",
+      "input_stream_l19_c6",
+      "input_stream_l18_c6"
+    ],
+    "input_deps": [
+      "input_stream_l17_c6",
+      "input_stream_l22_c7",
+      "symbolic_goal",
+      "input_stream_l20_c7",
+      "input_stream_l25_c8",
+      "input_stream_l19_c6",
+      "input_stream_l18_c6"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 >= 0",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "tx": "0",
+      "input_stream_l17_c6": "inf",
+      "input_stream_l22_c7": "inf",
+      "input_stream_l20_c7": "inf",
+      "input_stream_l25_c8": "inf",
+      "input_stream_l19_c6": "inf",
+      "input_stream_l18_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l17_c6",
+      "input_stream_l25_c8",
+      "input_stream_l19_c6",
+      "input_stream_l18_c6",
+      "input_stream_l22_c7",
+      "input_stream_l20_c7"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter",
+      "tx"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03150137502234429,
+      "points_to_analysis": 5.095801316201687e-05,
+      "dependency_analysis": 0.01462720800191164,
+      "fixpoint_iterator": 0.09918850002577528,
+      "impact_analysis": 0.012049624987412244
+    }
+  },
+  "Thun-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Thun-1.c",
+    "function": "main",
+    "loc": 33,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l27_c6": [],
+      "input_stream_l26_c6": []
+    },
+    "deps": [
+      "input_stream_l27_c6",
+      "input_stream_l26_c6",
+      "x",
+      "symbolic_goal",
+      "y",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l27_c6",
+      "input_stream_l26_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l27_c6": "inf",
+      "input_stream_l26_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l27_c6",
+      "input_stream_l26_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03231783304363489,
+      "points_to_analysis": 4.354194970801473e-05,
+      "dependency_analysis": 0.004823249997571111,
+      "fixpoint_iterator": 0.035044791002292186,
+      "impact_analysis": 6.808299804106355e-05
+    }
+  },
+  "NestedRecursion_1c.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NestedRecursion_1c.c",
+    "function": "main",
+    "error": "Node FuncCall(name=ID(name='rec2'\n                 ),\n         args=ExprList(exprs=[ID(name='x'\n                                 )\n                             ]\n                       )\n         ) not supported during ast generation"
+  },
+  "easy2-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/easy2-1.c",
+    "function": "main",
+    "loc": 27,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "z": [],
+      "input_stream_l19_c9": []
+    },
+    "deps": [
+      "z",
+      "input_stream_l19_c9",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l19_c9"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 >= 0",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l19_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l19_c9"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.035384290968067944,
+      "points_to_analysis": 5.2916002459824085e-05,
+      "dependency_analysis": 0.00482029200065881,
+      "fixpoint_iterator": 0.032627750013489276,
+      "impact_analysis": 0.0020851659937761724
+    }
+  },
+  "TelAviv-Amir-Minimum.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/TelAviv-Amir-Minimum.c",
+    "function": "main",
+    "loc": 42,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "x": [],
+      "input_stream_l31_c11": [],
+      "input_stream_l25_c10": [],
+      "input_stream_l38_c11": [],
+      "input_stream_l23_c6": [],
+      "input_stream_l22_c6": []
+    },
+    "deps": [
+      "input_stream_l38_c11",
+      "input_stream_l22_c6",
+      "symbolic_counter",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l25_c10",
+      "input_stream_l23_c6",
+      "input_stream_l31_c11"
+    ],
+    "input_deps": [
+      "input_stream_l38_c11",
+      "symbolic_goal",
+      "input_stream_l25_c10",
+      "input_stream_l23_c6",
+      "input_stream_l22_c6",
+      "input_stream_l31_c11"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l38_c11": "inf",
+      "input_stream_l25_c10": "inf",
+      "input_stream_l23_c6": "inf",
+      "input_stream_l22_c6": "inf",
+      "input_stream_l31_c11": "inf"
+    },
+    "input_variables": [
+      "input_stream_l23_c6",
+      "input_stream_l38_c11",
+      "input_stream_l22_c6",
+      "input_stream_l31_c11",
+      "input_stream_l25_c10"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.11080975004006177,
+      "points_to_analysis": 5.687499651685357e-05,
+      "dependency_analysis": 0.023348791990429163,
+      "fixpoint_iterator": 0.12240300001576543,
+      "impact_analysis": 8.779199561104178e-05
+    }
+  },
+  "Rotation180-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Rotation180-2.c",
+    "function": "main",
+    "loc": 26,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": []
+    },
+    "deps": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 == 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "input_stream_l19_c6": "0",
+      "input_stream_l18_c6": "0",
+      "oldx": "0",
+      "symbolic_counter": "0"
+    },
+    "input_variables": [
+      "input_stream_l19_c6",
+      "input_stream_l18_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "oldx",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03507220797473565,
+      "points_to_analysis": 6.350001785904169e-05,
+      "dependency_analysis": 0.00429712503682822,
+      "fixpoint_iterator": 0.0093205840094015,
+      "impact_analysis": 5.466700531542301e-05
+    }
+  },
+  "Cairo.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Cairo.c",
+    "function": "main",
+    "loc": 26,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "input_stream_l19_c6": []
+    },
+    "deps": [
+      "input_stream_l19_c6",
+      "x",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l19_c6"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 >= 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l19_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l19_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03494937502546236,
+      "points_to_analysis": 3.962503978982568e-05,
+      "dependency_analysis": 0.0035185000160709023,
+      "fixpoint_iterator": 0.024659458023961633,
+      "impact_analysis": 0.0016714169760234654
+    }
+  },
+  "Arrays01-EquivalentConstantIndices-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Arrays01-EquivalentConstantIndices-2.c",
+    "function": "main",
+    "loc": 16,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "a": []
+    },
+    "deps": [
+      "a",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "a"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 == 0 \u2227 -1\u00b7a - 1 >= 0",
+    "impacts": {
+      "symbolic_goal": "0",
+      "symbolic_2": "0",
+      "symbolic_counter": "0",
+      "symbolic_impact_maximum_span": "0",
+      "a": "0"
+    },
+    "input_variables": [],
+    "local_variables": [
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "a",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.030402083008084446,
+      "points_to_analysis": 4.9250025767832994e-05,
+      "dependency_analysis": 0.002613832999486476,
+      "fixpoint_iterator": 0.01041329198051244,
+      "impact_analysis": 0.0016564590041525662
+    }
+  },
+  "McCarthy91_Recursion.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/McCarthy91_Recursion.c",
+    "function": "main",
+    "error": "Node FuncCall(name=ID(name='mc91'\n                 ),\n         args=ExprList(exprs=[ID(name='x'\n                                 )\n                             ]\n                       )\n         ) not supported during ast generation"
+  },
+  "NestedRecursion_2a.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NestedRecursion_2a.c",
+    "function": "main",
+    "error": "Node FuncCall(name=ID(name='g'\n                 ),\n         args=ExprList(exprs=[ID(name='x'\n                                 )\n                             ]\n                       )\n         ) not supported during ast generation"
+  },
+  "Ackermann-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Ackermann-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "MutualRecursion_1a.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/MutualRecursion_1a.c",
+    "function": "main",
+    "error": "Node FuncCall(name=ID(name='g'\n                 ),\n         args=ExprList(exprs=[ID(name='x'\n                                 )\n                             ]\n                       )\n         ) not supported during ast generation"
+  },
+  "NonTermination3-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTermination3-1.c",
+    "function": "main",
+    "loc": 23,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "a": [],
+      "i": [],
+      "input_stream_l18_c7": [],
+      "input_stream_l14_c10": [],
+      "n": [],
+      "input_stream_l10_c10": []
+    },
+    "deps": [
+      "symbolic_goal",
+      "input_stream_l14_c10",
+      "i",
+      "n",
+      "input_stream_l18_c7",
+      "a",
+      "input_stream_l10_c10",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c10",
+      "input_stream_l18_c7",
+      "a",
+      "input_stream_l10_c10"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "n": "0",
+      "symbolic_2": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "i": "0",
+      "input_stream_l10_c10": "inf",
+      "input_stream_l14_c10": "inf",
+      "input_stream_l18_c7": "inf",
+      "a": "inf"
+    },
+    "input_variables": [
+      "input_stream_l10_c10",
+      "input_stream_l14_c10",
+      "input_stream_l18_c7"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "i",
+      "n",
+      "a",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03136825002729893,
+      "points_to_analysis": 4.537502536550164e-05,
+      "dependency_analysis": 0.008615166996605694,
+      "fixpoint_iterator": 0.058293166977819055,
+      "impact_analysis": 7.741601439192891e-05
+    }
+  },
+  "Gothenburg-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Gothenburg-2.c",
+    "function": "main",
+    "loc": 28,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "x": [],
+      "b": [],
+      "a": [],
+      "input_stream_l20_c6": [],
+      "input_stream_l19_c6": [],
+      "input_stream_l18_c6": [],
+      "input_stream_l17_c6": []
+    },
+    "deps": [
+      "b",
+      "a",
+      "symbolic_counter",
+      "input_stream_l17_c6",
+      "input_stream_l20_c6",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l19_c6",
+      "input_stream_l18_c6"
+    ],
+    "input_deps": [
+      "input_stream_l17_c6",
+      "input_stream_l20_c6",
+      "symbolic_goal",
+      "input_stream_l19_c6",
+      "input_stream_l18_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "b": "0",
+      "a": "0",
+      "symbolic_counter": "0",
+      "input_stream_l17_c6": "inf",
+      "input_stream_l20_c6": "inf",
+      "input_stream_l19_c6": "inf",
+      "input_stream_l18_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l17_c6",
+      "input_stream_l19_c6",
+      "input_stream_l18_c6",
+      "input_stream_l20_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "b",
+      "a",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03151125001022592,
+      "points_to_analysis": 4.6625034883618355e-05,
+      "dependency_analysis": 0.009875999996438622,
+      "fixpoint_iterator": 0.05236304202117026,
+      "impact_analysis": 7.9624995123595e-05
+    }
+  },
+  "Toulouse-MultiBranchesToLoop-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Toulouse-MultiBranchesToLoop-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "NonTerminationSimple4.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTerminationSimple4.c",
+    "function": "main",
+    "loc": 23,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l16_c6": [],
+      "input_stream_l15_c6": []
+    },
+    "deps": [
+      "input_stream_l16_c6",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l15_c6",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l15_c6",
+      "input_stream_l16_c6"
+    ],
+    "pre": "1\u00b7symbolic_goal + 0 == 0",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c6": "0",
+      "input_stream_l16_c6": "0"
+    },
+    "input_variables": [
+      "input_stream_l15_c6",
+      "input_stream_l16_c6"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.038600291998591274,
+      "points_to_analysis": 6.395898526534438e-05,
+      "dependency_analysis": 0.00460366701008752,
+      "fixpoint_iterator": 0.01784154196502641,
+      "impact_analysis": 0.0031580000068061054
+    }
+  },
+  "NestedRecursion_1a-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NestedRecursion_1a-1.c",
+    "function": "main",
+    "error": "Node FuncCall(name=ID(name='rec2'\n                 ),\n         args=ExprList(exprs=[ID(name='x'\n                                 )\n                             ]\n                       )\n         ) not supported during ast generation"
+  },
+  "Singapore-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Singapore-1.c",
+    "function": "main",
+    "loc": 23,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l15_c9": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.029531707987189293,
+      "points_to_analysis": 4.1417020838707685e-05,
+      "dependency_analysis": 0.006646417023148388,
+      "fixpoint_iterator": 0.03530120803043246,
+      "impact_analysis": 6.654200842604041e-05
+    }
+  },
+  "Pure2Phase-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Pure2Phase-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Lobnya-Boolean-Reordered-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Lobnya-Boolean-Reordered-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Pure3Phase-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Pure3Phase-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "NonTermination4.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NonTermination4.c",
+    "function": "main",
+    "loc": 23,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal"
+    ],
+    "pre": "\u22a5",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0"
+    },
+    "input_variables": [],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.03224016696913168,
+      "points_to_analysis": 3.9624981582164764e-05,
+      "dependency_analysis": 0.0028119159978814423,
+      "fixpoint_iterator": 0.01937483297660947,
+      "impact_analysis": 4.541699308902025e-05
+    }
+  },
+  "NestedRecursion_1d.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/NestedRecursion_1d.c",
+    "function": "main",
+    "error": "Node FuncCall(name=ID(name='rec2'\n                 ),\n         args=ExprList(exprs=[ID(name='x'\n                                 )\n                             ]\n                       )\n         ) not supported during ast generation"
+  },
+  "Bangalore_v4.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Bangalore_v4.c",
+    "function": "main",
+    "loc": 22,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "y": [],
+      "input_stream_l15_c9": [],
+      "input_stream_l14_c9": []
+    },
+    "deps": [
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l15_c9",
+      "input_stream_l14_c9",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l14_c9",
+      "input_stream_l15_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l15_c9": "inf",
+      "input_stream_l14_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l15_c9",
+      "input_stream_l14_c9"
+    ],
+    "local_variables": [
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.030873707961291075,
+      "points_to_analysis": 3.954197745770216e-05,
+      "dependency_analysis": 0.005725290975533426,
+      "fixpoint_iterator": 0.02819583297241479,
+      "impact_analysis": 6.72080204822123e-05
+    }
+  },
+  "Mysore-3.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Mysore-3.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Toulouse-BranchesToLoop-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Toulouse-BranchesToLoop-1.c",
+    "function": "main",
+    "loc": 29,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "y": [],
+      "z": [],
+      "x": [],
+      "input_stream_l19_c9": [],
+      "input_stream_l18_c6": [],
+      "input_stream_l17_c6": []
+    },
+    "deps": [
+      "input_stream_l17_c6",
+      "z",
+      "input_stream_l19_c9",
+      "x",
+      "symbolic_goal",
+      "y",
+      "input_stream_l18_c6",
+      "symbolic_counter"
+    ],
+    "input_deps": [
+      "input_stream_l17_c6",
+      "symbolic_goal",
+      "input_stream_l18_c6",
+      "input_stream_l19_c9"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "z": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "y": "0",
+      "symbolic_goal": "0",
+      "symbolic_counter": "0",
+      "input_stream_l17_c6": "inf",
+      "input_stream_l18_c6": "inf",
+      "input_stream_l19_c9": "inf"
+    },
+    "input_variables": [
+      "input_stream_l17_c6",
+      "input_stream_l18_c6",
+      "input_stream_l19_c9"
+    ],
+    "local_variables": [
+      "z",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "y",
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.031143125030212104,
+      "points_to_analysis": 4.7874986194074154e-05,
+      "dependency_analysis": 0.007583334052469581,
+      "fixpoint_iterator": 0.043652124993968755,
+      "impact_analysis": 7.758400170132518e-05
+    }
+  },
+  "Gothenburg_v2-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Gothenburg_v2-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Thun-2.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Thun-2.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "aaron3-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/aaron3-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "aaron2-1.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/aaron2-1.c",
+    "function": "main",
+    "error": "Node Return(expr=Constant(type='int',\n                     value='0'\n                     )\n       ) not supported during ast generation"
+  },
+  "Benghazi.c:main": {
+    "program": "examples/sv-benchmarks/termination-crafted/Benghazi.c",
+    "function": "main",
+    "loc": 29,
+    "points_to": {
+      "symbolic_goal": [],
+      "symbolic_counter": [],
+      "x": [],
+      "d1": [],
+      "d2": [],
+      "d1old": [],
+      "input_stream_l21_c6": []
+    },
+    "deps": [
+      "d2",
+      "x",
+      "symbolic_goal",
+      "input_stream_l21_c6",
+      "d1",
+      "symbolic_counter",
+      "d1old"
+    ],
+    "input_deps": [
+      "symbolic_goal",
+      "input_stream_l21_c6"
+    ],
+    "pre": "\u22a4",
+    "impacts": {
+      "d2": "0",
+      "symbolic_2": "0",
+      "x": "0",
+      "symbolic_impact_maximum_span": "0",
+      "symbolic_goal": "0",
+      "d1": "0",
+      "symbolic_counter": "0",
+      "d1old": "0",
+      "input_stream_l21_c6": "inf"
+    },
+    "input_variables": [
+      "input_stream_l21_c6"
+    ],
+    "local_variables": [
+      "d2",
+      "symbolic_2",
+      "x",
+      "symbolic_impact_maximum_span",
+      "symbolic_goal",
+      "d1",
+      "symbolic_counter",
+      "d1old"
+    ],
+    "symbolic_variables": [
+      "symbolic_goal",
+      "symbolic_counter"
+    ],
+    "timing": {
+      "parsing": 0.030011874972842634,
+      "points_to_analysis": 4.741700831800699e-05,
+      "dependency_analysis": 0.009089791972655803,
+      "fixpoint_iterator": 0.06218279100721702,
+      "impact_analysis": 7.145799463614821e-05
+    }
+  }
+}

@@ -34,7 +34,6 @@ from src.frontend.abstract_syntax_tree import (
   MySkip,
   MyStatement,
   MyWhile,
-  assign_to_zero,
   bucket_end,
   bucket_init,
   cache_is_relevant,
@@ -251,20 +250,20 @@ class ASTGenerator:
     ])
     gen = ASTGenerator()
     my_body = gen.handle_compound(composed_body)
-    for stream in gen.streams:
-      my_body = MySequence(MyStatement(assign_to_zero(stream.to_counter())), my_body)
+    # for stream in gen.streams:
+    #   my_body = MySequence(MyStatement(assign_to_zero(stream.to_counter())), my_body)
     ast = MySequence(
       MyStatement(bucket_init),
       MySequence(my_body,
                   MyStatement(bucket_end)))
-    for stream in gen.streams:
-      counter = stream.to_counter()
-      length = stream.to_counter_length()
-      ast = MySequence(ast, MyStatement(MyAssume(
-        MyBinaryExpression(
-          MyBinaryOperator.EQUAL,
-          MyVariableExpression(length),
-          MyVariableExpression(counter)))))
+    # for stream in gen.streams:
+    #   counter = stream.to_counter()
+    #   length = stream.to_counter_length()
+    #   ast = MySequence(ast, MyStatement(MyAssume(
+    #     MyBinaryExpression(
+    #       MyBinaryOperator.EQUAL,
+    #       MyVariableExpression(length),
+    #       MyVariableExpression(counter)))))
     return MyFunction(function_name, lines, ast)
 
 @Timeit("parse")

@@ -183,26 +183,21 @@ def iterator(
   invariant = domain.top()
   assert isinstance(invariant, AbstractValueDomain)
   for i in range(repeat):
-    try:
-      invariant = forward_iterator.fixpoint_iterator_for_composed(
-        function.body,
-        invariant)
-      function.body.update_annotations(AnalysisDirection.FORWARD)
-      debug2(f"Forward iteration {i + 1}/{repeat}:")
-      debug2(function.str_with_abstract_values(AnalysisDirection.FORWARD))
-      Interactive.stop_user()
+    invariant = forward_iterator.fixpoint_iterator_for_composed(
+      function.body,
+      invariant)
+    function.body.update_annotations(AnalysisDirection.FORWARD)
+    debug2(f"Forward iteration {i + 1}/{repeat}:")
+    debug2(function.str_with_abstract_values(AnalysisDirection.FORWARD))
+    Interactive.stop_user()
 
-      invariant = backward_iterator.fixpoint_iterator_for_composed(
-        function.body,
-        invariant)
-      function.body.update_annotations(AnalysisDirection.BACKWARD)
-      debug2(f"Backward iteration {i + 1}/{repeat}:")
-      debug2(function.str_with_abstract_values(AnalysisDirection.BACKWARD))
-      Interactive.stop_user()
-    except SymbolicToApronError as e:
-      warning(f"raised SymbolicToApronError: {e}")
-      invariant = domain.top()
-      break
+    invariant = backward_iterator.fixpoint_iterator_for_composed(
+      function.body,
+      invariant)
+    function.body.update_annotations(AnalysisDirection.BACKWARD)
+    debug2(f"Backward iteration {i + 1}/{repeat}:")
+    debug2(function.str_with_abstract_values(AnalysisDirection.BACKWARD))
+    Interactive.stop_user()
 
   debug(title("Invariant") + str(invariant))
 
