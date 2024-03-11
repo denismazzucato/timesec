@@ -48,7 +48,9 @@ from src.frontend.safe_ast import get_function_name, get_function_params
 from src.frontend.symbolic import (
   MyBinaryExpression,
   MyBinaryOperator,
+  MyConstantExpression,
   MyEnvironment,
+  MyExpression,
   MyVariable,
   MyVariableExpression,
   my_environments,
@@ -68,9 +70,9 @@ from src.utils.time import Timeit
 
 def pycparser_wrapper(path: Path) -> tuple[FileAST, int]:
   cinclude_path = Path(CINCLUDE_PATH)
-  cpp_args: str = r"-E"
+  cpp_args: str = [r"-E"] # type: ignore
   if cinclude_path.exists():
-    cpp_args = [f"-I{cinclude_path}", cpp_args] # type: ignore
+    cpp_args = [f"-I{cinclude_path}", *cpp_args] # type: ignore
 
   number_of_lines = -1
   with open(path, "r", encoding="utf-8") as f:
@@ -90,7 +92,16 @@ def is_unsigned(lhs_type: IdentifierType | None) -> bool:
 class ASTGenerator:
 
   def __init__(self):
-    self.streams = set()
+    self.inputs: set[MyVariable] = set()
+    self.opened_loops = set()
+
+  def handle_input_streams_or_randoms(self, expr: MyExpression) -> MyExpression:
+    if not self.opened_loops:
+      self.inputs |= expr.contains_input_streams()
+      expr = expr.replace_input_with_variables()
+    else:
+      expr.contains_randoms()
+    return expr
 
   def handle_empty_statement(self) -> MyComposedASTNode:
     return MyStatement(MySkip())
@@ -103,7 +114,8 @@ class ASTGenerator:
     lhs_var = extract_variable_from_ast(lhs)
     if rhs is not None:
       rhs_expr = extract_expression_from_ast(rhs)
-      self.streams |= rhs_expr.contains_input_streams()
+      rhs_expr = self.handle_input_streams_or_randoms(rhs_expr)
+
       statement = MyAssign(lhs_var, rhs_expr)
     elif is_unsigned(name_type):
       cond = MyBinaryExpression(
@@ -128,29 +140,32 @@ class ASTGenerator:
 
     return self.handle_assignment(expr, BinaryOp(rhs_op, expr, Constant("int", "1")))
 
+
   def handle_if(
       self,
       cond: Node,
       then_branch: Compound,
       else_branch: Compound | None) -> MyComposedASTNode:
     cond_expr = extract_condition_from_ast(cond)
-    self.streams |= cond_expr.contains_input_streams()
+    cond_expr = self.handle_input_streams_or_randoms(cond_expr)
+
     then_node = self.handle_compound(then_branch)
     else_node = self.handle_compound(else_branch)
     return MyIf(cond_expr, then_node, else_node)
 
   def handle_while(self, cond: Node, loop_body: Compound) -> MyComposedASTNode:
     cond_expr = extract_condition_from_ast(cond)
-    self.streams |= cond_expr.contains_input_streams()
-    body_node = self.handle_compound(loop_body)
+    cond_expr = self.handle_input_streams_or_randoms(cond_expr)
 
+    body_node = self.handle_compound(loop_body)
     return MyWhile(
       cond_expr,
       MySequence(body_node, MyStatement(counter_increment)))
 
   def handle_dowhile(self, cond: Node, loop_body: Compound) -> MyComposedASTNode:
     cond_expr = extract_condition_from_ast(cond)
-    self.streams |= cond_expr.contains_input_streams()
+    cond_expr = self.handle_input_streams_or_randoms(cond_expr)
+
     body_node = self.handle_compound(loop_body)
     return MySequence(
             MySequence(
@@ -168,7 +183,8 @@ class ASTGenerator:
       for_body: Compound) -> MyComposedASTNode:
     init_node = self.handle_compound(init)
     cond_expr = extract_condition_from_ast(cond)
-    self.streams |= cond_expr.contains_input_streams()
+    cond_expr = self.handle_input_streams_or_randoms(cond_expr)
+
     op_node = self.handle_compound(op)
     body_node = self.handle_compound(for_body)
     return MySequence(
@@ -204,14 +220,23 @@ class ASTGenerator:
           return self.handle_unary(op, expr)
         case If(cond=cond, iftrue=then_branch, iffalse=else_branch):
           return self.handle_if(cond, then_branch, else_branch)
-        case While(cond=cond, stmt=loop_body):
-          return self.handle_while(cond, loop_body)
-        case DoWhile(cond=cond, stmt=loop_body):
-          return self.handle_dowhile(cond, loop_body)
+        case While(cond=cond, stmt=loop_body, coord=coord):
+          self.opened_loops.add(coord)
+          out = self.handle_while(cond, loop_body)
+          self.opened_loops.remove(coord)
+          return out
+        case DoWhile(cond=cond, stmt=loop_body, coord=coord):
+          self.opened_loops.add(coord)
+          out = self.handle_dowhile(cond, loop_body)
+          self.opened_loops.remove(coord)
+          return out
         case StaticAssert(cond=cond):
           return self.handle_static_assert(cond)
-        case For(init=init, cond=cond, next=op, stmt=for_body):
-          return self.handle_for(init, cond, op, for_body)
+        case For(init=init, cond=cond, next=op, stmt=for_body, coord=coord):
+          self.opened_loops.add(coord)
+          out = self.handle_for(init, cond, op, for_body)
+          self.opened_loops.remove(coord)
+          return out
         case _:
           node.show()
           raise NotImplementedError(f"Node {node} not supported during ast generation")
@@ -226,13 +251,44 @@ class ASTGenerator:
     current, *rest = items.block_items
     return MySequence(handle_node(current), self.handle_compound(Compound(rest)))
 
+  @staticmethod
+  def create_input_bounds(
+      input_variables: set[MyVariable],
+      bounds: tuple[float, float]) -> MyComposedASTNode:
+    input_constraints = MyStatement(MySkip())
+    for input_variable in input_variables:
+      lower, upper = bounds
+      MyEnvironment.add_input(input_variable)
+      input_expr = MyVariableExpression(input_variable)
+      if lower != -float("inf"):
+        lower_expr = MyConstantExpression(int(lower))
+        input_constraints = MySequence(
+          input_constraints,
+          MyStatement(
+            MyAssume(
+              MyBinaryExpression(
+                MyBinaryOperator.GREATER_THAN_OR_EQUAL,
+                input_expr,
+                lower_expr))))
+      if upper != float("inf"):
+        upper_expr = MyConstantExpression(int(upper))
+        input_constraints = MySequence(
+          input_constraints,
+          MyStatement(
+            MyAssume(
+              MyBinaryExpression(
+                MyBinaryOperator.LESS_THAN_OR_EQUAL,
+                input_expr,
+                upper_expr))))
+    return input_constraints
 
   @staticmethod
   def handle_function(
       function_name: str,
       lines: int,
       params: list[Decl],
-      body: list[Node]) -> MyFunction:
+      body: list[Node],
+      bounds: tuple[float, float]) -> MyFunction:
     for env in my_environments:
       env.clear()
     Counter.reset()
@@ -242,20 +298,24 @@ class ASTGenerator:
     MyVariable(IMPACT_MAXIMUM_SPAN_VARIABLE_NAME)
     for global_symbolic_variable_name in get_global_symbolic_variables().values():
       MyVariable(global_symbolic_variable_name)
-    for param in params:
-      MyEnvironment.add_input(MyVariable(param.name))
     composed_body = Compound([
       *params,
       *body
     ])
     gen = ASTGenerator()
     my_body = gen.handle_compound(composed_body)
-    # for stream in gen.streams:
+    input_constraints = ASTGenerator.create_input_bounds(
+      {MyVariable(param.name) for param in params} | gen.inputs,
+      bounds)
+    # for stream, within_loops in gen.streams:
     #   my_body = MySequence(MyStatement(assign_to_zero(stream.to_counter())), my_body)
     ast = MySequence(
       MyStatement(bucket_init),
-      MySequence(my_body,
-                  MyStatement(bucket_end)))
+      MySequence(
+        input_constraints,
+        MySequence(
+          my_body,
+          MyStatement(bucket_end))))
     # for stream in gen.streams:
     #   counter = stream.to_counter()
     #   length = stream.to_counter_length()
@@ -267,7 +327,7 @@ class ASTGenerator:
     return MyFunction(function_name, lines, ast)
 
 @Timeit("parse")
-def parse(program: Path, function_name: str) -> MyFunction:
+def parse(program: Path, function_name: str, bounds: tuple[float, float]) -> MyFunction:
   pycparser_ast, lines = pycparser_wrapper(program)
 
   for ext in pycparser_ast.ext:
@@ -276,7 +336,7 @@ def parse(program: Path, function_name: str) -> MyFunction:
       body: list[Node] = ext.body.block_items
       if body is None:
         body = []
-      my_function = ASTGenerator.handle_function(function_name, lines, params, body)
+      my_function = ASTGenerator.handle_function(function_name, lines, params, body, bounds)
       return my_function
 
   raise ValueError(f"Function {function_name} not found in {program}")

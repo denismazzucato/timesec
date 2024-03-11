@@ -2,6 +2,7 @@
 from logging import debug
 from traceback import print_exception
 
+from src.abstract_domains.polka import Polka
 from src.abstract_domains.polka_with_streams import PolkaWithStreams
 from src.engine.dependency_analysis import dependency_analysis
 from src.engine.fixpoint import iterator
@@ -18,18 +19,26 @@ from src.user_interface.output import write_failure, write_result
 from src.utils.colors import title
 
 
-def debug_command_line(program, function_name):
+def debug_command_line(program, function_name, bounds):
   debug(title("Command line") + " ".join([
     "python", "timesec.py",
     str(program),
     "--function", function_name,
-    "--debug", "2"
+    "--debug", "2",
+    "--input-bounds", str(bounds[0]), str(bounds[1]),
   ]))
 
-def single_run(program, function_name, k_widening, decreasing_chain, repeat, output):
-  debug_command_line(program, function_name)
+def single_run(
+    program,
+    function_name,
+    widening,
+    narrowing,
+    repeat,
+    bounds,
+    output):
+  debug_command_line(program, function_name, bounds)
 
-  function = parse(program, function_name)
+  function = parse(program, function_name, bounds)
 
   points_to = points_to_analysis(function)
 
@@ -38,8 +47,8 @@ def single_run(program, function_name, k_widening, decreasing_chain, repeat, out
   pre = iterator(
     PolkaWithStreams,
     function,
-    k_widening,
-    decreasing_chain,
+    widening,
+    narrowing,
     repeat)
 
   impacts = impact_analysis(input_deps, pre)
@@ -56,6 +65,14 @@ def single_run(program, function_name, k_widening, decreasing_chain, repeat, out
     impacts,
     MyEnvironment.my_input_variables())
 
+def destruct_cli_params_for_main(args):
+  return \
+    args.function, \
+    args.widening, \
+    args.narrowing, \
+    args.repeat, \
+    args.input_bounds, \
+    args.output
 
 def main(args: list[str] | None = None):
 
@@ -63,11 +80,7 @@ def main(args: list[str] | None = None):
   if input_parameters.input.is_file():
     single_run(
       input_parameters.input,
-      input_parameters.function,
-      input_parameters.k_widening,
-      input_parameters.decreasing_chain,
-      input_parameters.repeat,
-      input_parameters.output)
+      *destruct_cli_params_for_main(input_parameters))
   else:
     it = sorted(input_parameters.input.glob("*.c"), key=lambda f: f.name)
     for i, file in enumerate(it):
@@ -76,11 +89,7 @@ def main(args: list[str] | None = None):
       try:
         single_run(
           file,
-          input_parameters.function,
-          input_parameters.k_widening,
-          input_parameters.decreasing_chain,
-          input_parameters.repeat,
-          input_parameters.output)
+          *destruct_cli_params_for_main(input_parameters))
       except NotImplementedError as e:
         if not input_parameters.dev_no_exception_traceback:
           print_exception(type(e), e, e.__traceback__)

@@ -16,35 +16,21 @@ from src.frontend.symbolic_to_apron import (
 from src.proto.abstract_value_domain import AnalysisDirection
 
 
-def resolve_input_streams(expr):
+def resolve_input_streams(expr, direction):
   def inner(func):
     def wrapper(core):
-      input_streams = expr.contains_input_streams()
-      if not input_streams:
+      randoms = expr.contains_randoms()
+      if not randoms:
         return func(core)
 
       core_without_input_streams = core.forget(
-        [variable_to_apron(stream) for stream in input_streams])
+        [variable_to_apron(stream) for stream in randoms])
       if core_without_input_streams == core:
         new_core = func(core)
       else:
-        new_core_without_input_streams = func(core_without_input_streams)
-        new_core = core_without_input_streams.join(new_core_without_input_streams)
+        new_core = func(core_without_input_streams)
+        new_core = core_without_input_streams.join(new_core)
 
-      # for stream in input_streams:
-      #   counter = stream.to_counter()
-      #   counter_plus_one = MyBinaryExpression(
-      #     MyBinaryOperator.ADD,
-      #     MyVariableExpression(counter),
-      #     my_one)
-      #   if direction == AnalysisDirection.FORWARD:
-      #     new_core = new_core.assign(
-      #       variable_to_apron(counter),
-      #       arithmetic_to_apron(counter_plus_one))
-      #   else:
-      #     new_core = new_core.substitute(
-      #       variable_to_apron(counter),
-      #       arithmetic_to_apron(counter_plus_one))
       return new_core
     return wrapper
   return inner
@@ -61,6 +47,7 @@ def top_if_error(error_type):
   return inner
 
 class PolkaWithStreams(Polka):
+
   def __deepcopy__(self, memodict=None) -> "PolkaWithStreams":
     new_polka = PolkaWithStreams([])
     new_polka.core = deepcopy(self.core)
@@ -90,7 +77,7 @@ class PolkaWithStreams(Polka):
     )
 
   def assign(self, lhs, rhs, direction) -> "PolkaWithStreams":
-    @resolve_input_streams(rhs)
+    @resolve_input_streams(rhs, direction)
     @top_if_error(SymbolicToApronError)
     def _assign(x):
       if direction == AnalysisDirection.FORWARD:
@@ -99,7 +86,7 @@ class PolkaWithStreams(Polka):
     return self._compute_new(_assign)
 
   def filter(self, cond, direction) -> "PolkaWithStreams":
-    @resolve_input_streams(cond)
+    @resolve_input_streams(cond, direction)
     @top_if_error(SymbolicToApronError)
     def _filter(x):
       return x.meet(PyTcons1Array(condition_to_apron(cond)))

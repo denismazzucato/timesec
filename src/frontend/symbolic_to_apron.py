@@ -1,6 +1,8 @@
+from math import inf
 from typing import Literal
 
 from apronpy.coeff import (
+  PyCoeff,
   PyMPQInterval,
   PyMPQIntervalCoeff,
   PyMPQScalarCoeff,
@@ -13,6 +15,7 @@ from apronpy.linexpr1 import PyLinexpr1
 from apronpy.polka import PyPolka
 from apronpy.tcons1 import PyTcons1
 from apronpy.var import PyVar
+from interval import interval
 
 from src.frontend.symbolic import (
   MyArrayVariable,
@@ -31,6 +34,15 @@ from src.utils.globals import INPUT_FUNCTION_NAME
 
 DefaultScalarCoeff = PyMPQScalarCoeff
 infinite_interval = PyMPQIntervalCoeff(PyMPQInterval.top()) # type: ignore
+
+def default_scalar_coeff(value: float | int | interval) -> PyCoeff:
+  if isinstance(value, (float, int)):
+    return DefaultScalarCoeff(value)
+  assert isinstance(value, interval)
+  lower, upper = value[0].inf, value[-1].sup
+  if lower != -inf or upper != inf:
+    return PyMPQIntervalCoeff(PyMPQInterval(lower, upper))  # type: ignore
+  return infinite_interval
 
 class SymbolicToApronError(Exception):
   pass
@@ -51,7 +63,7 @@ def get_coeff(expr: MyExpression, variable: MyVariable) -> float:
     return 0
   match expr:
     case MyFunctionCallExpression(name, _) if name == INPUT_FUNCTION_NAME:
-      return 1 if variable == expr.to_user_input_variable() else 0
+      return 0
     case MyArrayVariable():
       raise SymbolicToApronError(f"Array variable {expr} is not supported " + \
         "when translating to apron")
@@ -94,12 +106,17 @@ def get_coeff(expr: MyExpression, variable: MyVariable) -> float:
 
   raise SymbolicToApronError(f"Failed to get coefficient for {variable} in {expr}")
 
-def get_free_coeff(expr: MyExpression) -> float:
+def get_free_coeff(expr: MyExpression) -> float | interval:
   match expr:
     case MyVariableExpression(_):
       return 0
-    case MyFunctionCallExpression(name, _) if name == INPUT_FUNCTION_NAME:
-      return 0
+    case MyFunctionCallExpression(name, args) if name == INPUT_FUNCTION_NAME:
+      if not args:
+        return interval(-inf, inf)
+      if len(args) == 2 and isinstance(args[0], MyConstantExpression) and \
+          isinstance(args[1], MyConstantExpression):
+        low, up = args[0].value, args[1].value
+        return interval(low, up)
     case MyConstantExpression(value):
       return value
     case MyUnaryExpression(operator, child):
@@ -111,7 +128,7 @@ def get_free_coeff(expr: MyExpression) -> float:
     case MyBinaryExpression(operator, left, right):
       match operator:
         case MyBinaryOperator.ADD:
-          return get_free_coeff(left) + get_free_coeff(right)
+          return get_free_coeff(left) + get_free_coeff(right) # type: ignore
         case MyBinaryOperator.SUB:
           return get_free_coeff(left) - get_free_coeff(right)
         case MyBinaryOperator.MUL:
@@ -131,7 +148,7 @@ def get_free_coeff(expr: MyExpression) -> float:
   raise SymbolicToApronError(f"Failed to get free coefficient in {expr}")
 
 # @cache
-def _arithmetic_to_apron(expr: MyExpression) -> dict[MyVariable | Literal["_"], float]:
+def _arithmetic_to_apron(expr: MyExpression) -> dict[MyVariable | Literal["_"], float | interval]:
   variables = expr.variables
   result: dict[MyVariable | Literal["_"], float] = {
     variable: get_coeff(expr, variable) for variable in variables}
@@ -141,11 +158,11 @@ def _arithmetic_to_apron(expr: MyExpression) -> dict[MyVariable | Literal["_"], 
 def arithmetic_to_apron(expr: MyExpression) -> PyLinexpr1:
   lexpr = PyLinexpr1(environment_to_apron())
   for variable, coeff in _arithmetic_to_apron(expr).items():
+    apron_coeff = default_scalar_coeff(coeff)
     if variable == "_":
-      lexpr.set_cst(DefaultScalarCoeff(coeff))
+      lexpr.set_cst(apron_coeff)
     else:
-      # coeff = get_coeff(expr, variable)
-      lexpr.set_coeff(variable_to_apron(variable), DefaultScalarCoeff(coeff))
+      lexpr.set_coeff(variable_to_apron(variable), apron_coeff)
   return lexpr
 
 def condition_to_apron(condition: MyExpression) -> list[PyTcons1]:
@@ -191,7 +208,7 @@ def condition_to_apron(condition: MyExpression) -> list[PyTcons1]:
       lexpr.set_cst(DefaultScalarCoeff(-1))
       apron_false = PyTcons1(PyLincons1(ConsTyp.AP_CONS_SUPEQ, lexpr))
       return [apron_false]
-    case MyFunctionCallExpression(name, x) if name == INPUT_FUNCTION_NAME and not x:
+    case MyFunctionCallExpression(name, x) if name == INPUT_FUNCTION_NAME:
       lexpr = PyLinexpr1(environment_to_apron())
       lexpr.set_cst(DefaultScalarCoeff(1))
       apron_true = PyTcons1(PyLincons1(ConsTyp.AP_CONS_SUPEQ, lexpr))

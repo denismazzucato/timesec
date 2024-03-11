@@ -57,12 +57,12 @@ def helper(raw_args: list[str] | None = None) -> Namespace:
   parser.add_argument("-f", "--function", metavar="FUNCTION", type=str,
     default=DEFAULT_FUNCTION_NAME,
     help="name of the function to analyze")
-  parser.add_argument("-w", "--k-widening", metavar="K", type=int_greater_equal(1),
-    default=5,
+  parser.add_argument("-w", "--widening", metavar="K", type=int_greater_equal(1),
+    default=3,
     help="widening from the K-th iteration")
-  parser.add_argument("-dc", "--decreasing-chain", metavar="DC", type=int_greater_equal(0),
-    default=5,
-    help="apply decreasing chain for DC iterations after the application of widening")
+  parser.add_argument("-n", "--narrowing", metavar="N", type=int_greater_equal(0),
+    default=3,
+    help="apply narrowing for N iterations after the application of widening")
   parser.add_argument("-r", "--repeat", metavar="R", type=int_greater_equal(1),
     default=1,
     help="repeat the combination of forward-backward analysis R times")
@@ -74,12 +74,14 @@ def helper(raw_args: list[str] | None = None) -> Namespace:
     default=-1,
     choices=[0, 1, 2],
     help="Enable debug mode, optionally set the debug level")
-  parser.add_argument("-o", "--output", metavar="OUTPUT", type=Path,
-    help="path to the output json file to store the analysis results")
+  parser.add_argument("-b", "--input-bounds", metavar="BOUNDS", nargs=2, type=float,
+    default=(-float("inf"), float("inf")),
+    help="bounds for input variables x, min <= x <= max")
   parser.add_argument("-t", "--timeout", metavar="T", type=int_greater_equal(0),
     default=0,
-    help="timeout the analysis after T seconds (0 to disable the timeout)"
-  )
+    help="timeout the analysis after T seconds (0 to disable the timeout)")
+  parser.add_argument("-o", "--output", metavar="OUTPUT", type=Path,
+    help="path to the output json file to store the analysis results")
   parser.add_argument("--dev-no-exception-traceback", action="store_true",
     help="(DEVELOPER MODE) disable the logging of exception tracebacks when an error occurs, " + \
       "for folder analysis")

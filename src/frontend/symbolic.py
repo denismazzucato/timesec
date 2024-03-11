@@ -7,6 +7,7 @@ from src.utils.counter import Counter
 from src.utils.globals import (
   INPUT_FUNCTION_NAME,
   INPUT_STREAM_VARIABLE_PREFIX,
+  RANDOM_VARIABLE_PREFIX,
   SYMBOLIC_VARIABLE_PREFIX,
 )
 
@@ -196,6 +197,29 @@ class MyExpression:
         return left.contains_input_streams() | right.contains_input_streams()
     return set()
 
+  def replace_input_with_variables(self) -> "MyExpression":
+    match self:
+      case MyFunctionCallExpression(name, _) if name == INPUT_FUNCTION_NAME:
+        return MyVariableExpression(self.to_user_input_variable()) # pylint: disable=no-member
+      case MyUnaryExpression(operator, child):
+        return MyUnaryExpression(operator, child.replace_input_with_variables())
+      case MyBinaryExpression(operator, left, right):
+        return MyBinaryExpression(
+          operator,
+          left.replace_input_with_variables(),
+          right.replace_input_with_variables())
+    return self
+
+  def contains_randoms(self) -> set[MyVariable]:
+    match self:
+      case MyFunctionCallExpression(name, _) if name == INPUT_FUNCTION_NAME:
+        return { self.to_random_variable() } # pylint: disable=no-member
+      case MyUnaryExpression(_, child):
+        return child.contains_randoms()
+      case MyBinaryExpression(_, left, right):
+        return left.contains_randoms() | right.contains_randoms()
+    return set()
+
 @dataclass(frozen=True)
 class MyArrayVariable(MyVariable):
   index: MyExpression = field(hash=False)
@@ -307,10 +331,6 @@ class MyFunctionCallExpression(MyExpression):
     if any(not isinstance(x, MyExpression) for x in self.arguments):
       raise ValueError(f"Invalid arguments for function call {self.name}: {self.arguments}")
 
-    if self.name == INPUT_FUNCTION_NAME:
-      self.to_user_input_variable()
-      # stream.to_counter()
-
   def __str__(self):
     return f"{self.name}({", ".join(map(str, self.arguments))})"
 
@@ -322,12 +342,19 @@ class MyFunctionCallExpression(MyExpression):
     idx = f"l{self.coord[0]}_c{self.coord[1]}"
     return MyVariable(INPUT_STREAM_VARIABLE_PREFIX + idx)
 
+  def to_random_variable(self) -> MyVariable:
+    if self.name != INPUT_FUNCTION_NAME:
+      raise ValueError(f"Invalid function call to random: {self.name}")
+    if len(self.arguments) not in (0, 2):
+      raise ValueError(f"Invalid number of arguments for random: {self.arguments}")
+    idx = f"l{self.coord[0]}_c{self.coord[1]}"
+    return MyVariable(RANDOM_VARIABLE_PREFIX + idx)
+
+
   @property
   def variables(self):
     if self.name == INPUT_FUNCTION_NAME:
-      stream = self.to_user_input_variable()
-      return { stream }
-      # return { stream, stream.to_counter() }
+      return { self.to_random_variable() }
     return {x for arg in self.arguments for x in arg.variables}
 
 my_zero = MyConstantExpression(0)

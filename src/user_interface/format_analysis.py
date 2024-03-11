@@ -11,7 +11,6 @@ from src.frontend.symbolic import MyEnvironment, MyVariable
 from src.impact import ImpactIntWrapper, QualitativeZero
 from src.utils.colors import cyan, green, orange, red, title, yellow
 from src.utils.globals import (
-  INPUT_STREAM_COUNTER_LENGTH_VARIABLE_PREFIX,
   INPUT_STREAM_COUNTER_VARIABLE_PREFIX,
   INPUT_STREAM_VARIABLE_PREFIX,
 )
@@ -85,6 +84,8 @@ def print_analysis_results(
   print()
 
 def print_overall_statistics(output: Path):
+  if output is None or not output.exists():
+    return
   with open(output, "r", encoding="utf-8") as output_file:
     data = load(output_file)
   number_of_programs = len(data)
