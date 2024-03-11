@@ -41,7 +41,7 @@ class Iterator:
       post_deps: SyntacticDependencies) -> SyntacticDependencies:
     pre_deps = post_deps
     match ast:
-      case MyAssign(lhs, MyFunctionCallExpression("__print_deps", args, coord=coord)):
+      case MyAssign(MyVariable("_"), MyFunctionCallExpression("__print_deps", args, coord=coord)):
         keyword = " " + str(args[0]) if args else ""
         debug(title(f"Dependencies{keyword} at l{coord[0]} c{coord[1]}") + str(post_deps))
       case MyAssign(lhs, rhs):

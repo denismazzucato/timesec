@@ -322,7 +322,7 @@ def _is_relevant(ast: MyComposedASTNode) -> bool:
     case MyStatement(statement):
       match statement:
         case MyAssign(lhs, _, annotations=deps):
-          return lhs in deps[AnnotationKey.DEPS_POST].may_used_variables() | \
+          return lhs.base in deps[AnnotationKey.DEPS_POST].may_used_variables() | \
             deps[AnnotationKey.DEPS_PRE].may_used_variables()
         case MyAssume(condition, annotations=deps):
           return condition.variables & \

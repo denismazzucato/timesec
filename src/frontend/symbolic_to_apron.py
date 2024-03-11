@@ -48,6 +48,8 @@ class SymbolicToApronError(Exception):
   pass
 
 def variable_to_apron(variable: MyVariable) -> PyVar:
+  if isinstance(variable, MyArrayVariable):
+    raise SymbolicToApronError(f"Array variable {variable} is not supported when translating to apron")
   return PyVar(variable.name)
 
 def environment_to_apron() -> PyEnvironment:
@@ -64,7 +66,7 @@ def get_coeff(expr: MyExpression, variable: MyVariable) -> float:
   match expr:
     case MyFunctionCallExpression(name, _) if name == INPUT_FUNCTION_NAME:
       return 0
-    case MyArrayVariable():
+    case MyVariableExpression(MyArrayVariable()):
       raise SymbolicToApronError(f"Array variable {expr} is not supported " + \
         "when translating to apron")
     case MyVariableExpression(MyVariable(name)):

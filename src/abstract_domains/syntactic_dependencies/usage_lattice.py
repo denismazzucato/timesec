@@ -2,7 +2,7 @@ from copy import deepcopy
 from enum import Enum
 
 from src.engine.points_to_analysis import PointsTo
-from src.frontend.symbolic import MyEnvironment, MyVariable
+from src.frontend.symbolic import MyArrayVariable, MyEnvironment, MyVariable
 from src.proto.abstract_value_domain import AbstractValueDomain, AnalysisDirection
 from src.proto.poset import Poset
 
@@ -109,7 +109,7 @@ class UsageAbstractDomain(AbstractValueDomain):
     new_state = deepcopy(self)
     lhs_base = lhs.base
     if self.map[lhs_base] in (UsageLattice.USED, UsageLattice.BELOW):
-      if lhs_base not in rhs.variables:
+      if lhs_base not in rhs.variables and not isinstance(lhs, MyArrayVariable):
         new_state.map[lhs_base] = UsageLattice.OVERWRITTEN
       for y in rhs.variables:
         new_state.map[y] = UsageLattice.USED
