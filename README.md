@@ -1,5 +1,84 @@
 # TimeSec
 
+## TLDR; for the artifact evaluation
+
+### Available Badge
+The tool is availabe in zenodo: 
+
+### Functional Badge
+
+Load the provided docker image:
+
+```bash
+sudo docker load artifact.zip
+```
+Run all the benchmarks (about 20 min):
+```bash
+docker run timesec
+```
+
+When finished, copy the generated pdf to the host machine:
+```bash
+docker copy timesec:timesec/tables/all.pdf .
+```
+
+The pdf file `all.pdf` in the current directory contains the tables shown in the paper's evaluation. 
+Please, check that:
+- Table 3:
+  - The Quantities of Table 3 of your evaluation should be identical of quantities in the one presented in the paper.
+  - Regarding the analysis time, the INV analysis time is the most expensive part of the analysis.
+- Table 4:
+  - The Table 4 of your evaluation should be identical of the one presented in the paper.
+- Table 5:
+  - The "VARIABLES" of Table 5 of your evaluation should be identical of the "VARIABLES" in the one presented in the paper.
+  - INV should take most of the time without DEPS nad have small variability (STD after ± in the TOT column). Without OPTS, DEPS should take most time and LP should be close to zero. With FULL, INV should be bigger than DEPS and LP close to zero.
+ 
+### Reusable Badge
+
+Enter the container with a terminal:
+```bash
+...
+```
+
+Check the helper menu:
+```bash
+python timesec.py --help
+```
+
+Try to run our tool on a custom function.
+For example, let's build a function `custom` with two input arguments x and y, where x has a double impact on the number of loop iterations, eg:
+```
+void custom(int x, int y){
+  int i = 0;
+  while (i < 2 * x + y) {
+    i = i - 1;
+  }
+}
+```
+If you customize the example, please note that we do not support the full C standard. Then store this function in a c file:
+```bash
+touch example.c && echo "
+void custom(int x, int y){
+  int i = 0;
+  while (i < 2 * x + y) {
+    i = i - 1;
+  }
+}
+" >> example.c
+```
+
+Try it out:
+```bash
+python timesec.py example.c --function-name custom
+```
+
+And this should be the expected output:
+```
+...
+```
+
+
+
 ##  Install
 
 We require [conda](https://docs.conda.io/en/latest/miniconda.html) and [apron](https://antoinemine.github.io/Apron/doc/) to be installed.
