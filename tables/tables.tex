@@ -1,0 +1,34 @@
+\documentclass[runningheads]{llncs}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{comment}
+\usepackage{multirow}
+\usepackage{makecell} %% easy newline inside tables
+
+
+\title{Tables for evaluating \textsc{TimeSec} tool.}
+\usepackage{comment}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\depslabel}{\textsc{Deps}}
+\newcommand{\invlabel}{\textsc{Inv}}
+\newcommand{\lplabel}{\textsc{LP}}
+\newcommand{\nodepnoopt}{\textsc{Deps}}
+\newcommand{\depnoopt}{\textsc{Opts}}
+\newcommand{\depopt}{\textsc{Full}}
+\newcommand{\toolname}{\textsc{TimeSec}}
+\newcommand{\bignum}{\textsc{S2N-Bignum}}
+\newcommand{\spacearound}[1]{\;#1\;}
+
+\setcounter{table}{2} % Set the table counter to start from 3
+
+
+\input{sv-info}
+\input{sv-bounds}
+\input{bignum-ablation}
+
+
+\end{document}

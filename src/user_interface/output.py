@@ -23,7 +23,8 @@ def write_result(
     points_to: dict[MyVariable, set[MyVariable]],
     pre: AbstractValueDomain,
     impacts: dict[MyVariable, ImpactIntWrapper],
-    input_variables: set[MyVariable]) -> None:
+    input_variables: set[MyVariable],
+    bounds) -> None:
   if output is None:
     return
   if ".json" != output.suffix:
@@ -52,6 +53,8 @@ def write_result(
     "local_variables": [str(v) for v in impacts.keys() - input_variables
                         if str(v) not in symbolic_variables],
     "symbolic_variables": list(map(str, symbolic_variables.values())),
+    "lowerbound": bounds[0],
+    "upperbound": bounds[1],
     "timing": {
       "parsing": Timeit.get_running_time("parse"),
       "points_to_analysis": Timeit.get_running_time("points_to_analysis"),
@@ -62,14 +65,15 @@ def write_result(
   }
 
   serialized = dumps(data, indent=2)
+  output.parent.mkdir(exist_ok=True, parents=True)
   with open(output, "w", encoding="utf-8") as output_file:
     output_file.write(serialized)
 
 def write_failure(output: Path, input_file: Path, function: str, error: Exception):
-  if ".json" != output.suffix:
-    raise ValueError("Output file must be a .json file")
   if output is None:
     return
+  if ".json" != output.suffix:
+    raise ValueError("Output file must be a .json file")
 
   try:
     with open(output, "r", encoding="utf-8") as output_file:
@@ -85,5 +89,6 @@ def write_failure(output: Path, input_file: Path, function: str, error: Exceptio
   }
 
   serialized = dumps(data, indent=2)
+  output.parent.mkdir(exist_ok=True, parents=True)
   with open(output, "w", encoding="utf-8") as output_file:
     output_file.write(serialized)

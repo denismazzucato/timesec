@@ -111,7 +111,7 @@ def compute_impact_of(
   ))).core
   debug2(f"Diff: {diff}")
   p = inv_without_variable.meet(inv_without_variable_copy).meet(diff)
-  debug2(f"MILP: {p}")
+  debug2(f"LP: {p}")
   mapping, a, b_l, b_u = to_a_bl_bu(p)
 
   c = np.zeros(len(mapping))

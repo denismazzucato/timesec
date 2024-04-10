@@ -37,3 +37,25 @@ def get_global_settings():
     "RANDOM_FUNCTION_NAME": INPUT_FUNCTION_NAME,
     **get_global_symbolic_variables(),
   }
+
+class IsDependencyAnalysis:
+  _active = True
+
+  @staticmethod
+  def deactivate():
+    IsDependencyAnalysis._active = False
+
+  @staticmethod
+  def active():
+    return IsDependencyAnalysis._active
+
+class IsVerbose:
+  _active = False
+
+  @staticmethod
+  def activate():
+    IsVerbose._active = True
+
+  @staticmethod
+  def active():
+    return IsVerbose._active

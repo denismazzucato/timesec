@@ -34,6 +34,7 @@ def single_run(
     widening,
     narrowing,
     repeat,
+    forward,
     bounds,
     output):
   debug_command_line(program, function_name, bounds)
@@ -49,7 +50,8 @@ def single_run(
     function,
     widening,
     narrowing,
-    repeat)
+    repeat,
+    forward)
 
   impacts = impact_analysis(input_deps, pre)
 
@@ -63,7 +65,8 @@ def single_run(
     points_to,
     pre,
     impacts,
-    MyEnvironment.my_input_variables())
+    MyEnvironment.my_input_variables(),
+    bounds)
 
 def destruct_cli_params_for_main(args):
   return \
@@ -71,6 +74,7 @@ def destruct_cli_params_for_main(args):
     args.widening, \
     args.narrowing, \
     args.repeat, \
+    args.forward, \
     args.input_bounds, \
     args.output
 

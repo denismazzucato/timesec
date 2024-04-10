@@ -5,6 +5,7 @@ from pathlib import Path
 from statistics import mean
 from typing import Sequence
 
+import numpy as np
 from tabulate import tabulate
 
 from src.frontend.symbolic import MyEnvironment, MyVariable
@@ -102,6 +103,7 @@ def print_overall_statistics(output: Path):
   dangerous_local_variables, zero_used_local_variables, unused_local_variables = {}, {}, {}
   timings_total = []
   shared_points_to = []
+  impacts = []
   for name, v in successes.items():
     input_variables.append(len(v["input_variables"]))
     local_variables.append(len(v["local_variables"]) - len(v["symbolic_variables"]))
@@ -129,6 +131,13 @@ def print_overall_statistics(output: Path):
     unused_local_variables.update({
       name: [k for k in set(v["local_variables"]) - set(v["symbolic_variables"]) if k not in v["input_deps"]]
     })
+
+    quantities = [
+      float(q) for k, q in v["impacts"].items() if float(q) != float("inf") and k in v["input_deps"] and k not in v["symbolic_variables"]
+    ]
+    if len(quantities) > 0:
+      # print(f"{name}: {quantities}")
+      impacts.append(mean(quantities))
 
     timings_parsing.append(v["timing"]["parsing"])
     timings_points_to.append(v["timing"]["points_to_analysis"])
@@ -175,6 +184,7 @@ f"""
     - {round(mean(timings_total), 2)} seconds on average for the analysis of {number_of_successes} programs
     - {round(max(timings_total), 2)} seconds in the program with the longest analysis
     - {round(min(timings_total), 2)} seconds in the program with the shortest analysis
+    - {round(np.std(timings_total), 2)} seconds standard deviation for the analysis of {number_of_successes} programs
     - {round(mean(timings_parsing), 2)} seconds on average for parsing of {number_of_successes} programs
     - {round(mean(timings_dependency_analysis), 2)} seconds on average for the dependency analysis of {number_of_successes} programs
     - {round(mean(timings_fixpoint_iterator), 2)} seconds on average for the fixpoint iterator of {number_of_successes} programs
@@ -218,6 +228,11 @@ f"""
     - {green(f"{sum(len(v) for v in zero_used_local_variables.values())}")} local variables with {green("definitely no impact")} (discovered by the {green("quantitative")} analysis)
     - {yellow(f"{sum(len(v) for v in unused_local_variables.values())}")} local variables that are {yellow("definitely not used")} (discovered by the {yellow("qualitative")} analysis)
 
+  {title("Quantity measures (excluding infinite values)")} over {len(impacts)} programs where we quantify something meaningful
+    - {round(mean(impacts) if len(impacts) > 0 else 0, 2)} on average for the impact quantities
+    - {max(impacts) if len(impacts) > 0 else 0} in the program with the most impact
+    - {min(impacts) if len(impacts) > 0 else 0} in the program with the least impact
+    - {round(np.std(impacts), 2)} standard deviation for the impact quantities
 """
   )
 

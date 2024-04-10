@@ -44,6 +44,10 @@ RUN conda env create -n $CONDAENV -f environment.yml && \
     echo "conda activate $CONDAENV" >> ~/.bashrc && \
     conda clean --all --yes
 
+RUN apt-get install -y --no-install-recommends texlive-latex-recommended texlive-fonts-recommended && \
+    apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-extra texlive-lang-all && \
+    rm -rf /var/lib/apt/lists/*
+
 SHELL ["conda", "run", "--no-capture-output", "-n", "$CONDAENV", "/bin/bash", "-c"]
 
 # CMD ["conda", "run", "--no-capture-output", "-n", "myenv", "python", "your_script.py"]

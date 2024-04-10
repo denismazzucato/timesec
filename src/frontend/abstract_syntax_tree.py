@@ -22,6 +22,7 @@ from src.utils.globals import (
   INPUT_STREAM_COUNTER_VARIABLE_PREFIX,
   INPUT_STREAM_VARIABLE_PREFIX,
   SYMBOLIC_VARIABLE_NAME,
+  IsDependencyAnalysis,
 )
 
 TAB = "  "
@@ -284,6 +285,8 @@ class MyFunction:
     return self._str(self.body.pretty_str(_format=_format)) + "\n" + last_comment + "\n"
 
   def collect_all_deps(self) -> set[MyVariable]:
+    if not IsDependencyAnalysis.active():
+      return MyEnvironment.my_variables()
     return self.body.collect_all_deps()
 
   def set_annotations(self, key: AnnotationKey, default_value: Any):
@@ -318,6 +321,8 @@ bucket_end = MyAssume(
 
 
 def _is_relevant(ast: MyComposedASTNode) -> bool:
+  if not IsDependencyAnalysis.active():
+    return True
   match ast:
     case MyStatement(statement):
       match statement:

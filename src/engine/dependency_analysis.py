@@ -23,11 +23,11 @@ from src.frontend.abstract_syntax_tree import (
   MyStatement,
   MyWhile,
 )
-from src.frontend.symbolic import MyFunctionCallExpression, MyVariable
+from src.frontend.symbolic import MyEnvironment, MyFunctionCallExpression, MyVariable
 from src.proto.abstract_value_domain import AnalysisDirection
 from src.user_interface.logging import debug1
 from src.utils.colors import title
-from src.utils.globals import SYMBOLIC_VARIABLE_NAME
+from src.utils.globals import SYMBOLIC_VARIABLE_NAME, IsDependencyAnalysis
 from src.utils.time import Timeit
 
 
@@ -98,6 +98,9 @@ class Iterator:
 
 @Timeit("dependency_analysis")
 def dependency_analysis(function: MyFunction) -> UsageAbstractDomain:
+  if not IsDependencyAnalysis.active():
+    return SyntacticDependencies.initialize(MyEnvironment.my_variables()).last()
+
   initial_deps = SyntacticDependencies.initialize({
     MyVariable(SYMBOLIC_VARIABLE_NAME)
   })

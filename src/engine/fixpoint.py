@@ -171,7 +171,8 @@ def iterator(
     function: MyFunction,
     k_widening: int,
     decreasing_chain: int,
-    repeat: int) -> AbstractValueDomain:
+    repeat: int,
+    forward: bool) -> AbstractValueDomain:
 
   function.set_annotations(AnnotationKey.ABS_PRE, domain.top())
   function.set_annotations(AnnotationKey.ABS_POST, domain.top())
@@ -183,13 +184,14 @@ def iterator(
   invariant = domain.top()
   assert isinstance(invariant, AbstractValueDomain)
   for i in range(repeat):
-    invariant = forward_iterator.fixpoint_iterator_for_composed(
-      function.body,
-      invariant)
-    function.body.update_annotations(AnalysisDirection.FORWARD)
-    debug2(f"Forward iteration {i + 1}/{repeat}:")
-    debug2(function.str_with_abstract_values(AnalysisDirection.FORWARD))
-    Interactive.stop_user()
+    if forward:
+      invariant = forward_iterator.fixpoint_iterator_for_composed(
+        function.body,
+        invariant)
+      function.body.update_annotations(AnalysisDirection.FORWARD)
+      debug2(f"Forward iteration {i + 1}/{repeat}:")
+      debug2(function.str_with_abstract_values(AnalysisDirection.FORWARD))
+      Interactive.stop_user()
 
     invariant = backward_iterator.fixpoint_iterator_for_composed(
       function.body,

@@ -39,7 +39,22 @@ Then, you can access the image with:
 docker run -it timesec
 ```
 
-## Usage
+## Evaluation
+
+To reproduce the claims made in the paper, you can run the following commands:
+
+- SV benchmarks, Table 3 and 4: `./sv`
+- Bignum benchmarks, Table 5: `./bignum`
+
+
+### Benchmarks
+
+The benchmarks are located in the `benchmarks` directory:
+- `s2n-bignum`: disassembled code from the cryptographic library [s2n-bignum](https://github.com/awslabs/s2n-bignum)
+- `sv-benchmarks/termination-crafted`: benchmarks from the 13th Software Verification Competition [SV-COMP](https://sv-comp.sosy-lab.org/2024/), category `termination`
+- `sv-benchmarks/termination-crafted-lit`: benchmarks from the 13th Software Verification Competition [SV-COMP](https://sv-comp.sosy-lab.org/2024/), category `termination`
+
+## Usage outside the benchmarks
 
 To show the help message, run:
 
@@ -50,29 +65,29 @@ python timesec.py --help
 To run the tool, for example on the bignum benchmark, run:
 
 ```bash
-python timesec.py benchmarks/bignum
+python timesec.py benchmarks/s2n-bignum
 ```
 
-## Benchmarks
+Try to add your own function `custom` in the `examples/example.c` file and run the tool with the `--verbose --debug 2` option to see the intermediate results and verbose log:
 
-The benchmarks are located in the `benchmarks` directory:
-- `bignum`: disassembled code from the cryptographic library [s2n-bignum](https://github.com/awslabs/s2n-bignum)
-- `sv-benchmarks/termination-crafted`: benchmarks from the 13th Software Verification Competition [SV-COMP](https://sv-comp.sosy-lab.org/2024/), category `termination`
-- `sv-benchmarks/termination-crafted-lit`: benchmarks from the 13th Software Verification Competition [SV-COMP](https://sv-comp.sosy-lab.org/2024/), category `termination`
-- `sv-benchmarks/termination-15`: benchmarks from the 15th Software Verification Competition [SV-COMP](https://sv-comp.sosy-lab.org/2026/), category `termination`
+```bash
+python timesec.py examples/example.c --verbose --debug 2 --function custom
+```
 
-## Project Structure
+### Project Structure
 
 - `timesec.py`: main entry point of the tool
 - `README.md`: this file
 - `Dockerfile`: docker file
 - `environment.yml`: conda environment file
 - `requirements.dev`: file containing the development requirements
-- `TODO.md`: file containing the TODO list
 - `LICENSE`: file containing the license
 - `.gitignore`: file containing the gitignore rules
 - `.pylintrc`: file containing the pylint rules
+- `bignum`: script to run the bignum benchmarks
+- `sv`: script to run the sv benchmarks
 - `src`: directory containing the source code
 - `benchmarks`: directory containing the benchmarks
 - `examples`: directory containing crafted C programs
 - `scripts`: directory containing scripts to help with the development
+- `tables`: directory containing the scripts to generate the tables and the tables themselves

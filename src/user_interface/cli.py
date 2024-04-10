@@ -13,7 +13,12 @@ from typing import Callable
 from src.user_interface.interactive import Interactive
 from src.user_interface.logging import debug1, setup_log_levels, setup_logs
 from src.utils.colors import title
-from src.utils.globals import DEFAULT_FUNCTION_NAME, get_global_settings
+from src.utils.globals import (
+  DEFAULT_FUNCTION_NAME,
+  IsDependencyAnalysis,
+  IsVerbose,
+  get_global_settings,
+)
 from src.utils.time import Timeout
 
 
@@ -57,18 +62,22 @@ def helper(raw_args: list[str] | None = None) -> Namespace:
   parser.add_argument("-f", "--function", metavar="FUNCTION", type=str,
     default=DEFAULT_FUNCTION_NAME,
     help="name of the function to analyze")
-  parser.add_argument("-w", "--widening", metavar="K", type=int_greater_equal(1),
-    default=3,
-    help="widening from the K-th iteration")
-  parser.add_argument("-n", "--narrowing", metavar="N", type=int_greater_equal(0),
-    default=3,
-    help="apply narrowing for N iterations after the application of widening")
-  parser.add_argument("-r", "--repeat", metavar="R", type=int_greater_equal(1),
-    default=1,
-    help="repeat the combination of forward-backward analysis R times")
-  parser.add_argument("-i", "--interactive", action="store_true",
-    help="enable interactive mode, stopping each iteration of the worklist algorithm" + \
-      "(setting the debug level to 2)")
+  # parser.add_argument("-w", "--widening", metavar="K", type=int_greater_equal(1),
+  #   default=3,
+  #   help="widening from the K-th iteration")
+  # parser.add_argument("-n", "--narrowing", metavar="N", type=int_greater_equal(0),
+  #   default=3,
+  #   help="apply narrowing for N iterations after the application of widening")
+  # parser.add_argument("-r", "--repeat", metavar="R", type=int_greater_equal(1),
+  #   default=1,
+  #   help="repeat the combination of forward-backward analysis R times")
+  # parser.add_argument("-i", "--interactive", action="store_true",
+  #   help="enable interactive mode, stopping each iteration of the worklist algorithm" + \
+  #     "(setting the debug level to 2)")
+  parser.add_argument("--disable-optimizations", action="store_true",
+    help="Disable optimizations: forward pre-analysis + narrowing + widening")
+  parser.add_argument("--disable-dependencies", action="store_true",
+    help="Disable dependencies analysis")
   parser.add_argument("-d", "--debug", nargs="?", type=int,
     const=0,
     default=-1,
@@ -87,8 +96,28 @@ def helper(raw_args: list[str] | None = None) -> Namespace:
       "for folder analysis")
   parser.add_argument("--dev-stop-at-first-exception", action="store_true",
     help="(DEVELOPER MODE) stop at first program that runs into an exception, for folder analysis")
+  parser.add_argument("-v", "--verbose", action="store_true",
+    help="enable verbose mode")
 
   args = parser.parse_args(raw_args + argv[1:] if raw_args else None)
+
+  args.interactive = False
+  args.repeat = 1
+  if not args.disable_optimizations:
+    args.widening = 2
+    args.narrowing = 2
+    args.forward = True
+  else:
+    args.widening = -1
+    args.narrowing = -1
+    args.forward = False
+
+  if args.disable_dependencies:
+    IsDependencyAnalysis.deactivate()
+
+  if args.verbose:
+    IsVerbose.activate()
+
 
   setup_log_levels(args.debug)
   debug(title("Debugging mode on") + f"level {args.debug}")
