@@ -37,6 +37,9 @@ WORKDIR /timesec
 
 COPY . /timesec
 
+# remove git files
+RUN rm -rf /app/.git
+
 ENV CONDAENV timesec
 
 RUN conda env create -n $CONDAENV -f environment.yml && \
@@ -49,5 +52,3 @@ RUN apt-get install -y --no-install-recommends texlive-latex-recommended texlive
     rm -rf /var/lib/apt/lists/*
 
 SHELL ["conda", "run", "--no-capture-output", "-n", "$CONDAENV", "/bin/bash", "-c"]
-
-CMD ["./"]
