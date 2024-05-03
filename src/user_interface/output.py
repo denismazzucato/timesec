@@ -53,8 +53,8 @@ def write_result(
     "local_variables": [str(v) for v in impacts.keys() - input_variables
                         if str(v) not in symbolic_variables],
     "symbolic_variables": list(map(str, symbolic_variables.values())),
-    "lowerbound": bounds[0],
-    "upperbound": bounds[1],
+    "lowerbound": str(bounds[0]),
+    "upperbound": str(bounds[1]),
     "timing": {
       "parsing": Timeit.get_running_time("parse"),
       "points_to_analysis": Timeit.get_running_time("points_to_analysis"),
