@@ -37,9 +37,6 @@ WORKDIR /timesec
 
 COPY . /timesec
 
-# remove git files
-RUN rm -rf /app/.git
-
 ENV CONDAENV timesec
 
 RUN conda env create -n $CONDAENV -f environment.yml && \
