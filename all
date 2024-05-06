@@ -40,6 +40,7 @@ python timesec.py benchmarks/s2n-bignum --output tmp/bignum-dep-opt.json
 python timesec.py benchmarks/s2n-bignum --output tmp/bignum-dep-no-opt.json --disable-optimizations
 python timesec.py benchmarks/s2n-bignum --output tmp/bignum-no-dep-no-opt.json --disable-dependencies --disable-optimizations
 
+python tables/bignum-tables-inputs.py tables/bignum-inputs.tex
 python tables/bignum-tables-ablation.py tables/bignum-ablation.tex
 
 cd tables && pdflatex -interaction=nonstopmode tables.tex && cd ..

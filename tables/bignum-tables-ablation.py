@@ -84,11 +84,11 @@ def retrieve_statistics(output: Path):
 
   return (
     sum(number_of_dangerous_input_variables),
-    sum(number_of_dangerous_input_variables)+sum(len(v) for v in dangerous_local_variables.values()),
+    # sum(number_of_dangerous_input_variables)+sum(len(v) for v in dangerous_local_variables.values()),
     sum(number_of_zero_used_input_variables),
-    sum(number_of_zero_used_input_variables)+sum(len(v) for v in zero_used_local_variables.values()),
+    # sum(number_of_zero_used_input_variables)+sum(len(v) for v in zero_used_local_variables.values()),
     sum(number_of_unused_input_variables),
-    sum(number_of_unused_input_variables)+sum(len(v) for v in unused_local_variables.values()),
+    # sum(number_of_unused_input_variables)+sum(len(v) for v in unused_local_variables.values()),
     round(sum(timings_dependency_analysis), 2),
     round(sum(timings_fixpoint_iterator), 2),
     round(sum(timings_impact_analysis), 2),
@@ -110,16 +110,16 @@ preamble = r"""
   \centering
   \caption{Ablation study of \toolname{} on the \bignum{} benchmark.}
   \label{tab:bignum-abl}
-  \begin{tabular}{c|ccc|cccc}
-    \multirow{2}{*}{\textsc{Component}}  & \multicolumn{3}{c|}{\textsc{Variables}} & \multicolumn{4}{c}{\textsc{Analysis Time} (s)} \\
-    & \spacearound{\makecell{\textsc{Maybe} \\ \textsc{Dangerous}}} & \spacearound{\makecell{\textsc{Zero}\\ \textsc{Used}}} & \spacearound{\textsc{Unused}} & \spacearound{\depslabel} & \spacearound{\invlabel} & \spacearound{\lplabel} & \spacearound{\textsc{Tot}}  \\
+  \begin{tabular}{c||c|cc||ccc|rcl}
+    \multirow{2}{*}{\textsc{Component}}  & \multicolumn{3}{c||}{\textsc{Input Variables}} & \multicolumn{6}{c}{\textsc{Total Analysis Time} (s)} \\
+    & \spacearound{\makecell{\textsc{Maybe} \\ \textsc{Dangerous}}} & \spacearound{\makecell{\textsc{Zero}\\ \textsc{Impact}}} & \spacearound{\textsc{Unused}} & \spacearound{\depslabel} & \spacearound{\invlabel} & \spacearound{\lplabel} & \multicolumn{3}{c}{\textsc{Tot}}  \\
   \hline\hline
 """
 end = r"""
   \end{tabular}
 \end{table}"""
 
-line = "    {} & {}/{} & {}/{} & {}/{} & {} & {} & {} & ${}\pm{}$"
+line = "    {} & {} & {} & {} & {} & {} & {} & ${}\pm{}$"
 
 first = " \\\\ \n".join([
   line.format(s, *retrieve_statistics(c)) for s, c in zip(str_options, files)

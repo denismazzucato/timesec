@@ -108,16 +108,16 @@ lit = [Path(x) for x in [
 ]]
 
 bounds = ["0-10", "0-100", "0-1000", "0-inf", "inf"]
-str_bounds = ["0-10", "0-100", "0-1000", "\\ge 0", "\\infty"]
+str_bounds = ["0-10", "0-100", "0-1000", "\\ge 0", "[-\\infty,+\\infty]"]
 
 preamble = r"""
 \begin{table}[t]
   \centering
-  \caption{Analysis of variables of the \svcomp{} benchmarks.}
+  \caption{Analysis findings for the \svcomp{} benchmarks.}
   \label{tab:svcomp2}
   \begin{tabular}{c|c|ccc}
     \multirow{2}{*}{\textsc{Benchmark}} & \multirow{2}{*}{~\makecell{\textsc{Bound} \\ \textsc{Ranges}}~} & \multicolumn{3}{c}{\textsc{Variables}} \\
-    & & \spacearound{\textsc{Maybe Dangerous}} & \spacearound{\textsc{Zero Used}} & \spacearound{\textsc{Unused}} \\
+    & & \spacearound{\textsc{May Impact}} & \spacearound{\textsc{Zero Impact}} & \spacearound{\textsc{Unused}} \\
     \hline\hline
     \multirow{5}{*}{\makecell{\textsc{Termination}\\ \textsc{Crafted} \\ (68 programs)}}
 """

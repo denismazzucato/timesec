@@ -2,37 +2,56 @@
 
 ## TLDR; for the artifact evaluation
 
-### Available Badge
-The tool is availabe in zenodo: 
-
-### Functional Badge
+### Kick-the-Tires (~4 minutes)
 
 Load the provided docker image:
 
 ```bash
-sudo docker load artifact.zip
+docker load timesec.tar
 ```
-Run all the benchmarks (about 20 min):
+
+Run the evaluation on the [s2n-bignum](https://github.com/awslabs/s2n-bignum) library (about 2 min):
 ```bash
 docker run timesec
 ```
 
-When finished, copy the generated pdf to the host machine:
+When finished, copy the generated pdf (`tables/tables.pdf`) to the host machine to compare the obtained results with the ones presented in the paper (Table 4):
 ```bash
-docker copy timesec:timesec/tables/all.pdf .
+docker cp timesec:timesec/tables/tables.pdf .
 ```
 
-The pdf file `all.pdf` in the current directory contains the tables shown in the paper's evaluation. 
+
+### Available Badge
+The tool is available in Zenodo:
+
+### Functional Badge (~20 minutes)
+
+Load the provided docker image:
+
+```bash
+docker load timesec.tar
+```
+Run all the benchmarks (about 20 min):
+```bash
+docker run -it timesec ./all
+```
+
+When finished, copy the generated pdf to the host machine:
+```bash
+docker copy timesec:/tables/tables.pdf .
+```
+
+The pdf file `tables.pdf` in the current directory contains the tables shown in the paper's evaluation.
 Please, check that:
-- Table 3:
+- Table 4:
   - The Quantities of Table 3 of your evaluation should be identical of quantities in the one presented in the paper.
   - Regarding the analysis time, the INV analysis time is the most expensive part of the analysis.
-- Table 4:
-  - The Table 4 of your evaluation should be identical of the one presented in the paper.
 - Table 5:
+  - The Table 4 of your evaluation should be identical of the one presented in the paper.
+- Table 6:
   - The "VARIABLES" of Table 5 of your evaluation should be identical of the "VARIABLES" in the one presented in the paper.
   - INV should take most of the time without DEPS nad have small variability (STD after ± in the TOT column). Without OPTS, DEPS should take most time and LP should be close to zero. With FULL, INV should be bigger than DEPS and LP close to zero.
- 
+
 ### Reusable Badge
 
 Enter the container with a terminal:

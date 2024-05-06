@@ -108,12 +108,12 @@ lit = [Path(x) for x in [
 ]]
 
 bounds = ["0-10", "0-100", "0-1000", "0-inf", "inf"]
-str_bounds = ["0-10", "0-100", "0-1000", "\\ge 0", "\\infty"]
+str_bounds = ["0-10", "0-100", "0-1000", "\\ge 0", "[-\\infty,+\\infty]"]
 
 preamble = r"""
 \begin{table}[t]
   \centering
-  \caption{Quantitative results of \svcomp{} benchmarks.}
+  \caption{Quantitative results for the \svcomp{} benchmarks.}
   \label{tab:svcomp}
   \begin{tabular}{c|c|cc|cccc}
     \multirow{2}{*}{\textsc{Benchmark}} & \multirow{2}{*}{~\makecell{\textsc{Bound} \\ \textsc{Ranges}}~} & \multicolumn{2}{c|}{\textsc{Quantities} $(< \infty)$} & \multicolumn{4}{c}{\textsc{Analysis Time} (s)} \\

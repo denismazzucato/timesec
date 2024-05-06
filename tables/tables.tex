@@ -4,10 +4,12 @@
 \usepackage{comment}
 \usepackage{multirow}
 \usepackage{makecell} %% easy newline inside tables
+\usepackage{adjustbox} %% for adjusting table width
 
 
-\title{Tables for evaluating \textsc{TimeSec} tool.}
+\title{Evaluation of \textup{\textsc{TimeSec}}}
 \usepackage{comment}
+\usepackage[table]{xcolor} %% for code colors
 
 \begin{document}
 
@@ -22,14 +24,48 @@
 \newcommand{\toolname}{\textsc{TimeSec}}
 \newcommand{\bignum}{\textsc{S2N-Bignum}}
 \newcommand{\spacearound}[1]{\;#1\;}
+\definecolor{seabornBlue}{RGB}{76, 114, 176}
+\definecolor{seabornOrange}{RGB}{221, 132, 82}
+\definecolor{seabornGreen}{RGB}{85, 168, 104}
+\definecolor{seabornRed}{RGB}{196, 78, 82}
+\definecolor{seabornPurple}{RGB}{129, 114, 179}
+\definecolor{seabornBrown}{RGB}{140, 86, 75}
+\definecolor{seabornPink}{RGB}{144, 103, 167}
+\definecolor{seabornGray}{RGB}{207, 207, 207}
+\definecolor{seabornYellow}{RGB}{242, 192, 64}
+\newcommand{\blue}[1]{\textcolor{seabornBlue}{#1}}
+\newcommand{\orange}[1]{\textcolor{seabornOrange}{#1}}
+\newcommand{\green}[1]{\textcolor{seabornGreen}{#1}}
+\newcommand{\red}[1]{\textcolor{seabornRed}{#1}}
+\newcommand{\purple}[1]{\textcolor{seabornPurple}{#1}}
+\newcommand{\brown}[1]{\textcolor{seabornBrown}{#1}}
+\newcommand{\pink}[1]{\textcolor{seabornPink}{#1}}
+\newcommand{\gray}[1]{\textcolor{seabornGray}{#1}}
+\newcommand{\yellow}[1]{\textcolor{seabornYellow}{#1}}
+\newcommand{\customrowcolor}{seabornGray!30}
+\newcommand{\inputspace}{\Delta}
+\newcommand{\nominalvariabels}{\restr{\inputspace}{\textup{S}}}
+\newcommand{\numericalvariables}{\restr{\inputspace}{\textup{N}}}
+\newcommand{\restr}[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \right|_{#2} % this is the delimiter
+}}
 
-\setcounter{table}{4} % Set the table counter to start from 3
+\setcounter{table}{3} % Set the table counter to start from 4
 
-
-\input{sv-info}
-\input{sv-bounds}
-\input{bignum-inputs}
-\input{bignum-ablation}
+\InputIfFileExists{bignum-inputs.tex}{
+  \input{bignum-inputs}
+}{}
+\InputIfFileExists{bignum-ablation.tex}{
+  \input{bignum-ablation}
+}{}
+\InputIfFileExists{sv-info.tex}{
+  \input{sv-info}
+}{}
+\InputIfFileExists{sv-bounds.tex}{
+  \input{sv-bounds}
+}{}
 
 
 \end{document}

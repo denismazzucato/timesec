@@ -5,8 +5,9 @@ from sys import argv
 
 import numpy as np
 
-
+SAFE, NUMERICAL, DANGEROUS, ZERO, UNUSED = 0, 0, 0, 0, 0
 def retrieve_statistics(output: Path, program):
+  global SAFE, NUMERICAL, DANGEROUS, ZERO, UNUSED
 
   with open(output, "r", encoding="utf-8") as output_file:
     data = load(output_file)
@@ -87,7 +88,13 @@ def retrieve_statistics(output: Path, program):
   number_of_zero_used_input_variables = [len(v) for v in zero_used_input_variables.values()]
   number_of_unused_input_variables = [len(v) for v in unused_input_variables.values()]
 
+
+  SAFE += len(nominals[program])
+  NUMERICAL += len(set(input_variables_each_program[program + ":ltmp0"]) - set(nominals[program]))
   program = program + ":ltmp0"
+  DANGEROUS += len(dangerous_input_variables[program])
+  ZERO += len(zero_used_input_variables[program])
+  UNUSED += len(unused_input_variables[program])
   return (
     dangerous_input_variables[program], zero_used_input_variables[program], unused_input_variables[program], input_variables_each_program[program]
   )
@@ -251,19 +258,15 @@ preamble = r"""
 \begin{table}[p]
   \rowcolors{3}{white}{\customrowcolor}
   \centering
-  \caption{Input composition of the \bignum{} benchmark. The nominal size variables and parameters are \green{highlighted in green}, while the numerical variables are \red{highlighted in red}. No numerical variable should be \textsc{Maybe Dangerous}.}
+  \caption{Input composition of the \bignum{} library. The variables \textsc{Safe} $\nominalvariabels$ \green{highlighted in green}, while the variables \textsc{Numerical} $\numericalvariables$ \red{in red}. No numerical variable should be \textsc{Maybe Dangerous}.}
   \label{tab:bignum-inputs}
-  \renewcommand{\arraystretch}{0.675}
+  \renewcommand{\arraystretch}{0.67}
   \begin{adjustbox}{max width=\textwidth}
   \begin{tabular}{l  cc || ccc}
     \multirow{2}{*}{\textsc{Program}}  & \multicolumn{2}{c||}{\textsc{Input Variables} $\inputspace$} & \textsc{Maybe} & \textsc{Zero} & \multirow{2}{*}{\textsc{Unused}} \\
-    & \spacearound{\textsc{Safe} $\nominalvariabels$} & \spacearound{\textsc{Numerical} $\numericalvariables$} & \spacearound{\textsc{Dangerous}} & \spacearound{\textsc{Used}} & \\[2pt]
+    & \spacearound{\textsc{Safe} $\nominalvariabels$} & \spacearound{\textsc{Numerical} $\numericalvariables$} & \spacearound{\textsc{Dangerous}} & \spacearound{\textsc{Impact}} & \\[2pt]
     \hline\hline
 """
-end = r"""\\
-  \end{tabular}
-  \end{adjustbox}
-\end{table}"""
 
 line = "    {} & {} & {} & {} & {} & {}"
 
@@ -287,6 +290,12 @@ first = " \\\\ \n".join([
 ])
 
 
+end = """\\\\
+    \\hline \\hline & & & & & \\\\
+    \\rowcolor{{white}} \\textsc{{Total Variables:}} &  {} &  {} &  {} &  {} &  {}
+  \\end{{tabular}}
+  \\end{{adjustbox}}
+\\end{{table}}""".format(SAFE, NUMERICAL, DANGEROUS, ZERO, UNUSED)
 print(preamble + first + end)
 with open(argv[1], "w") as f:
   f.write(preamble + first + end)
