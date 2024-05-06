@@ -52,3 +52,5 @@ RUN apt-get install -y --no-install-recommends texlive-latex-recommended texlive
     rm -rf /var/lib/apt/lists/*
 
 SHELL ["conda", "run", "--no-capture-output", "-n", "$CONDAENV", "/bin/bash", "-c"]
+
+CMD ["./all"]
