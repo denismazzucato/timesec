@@ -33,12 +33,9 @@ RUN opam install -y $OPAM_DEPS
 ENV PYTHONUNBUFFERED 1
 ENV APRON_LD_PATH=/root/.opam/default/share/apron/lib/
 
-WORKDIR /app
+WORKDIR /timesec
 
-COPY . /app
-
-# remove git files
-RUN rm -rf /app/.git
+COPY . /timesec
 
 ENV CONDAENV timesec
 

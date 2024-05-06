@@ -111,6 +111,7 @@ bounds = ["0-10", "0-100", "0-1000", "0-inf", "inf"]
 str_bounds = ["0-10", "0-100", "0-1000", "\\ge 0", "[-\\infty,+\\infty]"]
 
 preamble = r"""
+\setcounter{table}{6}
 \begin{table}[t]
   \centering
   \caption{Analysis findings for the \svcomp{} benchmarks.}

@@ -20,6 +20,14 @@ from src.utils.colors import title
 
 
 def debug_command_line(program, function_name, bounds):
+  """
+    This function is used for debugging. It prints the command line that would be used to run the program with the given parameters.
+
+    Args:
+      program (str): The name of the program to run.
+      function_name (str): The name of the function to analyze.
+      bounds (tuple): The input bounds for the function.
+  """
   debug(title("Command line") + " ".join([
     "python", "timesec.py",
     str(program),
@@ -37,14 +45,33 @@ def single_run(
     forward,
     bounds,
     output):
+  """
+    This function is the main entry point for running the TimeSec analysis on a single program.
+
+    Args:
+      program (str): The name of the program to run.
+      function_name (str): The name of the function to analyze.
+      widening (str): The widening strategy to use.
+      narrowing (str): The narrowing strategy to use.
+      repeat (int): The number of times to repeat the analysis.
+      forward (bool): Whether to perform a forward analysis.
+      bounds (tuple): The input bounds for the function.
+      output (str): The name of the file to write the results to.
+  """
   debug_command_line(program, function_name, bounds)
 
+  # first, we parse the program
   function = parse(program, function_name, bounds)
 
+  # we perform the points-to analysis to discover shared memory regions,
+  # useful for the dependency analysis
   points_to = points_to_analysis(function)
 
+  # syntactic dependency analysis to discover variables that are used in the
+  # loop iterations
   input_deps = dependency_analysis(function)
 
+  # we perform the fixpoint iterator, forward and backward analysis
   pre = iterator(
     PolkaWithStreams,
     function,
@@ -53,10 +80,13 @@ def single_run(
     repeat,
     forward)
 
+  # quantification of the impact of each variable
   impacts = impact_analysis(input_deps, pre)
 
+  # print the results to the user
   print_analysis_results(impacts)
 
+  # store the results for benchmark mode
   write_result(
     output,
     program,
@@ -69,6 +99,15 @@ def single_run(
     bounds)
 
 def destruct_cli_params_for_main(args):
+  """
+    This function destructs the command line parameters for the main function.
+
+    Args:
+      args (argparse.Namespace): The command line arguments.
+
+    Returns:
+      tuple: A tuple containing the destructed command line parameters.
+  """
   return \
     args.function, \
     args.widening, \
@@ -79,7 +118,12 @@ def destruct_cli_params_for_main(args):
     args.output
 
 def main(args: list[str] | None = None):
+  """
+    This is the main function that is called when the script is run. It processes the command line arguments and runs the analysis on the specified programs.
 
+    Args:
+      args (list[str] | None): The command line arguments. If None, the arguments will be taken from sys.argv.
+  """
   input_parameters = helper(args)
   if input_parameters.input.is_file():
     single_run(

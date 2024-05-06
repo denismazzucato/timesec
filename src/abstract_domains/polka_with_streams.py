@@ -17,6 +17,16 @@ from src.proto.abstract_value_domain import AnalysisDirection
 
 
 def resolve_input_streams(expr, direction):
+  """
+    A decorator that resolves input streams in symbolic expressions.
+
+    Args:
+        expr: The symbolic expression to resolve input streams for.
+        direction (AnalysisDirection): The direction of the analysis.
+
+    Returns:
+        Callable: A wrapper function.
+    """
   def inner(func):
     def wrapper(core):
       randoms = expr.contains_randoms()
@@ -36,6 +46,15 @@ def resolve_input_streams(expr, direction):
   return inner
 
 def top_if_error(error_type):
+  """
+    A decorator that sets the result to top if a specified error is raised.
+
+    Args:
+        error_type: The type of error to catch.
+
+    Returns:
+        Callable: A wrapper function.
+    """
   def inner(func):
     def wrapper(core):
       try:
@@ -47,6 +66,9 @@ def top_if_error(error_type):
   return inner
 
 class PolkaWithStreams(Polka):
+  """
+    An extension of the Polka abstract domain with support for input streams in symbolic expressions.
+  """
 
   def __deepcopy__(self, memodict=None) -> "PolkaWithStreams":
     new_polka = PolkaWithStreams([])

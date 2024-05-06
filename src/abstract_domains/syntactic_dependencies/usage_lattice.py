@@ -8,9 +8,15 @@ from src.proto.poset import Poset
 
 
 class MyMetaClass(type(Enum), type(Poset)):
+  """
+    Custom metaclass inheriting from Enum and Poset types.
+  """
   pass
 
 class UsageLattice(Poset, Enum, metaclass=MyMetaClass):
+  """
+    Enum defining lattice elements for usage analysis.
+  """
   USED = 4
   BELOW = 3
   OVERWRITTEN = 2
@@ -63,6 +69,9 @@ class UsageLattice(Poset, Enum, metaclass=MyMetaClass):
     return ""
 
 class UsageAbstractDomain(AbstractValueDomain):
+  """
+    Abstract domain for usage analysis.
+  """
 
   def __init__(self, variables: set[MyVariable], initials:set[MyVariable]) -> None:
     self.map: dict[MyVariable, UsageLattice] = {x: UsageLattice.UNUSED for x in variables}

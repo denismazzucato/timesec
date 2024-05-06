@@ -20,9 +20,21 @@ from src.utils.globals import BOTTOM_CHAR, TOP_CHAR
 
 
 class Polka(AbstractValueDomain):
+  """
+    Polka abstract domain implementation.
+  """
   man = PyPolkaMPQstrictManager()
 
   def __init__(self, exprs: list[PyTcons1] | PyTcons1Array):
+    """
+        Initialize the Polka abstract domain.
+
+        Args:
+            exprs (list[PyTcons1] | PyTcons1Array): The list of constraints or a PyTcons1Array.
+
+        Returns:
+            Polka: The initialized Polka instance.
+      """
     self.man = Polka.man
     self.env = environment_to_apron()
     if isinstance(exprs, list):

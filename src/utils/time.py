@@ -6,6 +6,20 @@ from time import perf_counter
 
 
 class Timer:
+  """
+    A context manager for measuring time elapsed during execution.
+
+    Usage:
+    ```python
+    with Timer() as t:
+        # Code block to measure execution time for
+    print(f"Elapsed time: {t.elapsed} seconds")
+    ```
+
+    Attributes:
+        _start (float): The start time of the timer.
+        elapsed (float): The elapsed time in seconds.
+  """
   def __init__(self):
     self._start: float = 0
     self.elapsed: float = 0
@@ -18,6 +32,20 @@ class Timer:
     self.elapsed = perf_counter() - self._start
 
 class Timeit:
+  """
+    Decorator for measuring the execution time of functions.
+
+    Usage:
+    ```python
+    @Timeit("function_name")
+    def my_function():
+        # Function implementation
+    ```
+
+    Attributes:
+        _running_times (dict): A dictionary to store running times of functions.
+  """
+
   _running_times: dict[str, float] = defaultdict(float)
   def __init__(self, func_name):
     self.func_name = func_name
@@ -43,6 +71,19 @@ class Timeit:
     Timeit._running_times = defaultdict(float)
 
 class Timeout:
+  """
+    Decorator for setting a timeout limit on function execution.
+
+    Usage:
+    ```python
+    @Timeout(10)
+    def my_function():
+        # Function implementation
+    ```
+
+    Attributes:
+        _timeout (int): The timeout limit in seconds.
+  """
   _timeout: int = 0
 
   @staticmethod

@@ -255,6 +255,7 @@ nominals = {
 file = Path("tmp/bignum-dep-opt.json")
 
 preamble = r"""
+\setcounter{table}{3}
 \begin{table}[p]
   \rowcolors{3}{white}{\customrowcolor}
   \centering

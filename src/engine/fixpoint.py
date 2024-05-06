@@ -24,6 +24,14 @@ from src.utils.time import Timeit, Timeout
 
 
 class FixpointIterator:
+  """
+    Class for performing fixpoint iteration.
+
+    Attributes:
+        direction (AnalysisDirection): The direction of analysis (forward or backward).
+        k_widening (int): The threshold for applying widening.
+        decreasing_chain (int): The length of the decreasing chain.
+  """
 
   def __init__(
       self,
@@ -38,6 +46,16 @@ class FixpointIterator:
       self,
       ast: MyComposedASTNode | MyAtomicASTNode,
       state: AbstractValueDomain) -> AbstractValueDomain:
+    """
+        Meet the current state with the precursory state.
+
+        Args:
+            ast (MyComposedASTNode | MyAtomicASTNode): The current AST node.
+            state (AbstractValueDomain): The current state.
+
+        Returns:
+            AbstractValueDomain: The updated state after meeting with the precursory state.
+    """
     key = AnnotationKey.from_analysis_direction(self.direction)
     precursory_state = ast.annotations[key]
     assert isinstance(precursory_state, AbstractValueDomain)
@@ -48,6 +66,13 @@ class FixpointIterator:
       self,
       ast: MyComposedASTNode | MyAtomicASTNode,
       new_state: AbstractValueDomain):
+    """
+        Update annotations with the new state.
+
+        Args:
+            ast (MyComposedASTNode | MyAtomicASTNode): The AST node.
+            new_state (AbstractValueDomain): The new state.
+    """
     key = AnnotationKey.from_analysis_direction(self.direction)
     ast.annotations[AnnotationKey.for_future_iterations(key)] = new_state
 
@@ -55,6 +80,16 @@ class FixpointIterator:
       self,
       ast: MyAtomicASTNode,
       state: AbstractValueDomain) -> AbstractValueDomain:
+    """
+        Perform fixpoint iteration for atomic AST nodes.
+
+        Args:
+            ast (MyAtomicASTNode): The atomic AST node.
+            state (AbstractValueDomain): The current state.
+
+        Returns:
+            AbstractValueDomain: The updated state after fixpoint iteration.
+    """
     new_state = state
     match ast:
       case MyAssign(lhs, rhs):
@@ -70,6 +105,20 @@ class FixpointIterator:
       self,
       ast: MyComposedASTNode,
       state: AbstractValueDomain) -> AbstractValueDomain:
+    """
+    Perform fixpoint iteration for abstract interpretation.
+
+    Args:
+        domain (type[AbstractValueDomain]): The abstract value domain type.
+        function (MyFunction): The function to analyze.
+        k_widening (int): The threshold for applying widening.
+        decreasing_chain (int): The length of the decreasing chain.
+        repeat (int): The number of fixpoint iterations.
+        forward (bool): Flag indicating the direction of analysis (forward or backward).
+
+    Returns:
+        AbstractValueDomain: The computed invariant.
+    """
     new_state = state
 
     if not cached_is_relevant(ast):

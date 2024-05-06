@@ -20,6 +20,12 @@ from src.utils.time import Timeit
 
 
 class PointsTo:
+  """
+    Class for performing points-to analysis.
+
+    Attributes:
+        _shared_pointers (defaultdict): Dictionary to store shared pointers.
+  """
   _shared_pointers = defaultdict(set)
 
   @staticmethod
@@ -28,6 +34,15 @@ class PointsTo:
 
   @staticmethod
   def gather_all_simple_assignments(ast: MyComposedASTNode) -> set[tuple[MyVariable, MyVariable]]:
+    """
+        Gather all simple assignments from the AST.
+
+        Args:
+            ast (MyComposedASTNode): The root of the AST.
+
+        Returns:
+            set[tuple[MyVariable, MyVariable]]: Set of simple assignments as tuples (lhs, rhs).
+      """
     match ast:
       case MyStatement(MyAssign(MyVariable(lhs_name), MyVariableExpression(MyVariable(rhs_name)))):
         return { (MyVariable(lhs_name), MyVariable(rhs_name)) }
@@ -41,6 +56,12 @@ class PointsTo:
 
   @staticmethod
   def points_to_analysis(function: MyFunction) -> None:
+    """
+        Perform points-to analysis on the given function.
+
+        Args:
+            function (MyFunction): The function to analyze.
+    """
     assignments = PointsTo.gather_all_simple_assignments(function.body)
     array_variables = BehavesLikeArrays.variables()
     PointsTo._shared_pointers = defaultdict(set)
@@ -52,6 +73,15 @@ class PointsTo:
 
 @Timeit("points_to_analysis")
 def points_to_analysis(function: MyFunction) -> dict[MyVariable, set[MyVariable]]:
+  """
+    Perform points-to analysis on the given function.
+
+    Args:
+        function (MyFunction): The function to analyze.
+
+    Returns:
+        dict[MyVariable, set[MyVariable]]: Dictionary mapping pointers to their shared regions.
+  """
   PointsTo.points_to_analysis(function)
   points_to = PointsTo.get_shared_regions()
   if any(len(xs) > 0 for xs in points_to.values()):

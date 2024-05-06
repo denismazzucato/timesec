@@ -42,6 +42,12 @@ OTHER = 4
 
 @dataclass
 class ImpactIntWrapper:
+  """
+    Wrapper class for representing impact values.
+
+    Attributes:
+        n (int | float): The numerical value representing the impact.
+  """
   n: int | float
 
   def to_number(self) -> int | float:
@@ -58,6 +64,9 @@ class ImpactIntWrapper:
 
 @dataclass
 class QualitativeZero(ImpactIntWrapper):
+  """
+    Class representing a qualitative impact value of zero.
+  """
   n: int = 0
 
   def __str__(self) -> str:
@@ -65,6 +74,9 @@ class QualitativeZero(ImpactIntWrapper):
 
 @dataclass
 class QuantitativeInt(ImpactIntWrapper):
+  """
+    Class representing a quantitative impact value as an integer or infinity.
+  """
   n: float
 
   def __str__(self) -> str:
@@ -75,15 +87,28 @@ class QuantitativeInt(ImpactIntWrapper):
     raise ValueError("Quantitative impact must be an integer of infinity")
 
 def compute_impact_of(
-    inv: PyPolka,
-    variable: MyVariable,
-    symbolic_variable: MyVariable) -> float:
+  inv: PyPolka,
+  variable: MyVariable,
+  symbolic_variable: MyVariable) -> float:
+  """
+  Compute the impact of a variable on a given invariant.
+
+  Args:
+    inv (PyPolka): The invariant to compute the impact on.
+    variable (MyVariable): The variable to compute the impact for.
+    symbolic_variable (MyVariable): The symbolic variable used in the computation.
+
+  Returns:
+    float: The computed impact value.
+
+  Raises:
+    ValueError: If the computation of impact fails.
+
+  """
   if inv.is_bottom():
     return 0
   if inv.is_top():
     return float("inf")
-
-
   debug2(f"Impact computation for variable {cyan(variable)}, initial: {inv}")
   inv_without_variable = inv.forget([variable_to_apron(variable)])
   debug2(f"Inv without variable: {inv_without_variable}")
@@ -136,6 +161,17 @@ def compute_impact(
     inv: PyPolka,
     variables: set[MyVariable],
     symbolic_variable: MyVariable) -> dict[MyVariable, ImpactIntWrapper]:
+  """
+    Compute impacts of variables on a given invariant.
+
+    Args:
+        inv (PyPolka): The invariant to compute the impacts on.
+        variables (set[MyVariable]): Set of variables to compute impacts for.
+        symbolic_variable (MyVariable): The symbolic variable used in the computation.
+
+    Returns:
+        dict[MyVariable, ImpactIntWrapper]: Dictionary mapping variables to their impacts.
+    """
   return {variable:
           QuantitativeInt(compute_impact_of(inv, variable, symbolic_variable))
           for variable in variables}
@@ -145,6 +181,16 @@ def compute_impact(
 def impact_analysis(
     input_deps: UsageAbstractDomain,
     inv: AbstractValueDomain | None) -> dict[MyVariable, ImpactIntWrapper]:
+  """
+    Perform impact analysis.
+
+    Args:
+        input_deps (UsageAbstractDomain): Usage lattice representing syntactic dependencies.
+        inv (AbstractValueDomain | None): The invariant to analyze.
+
+    Returns:
+        dict[MyVariable, ImpactIntWrapper]: Dictionary mapping variables to their impacts.
+    """
   if inv is None:
     return defaultdict(lambda: QuantitativeInt(inf))
   if not isinstance(inv, Polka):

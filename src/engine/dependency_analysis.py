@@ -32,6 +32,9 @@ from src.utils.time import Timeit
 
 
 class Iterator:
+  """
+    Class for performing fixpoint iteration for dependency analysis.
+  """
   def __init__(self):
     pass
 
@@ -39,6 +42,16 @@ class Iterator:
       self,
       ast: MyAtomicASTNode,
       post_deps: SyntacticDependencies) -> SyntacticDependencies:
+    """
+        Perform fixpoint iteration for atomic AST nodes.
+
+        Args:
+            ast (MyAtomicASTNode): The atomic AST node.
+            post_deps (SyntacticDependencies): The dependencies after the node.
+
+        Returns:
+            SyntacticDependencies: The dependencies before the node.
+    """
     pre_deps = post_deps
     match ast:
       case MyAssign(MyVariable("_"), MyFunctionCallExpression("__print_deps", args, coord=coord)):
@@ -57,6 +70,16 @@ class Iterator:
       self,
       ast: MyComposedASTNode,
       post_deps: SyntacticDependencies) -> SyntacticDependencies:
+    """
+        Perform fixpoint iteration for composed AST nodes.
+
+        Args:
+            ast (MyComposedASTNode): The composed AST node.
+            post_deps (SyntacticDependencies): The dependencies after the node.
+
+        Returns:
+            SyntacticDependencies: The dependencies before the node.
+    """
     pre_deps = post_deps
     match ast:
       case MyStatement(statement):
@@ -98,6 +121,15 @@ class Iterator:
 
 @Timeit("dependency_analysis")
 def dependency_analysis(function: MyFunction) -> UsageAbstractDomain:
+  """
+    Perform dependency analysis for the given function.
+
+    Args:
+        function (MyFunction): The function to analyze.
+
+    Returns:
+        UsageAbstractDomain: The computed dependencies.
+  """
   if not IsDependencyAnalysis.active():
     return SyntacticDependencies.initialize(MyEnvironment.my_variables()).last()
 

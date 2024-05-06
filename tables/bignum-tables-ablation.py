@@ -106,6 +106,7 @@ files = [Path(x) for x in [
 str_options = ["\\nodepnoopt", "\\depnoopt", "\\depopt"]
 
 preamble = r"""
+\setcounter{table}{4}
 \begin{table}[t]
   \centering
   \caption{Ablation study of \toolname{} on the \bignum{} benchmark.}

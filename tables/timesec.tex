@@ -23,6 +23,7 @@
 \newcommand{\depopt}{\textsc{Full}}
 \newcommand{\toolname}{\textsc{TimeSec}}
 \newcommand{\bignum}{\textsc{S2N-Bignum}}
+\newcommand{\svcomp}{\textsc{SV-COMP}}
 \newcommand{\spacearound}[1]{\;#1\;}
 \definecolor{seabornBlue}{RGB}{76, 114, 176}
 \definecolor{seabornOrange}{RGB}{221, 132, 82}
@@ -52,19 +53,15 @@
   \right|_{#2} % this is the delimiter
 }}
 
-\setcounter{table}{3} % Set the table counter to start from 4
+% \setcounter{table}{3} % Set the table counter to start from 4
 
 \InputIfFileExists{bignum-inputs.tex}{
-  \input{bignum-inputs}
 }{}
 \InputIfFileExists{bignum-ablation.tex}{
-  \input{bignum-ablation}
 }{}
 \InputIfFileExists{sv-info.tex}{
-  \input{sv-info}
 }{}
 \InputIfFileExists{sv-bounds.tex}{
-  \input{sv-bounds}
 }{}
 
 
