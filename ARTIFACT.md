@@ -1,11 +1,13 @@
 # TimeSec
 
+Compiled with `docker buildx build --platform linux/amd64,linux/arm64 -t timesec .` (~10 min) and saved with `docker save timesec:latest > timesec.tar` (~1 min).
+
 ## Kick-the-Tires (~4 minutes)
 
-Load the provided docker image (~2 min):
+Load the provided docker image (~1 min):
 
 ```bash
-docker load timesec.tar
+docker load < timesec.tar
 ```
 
 Run the evaluation on the [s2n-bignum](https://github.com/awslabs/s2n-bignum) library (~2 min):
@@ -27,7 +29,7 @@ The tool is available on Zenodo:
 Load the provided docker image (~2 min):
 
 ```bash
-docker load timesec.tar
+docker load < timesec.tar
 ```
 Run all the benchmarks (~20 min):
 ```bash
