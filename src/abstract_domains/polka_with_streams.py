@@ -60,7 +60,7 @@ def top_if_error(error_type):
       try:
         return func(core)
       except error_type as e:
-        warning(f"raised SymbolicToApronError: {e}")
+        # warning(f"raised SymbolicToApronError: {e}")
         return PolkaWithStreams.top().core
     return wrapper
   return inner

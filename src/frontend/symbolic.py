@@ -260,7 +260,7 @@ class MyArrayVariable(MyVariable):
                                 MyConstantExpression(value),
                                 MyVariableExpression(MyVariable(other))))
       case MyVariableExpression(MyVariable(name)), other_expression: # name + other_expression
-        warning(f"Potentially unsound array expression from sum: {lhs} + {rhs}")
+        # warning(f"Potentially unsound array expression from sum: {lhs} + {rhs}")
         return MyArrayVariable(name, other_expression)
       case _:
         raise NotImplementedError(f"Unsupported array expression from sum: {lhs} + {rhs}")

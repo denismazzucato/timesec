@@ -1,7 +1,5 @@
 # TimeSec
 
-Compiled with `docker buildx build --platform linux/amd64,linux/arm64 -t timesec .` (~10 min) and saved with `docker save timesec:latest > timesec.tar` (~1 min).
-
 ## Kick-the-Tires (~4 minutes)
 
 Load the provided docker image (~1 min):
@@ -146,3 +144,8 @@ The main entrance point is `src/main.py` for both single file analysis and bench
 - `frontend` directory, contains the frontend for the C language, from parsing to extracting the abstract syntax tree and symbolic expressions
 - `utils` directory, contains utility functions
 - `user_interface` directory, contains the functions to interface with the user
+
+## Artifact Notes
+
+
+This artifact has been compiled with `docker build -t timesec .` (~15 min) in a linux machine and saved with `docker save timesec > timesec.tar` (~1 min).
