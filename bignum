@@ -5,4 +5,4 @@ python timesec.py benchmarks/s2n-bignum --output tmp/bignum-dep-opt.json
 
 python tables/bignum-tables-inputs.py tables/bignum-inputs.tex
 
-cd tables && pdflatex -interaction=nonstopmode tables.tex && cd ..
+cd tables && pdflatex -interaction=nonstopmode timesec.tex && cd ..

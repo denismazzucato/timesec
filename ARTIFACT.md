@@ -13,6 +13,7 @@ Run the evaluation on the [s2n-bignum](https://github.com/awslabs/s2n-bignum) li
 ```bash
 ./bignum
 ```
+Note that one program (`bignum_modexp.c`) is expected to fail due to the lack of support for function calls.
 
 When finished, copy the generated pdf (`tables/timesec.pdf`) to the host machine to compare the obtained results with the ones presented in the paper (Table 4):
 ```bash

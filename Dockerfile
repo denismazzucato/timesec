@@ -50,4 +50,4 @@ RUN apt-get install -y --no-install-recommends texlive-latex-recommended texlive
 
 SHELL ["conda", "run", "--no-capture-output", "-n", "$CONDAENV", "/bin/bash", "-c"]
 
-CMD ["./bignum.sh"]
+CMD ["/timesec/bignum.sh"]
