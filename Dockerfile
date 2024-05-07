@@ -49,5 +49,3 @@ RUN conda env create -n $CONDAENV -f environment.yml && \
     conda clean --all --yes
 
 SHELL ["conda", "run", "--no-capture-output", "-n", "$CONDAENV", "/bin/bash", "-c"]
-
-CMD ["/timesec/bignum.sh"]

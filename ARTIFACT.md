@@ -1,15 +1,21 @@
 # TimeSec
 
-## Kick-the-Tires (~4 minutes)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.0000000.svg)](https://doi.org/10.5281/zenodo.0000000)
 
-Load and enter the provided docker image (~1 min):
+Artifact documentation for the paper "Quantitative Static Timing Analysis" submitted to SAS 2024. Here we provide the instructions to reproduce the results presented in the paper, namely Table 4 and 5 in Section 7 "Evaluation" (and optionally Table 6 and 7 in Appendix C "SV-Comp Benchmarks").
+
+The artifact is a docker image containing the TimeSec tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://zenodo.org/10.5281/zenodo.0000000](https://doi.org/10.5281/zenodo.0000000)
+
+## Kick-the-Tires (<4 minutes)
+
+Load and enter the provided docker image (<1 min):
 
 ```bash
 docker load < timesec.tar
 docker run -it timesec /bin/bash
 ```
 
-Run the evaluation on the [s2n-bignum](https://github.com/awslabs/s2n-bignum) library (~2 min):
+Run the evaluation on the [s2n-bignum](https://github.com/awslabs/s2n-bignum) library (<2 min):
 ```bash
 ./bignum
 ```
