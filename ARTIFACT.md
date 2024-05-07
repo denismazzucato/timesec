@@ -4,7 +4,7 @@
 
 Artifact documentation for the paper "Quantitative Static Timing Analysis" submitted to SAS 2024. Here we provide the instructions to reproduce the results presented in the paper, namely Table 4 and 5 in Section 7 "Evaluation" (and optionally Table 6 and 7 in Appendix C "SV-Comp Benchmarks").
 
-The artifact is a docker image containing the TimeSec tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://zenodo.org/10.5281/zenodo.0000000](https://doi.org/10.5281/zenodo.0000000).
+The artifact is a docker image containing the *TimeSec* tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://zenodo.org/10.5281/zenodo.0000000](https://doi.org/10.5281/zenodo.0000000).
 The artifact has been tested on a ubuntu low-end machine.
 
 ## Kick-the-Tires (<4 minutes)
@@ -31,45 +31,51 @@ exit
 ```
 and copy the pdf `tables/timesec.pdf` to the host machine to compare the obtained results with the ones presented in the paper (Table 4 of Section 7):
 ```bash
-docker cp timesec:/timesec/tables/timesec.pdf .
+docker cp $(docker ps -l -q):/timesec/tables/timesec.pdf .
 ```
+where `docker ps -l -q` returns the container id of the last executed container.
+
+The pdf file `timesec.pdf` in the current directory contains Table 4 of Section 7 of the paper. The table should be identical to the one presented in the paper.
 
 
 ## Available Badge
 The tool is available on Zenodo:
 
-## Functional Badge (~20 minutes)
+## Functional Badge (<30 minutes)
 
-Load the provided docker image (~2 min):
+Load and enter the provided docker image (<1 min):
 
 ```bash
 docker load < timesec.tar
+docker run -it timesec /bin/bash
 ```
-Run all the benchmarks (~20 min):
+
+Run the evaluation on the s2n-bignum library (Table 4 and 5 of Section 7) and on the SV-COMP benchmarks (Table 6 and 7 of Appendix C) (<30 min):
 ```bash
-docker run -it timesec ./all
+./all
 ```
-Otherwise, you can skip the benchmarks on the SV-COMP provided in the appendix of the paper and run only the ablation study to create both tables of Section 7:
+Otherwise, you can skip the benchmarks of Appendix C by:
 ```bash
-docker run -it timesec ./ablation
+./ablation
 ```
+This will run the evaluation on the s2n-bignum library (Table 4 and 5 of Section 7) only.
 
 When finished, copy the generated pdf to the host machine:
 ```bash
-docker copy timesec:/timesec/tables/timesec.pdf .
+docker cp $(docker ps -l -q):/timesec/tables/timesec.pdf .
 ```
 
-The pdf file `tables.pdf` in the current directory contains the tables shown in the paper's evaluation. Depending on which script you ran, the tables will be different. In particular:
-- `docker run -it timesec ./bignum` shows Table 4.
-- `docker run -it timesec ./ablation` shows Tables 4 and 5.
-- `docker run -it timesec ./all` shows Tables 4, 5, 6, and 7.
+The file `timesec.pdf` in the current directory contains the tables shown in the paper's evaluation. Depending on which script you ran, the tables will be different. In particular:
+- `./bignum` shows Table 4.
+- `./ablation` shows Tables 4 and 5.
+- `./all` shows Tables 4, 5, 6, and 7.
 
-Please, it is important to check the following points in the generated pdf file:
+It is important to check the following points in `timesec.pdf`:
 - Table 4:
   No numerical variable should be maybe dangerous: all the variables listed under the "maybe dangerous" column should start with the letter "s" and be highlighted in green.
 - Table 5:
-  - The variables listed under the "maybe dangerous" column should decrease by restoring the analyses and optimizations of TimeSec.
-  - The analysis time should increase by restoring the analyses and optimizations of TimeSec.
+  - The number of variables listed under the "maybe dangerous" column should decrease as we add the optimizations of *TimeSec*.
+  - The analysis time should increase as we add the optimizations of *TimeSec*.
 - Table 6:
   The analysis time should follow the same trend as the one presented in the paper.
 - Table 7:
@@ -77,13 +83,15 @@ Please, it is important to check the following points in the generated pdf file:
 
 ## Reusable Badge
 
-To evaluate the reusability of TimeSec we propose three ways: (1) check the helper menu, (2) run the tool on a custom function, (3) look at the project structure, source code, and documentation.
+To evaluate the reusability of *TimeSec* we propose three ways: (1) check the helper menu, (2) run the tool on a custom function, (3) look at the project structure, source code, and documentation.
 
 ### (1) Check the helper menu
 
-Enter the container with a terminal:
+Load and enter the provided docker image:
+
 ```bash
-...
+docker load < timesec.tar
+docker run -it timesec /bin/bash
 ```
 
 Check the helper menu:
@@ -93,8 +101,8 @@ python timesec.py --help
 
 ### (2) Try it out
 
-Try to run TimeSec on a custom function.
-For example, let's build a function `custom` with two input arguments x and y, where x has a double impact on the number of loop iterations, eg:
+Try to run *TimeSec* on a custom function.
+For example, let's build a function called `custom` with two input arguments *x* and *y*, where *x* has an impact on the number of loop iterations that is greater that the one of *t*, eg:
 ```
 void custom(int x, int y){
   int i = 0;
@@ -103,27 +111,44 @@ void custom(int x, int y){
   }
 }
 ```
-If you customize the example, please note that we do not support the full C standard. Then store this function in a c file:
+As you can notice, the number of loop iterations depends more on *x* than on *y*.
+
+> If you customize the example, please note that we do not support the full C standard.
+
+Store this function in a c file:
 ```bash
 touch example.c && echo "
 void custom(int x, int y){
   int i = 0;
   while (i < 2 * x + y) {
-    i = i - 1;
+    i = i + 1;
   }
 }
 " >> example.c
 ```
 
-Try it out:
+Check the content of the newly created `example.c`:
 ```bash
-python timesec.py example.c --function-name custom
+cat example.c
 ```
 
-And this should be the expected output:
+It can be interesting to study such program with a bounded input space, eg. [0, 10] for both *x* and *y*:
+```bash
+python timesec.py example.c --function custom --input-bounds 0 10
 ```
-...
+> Additionally, add `--debug 1` to increase the verbosity level and get more information about the result of the syntactic analysis, the generated program invariant, and tool flags.
+
+And this should be the expected output (without the debug flag):
 ```
+Analysis Results: (parse: 0.05s, points_to_analysis: 0.00s, dependency_analysis: 0.00s, fixpoint_iterator: 0.03s, impact_analysis: 0.01s)
+
+    Variable    Type    Usage     Impact    Notes
+--  ----------  ------  --------  --------  ------------------
+ 0  x           Input   May Used  20        Possibly Dangerous
+ 1  y           Input   May Used  10        Possibly Dangerous
+ 2  i           Local   Unused    0         Definitely Safe
+```
+As a result, *TimeSec* reports that the input variable *x* has an impact greater than the one of *y* on the number of loop iterations as expected. Moreover, we show that the initial value of the local variable *i* does not influence the number of loop iterations as it is initialized to 0 at the beginning.
 
 
 ### (3) Source code and documentation
@@ -140,9 +165,9 @@ The project is organized as follows:
 - `benchmarks`: directory containing the benchmarks
 - `examples`: directory containing crafted C programs
 
-The python source code is modular and well-structured as expected for a static analysis tool. We design TimeSec with extensibility in mind, allowing the user to easily add new abstract domains, analysis stages, or new impact definitions. The source code is annotated with type hints to make it more robust and docstrings for documentation purposes.
+The python source code is modular and well-structured as expected for a static analysis tool. We design *TimeSec* with extensibility in mind, allowing the user to easily add new abstract domains, analysis stages, or new impact definitions. The source code is annotated with type hints to make it more robust and docstrings for documentation purposes.
 During the computation, increasing the verbosity level will provide more information about the analysis stages and the obtained results.
-The documentation on how to install TimeSec is available in the `README.md` file
+The documentation on how to install *TimeSec* is available in the `README.md` file
 The tool is distributed under the MIT license, see `LICENSE.md` for more information.
 
 The main entrance point is `src/main.py` for both single file analysis and benchmark mode. The source code is organized as follows (within the `src` directory):

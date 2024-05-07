@@ -35,3 +35,10 @@ void f(int r){
     r = r * r;
   }
 }
+
+void custom(int x, int y){
+  int i = 0;
+  while (i < 2 * x + y) {
+    i = i + 1;
+  }
+}
