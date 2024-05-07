@@ -4,7 +4,8 @@
 
 Artifact documentation for the paper "Quantitative Static Timing Analysis" submitted to SAS 2024. Here we provide the instructions to reproduce the results presented in the paper, namely Table 4 and 5 in Section 7 "Evaluation" (and optionally Table 6 and 7 in Appendix C "SV-Comp Benchmarks").
 
-The artifact is a docker image containing the TimeSec tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://zenodo.org/10.5281/zenodo.0000000](https://doi.org/10.5281/zenodo.0000000)
+The artifact is a docker image containing the TimeSec tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://zenodo.org/10.5281/zenodo.0000000](https://doi.org/10.5281/zenodo.0000000).
+The artifact has been tested on a ubuntu low-end machine.
 
 ## Kick-the-Tires (<4 minutes)
 
@@ -15,13 +16,16 @@ docker load < timesec.tar
 docker run -it timesec /bin/bash
 ```
 
-Run the evaluation on the [s2n-bignum](https://github.com/awslabs/s2n-bignum) library (<2 min):
+Run the evaluation on the [s2n-bignum](https://github.com/awslabs/s2n-bignum) library (<3 min):
 ```bash
 ./bignum
 ```
-Note that one program (`bignum_modexp.c`) is expected to fail due to the lack of support for function calls.
 
-When finished, copy the generated pdf (`tables/timesec.pdf`) to the host machine to compare the obtained results with the ones presented in the paper (Table 4):
+After executing the analysis for all the programs of the s2n-bignum library, the tool outputs the results in the console and generates a pdf file, containing Table 4 of Section 7 of the paper. The pdf file is located at `tables/timesec.pdf`.
+
+> Note that, the program `bignum_modexp.c` is expected to fail due to the lack of function calls' support.
+
+Copy the pdf `tables/timesec.pdf` to the host machine to compare the obtained results with the ones presented in the paper (Table 4 of Section 7):
 ```bash
 docker cp timesec:/timesec/tables/timesec.pdf .
 ```
