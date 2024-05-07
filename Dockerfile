@@ -27,6 +27,10 @@ RUN wget \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
 RUN conda --version
 
+RUN apt-get install -y --no-install-recommends texlive-latex-recommended texlive-fonts-recommended && \
+    apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-extra texlive-lang-all && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN opam init --auto-setup --disable-sandboxing
 RUN opam install -y $OPAM_DEPS
 
@@ -43,10 +47,6 @@ RUN conda env create -n $CONDAENV -f environment.yml && \
     conda init bash && \
     echo "conda activate $CONDAENV" >> ~/.bashrc && \
     conda clean --all --yes
-
-RUN apt-get install -y --no-install-recommends texlive-latex-recommended texlive-fonts-recommended && \
-    apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-extra texlive-lang-all && \
-    rm -rf /var/lib/apt/lists/*
 
 SHELL ["conda", "run", "--no-capture-output", "-n", "$CONDAENV", "/bin/bash", "-c"]
 
