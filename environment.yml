@@ -18,4 +18,4 @@ dependencies:
     - pynput
     - pydot
     - pyinterval
-    - git+https://github.com/caterinaurban/apronpy.git@refs/pull/7/head
+    - git+https://github.com/denismazzucato/apronpy.git
