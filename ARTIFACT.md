@@ -25,7 +25,11 @@ After executing the analysis for all the programs of the s2n-bignum library, the
 
 > Note that, the program `bignum_modexp.c` is expected to fail due to the lack of function calls' support.
 
-Copy the pdf `tables/timesec.pdf` to the host machine to compare the obtained results with the ones presented in the paper (Table 4 of Section 7):
+Exit the container:
+```bash
+exit
+```
+and copy the pdf `tables/timesec.pdf` to the host machine to compare the obtained results with the ones presented in the paper (Table 4 of Section 7):
 ```bash
 docker cp timesec:/timesec/tables/timesec.pdf .
 ```
