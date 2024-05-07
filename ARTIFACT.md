@@ -1,10 +1,10 @@
 # TimeSec
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.0000000.svg)](https://doi.org/10.5281/zenodo.0000000)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11127584.svg)](https://doi.org/10.5281/zenodo.11127584)
 
 Artifact documentation for the paper "Quantitative Static Timing Analysis" submitted to SAS 2024. Here we provide the instructions to reproduce the results presented in the paper, namely Table 4 and 5 in Section 7 "Evaluation" (and optionally Table 6 and 7 in Appendix C "SV-Comp Benchmarks").
 
-The artifact is a docker image containing the *TimeSec* tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://zenodo.org/10.5281/zenodo.0000000](https://doi.org/10.5281/zenodo.0000000).
+The artifact is a docker image containing the *TimeSec* tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://zenodo.org/10.5281/zenodo.11127584](https://doi.org/10.5281/zenodo.11127584).
 The artifact has been tested on a ubuntu low-end machine.
 
 ## Kick-the-Tires (<4 minutes)
@@ -39,34 +39,38 @@ The pdf file `timesec.pdf` in the current directory contains Table 4 of Section 
 
 
 ## Available Badge
-The tool is available on Zenodo:
+The tool is available on Zenodo: [https://zenodo.org/10.5281/zenodo.11127584](https://doi.org/10.5281/zenodo.11127584).
 
-## Functional Badge (<30 minutes)
+## Functional Badge (~30 minutes)
 
-Load and enter the provided docker image (<1 min):
+If already loaded the docker image in the previous step skip this command, otherwise load the provided docker image with (<1 min):
 
 ```bash
 docker load < timesec.tar
+```
+
+Enter the loaded docker image (<1 min):
+
+```bash
 docker run -it timesec /bin/bash
 ```
 
-Run the evaluation on the s2n-bignum library (Table 4 and 5 of Section 7) and on the SV-COMP benchmarks (Table 6 and 7 of Appendix C) (<30 min):
+Run the full evaluation on the s2n-bignum library (Table 4 and 5 of Section 7) and on the SV-COMP benchmarks (Table 6 and 7 of Appendix C) (~30 min):
 ```bash
 ./all
 ```
-Otherwise, you can skip the benchmarks of Appendix C by:
+Otherwise, you can skip the benchmarks of Appendix C by running only the evaluation on the s2n-bignum library using the script (~10 min)
 ```bash
 ./ablation
 ```
-This will run the evaluation on the s2n-bignum library (Table 4 and 5 of Section 7) only.
 
 When finished, copy the generated pdf to the host machine:
 ```bash
 docker cp $(docker ps -l -q):/timesec/tables/timesec.pdf .
 ```
 
-The file `timesec.pdf` in the current directory contains the tables shown in the paper's evaluation. Depending on which script you ran, the tables will be different. In particular:
-- `./bignum` shows Table 4.
+The file `timesec.pdf` in the current directory contains the tables shown in the paper's evaluation. Depending on which script you ran, the tables will be different:
+- `./bignum` shows Table 4 (kick-the-tires).
 - `./ablation` shows Tables 4 and 5.
 - `./all` shows Tables 4, 5, 6, and 7.
 
