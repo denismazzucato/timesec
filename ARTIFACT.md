@@ -2,15 +2,16 @@
 
 ## Kick-the-Tires (~4 minutes)
 
-Load the provided docker image (~1 min):
+Load and enter the provided docker image (~1 min):
 
 ```bash
 docker load < timesec.tar
+docker run -it timesec /bin/bash
 ```
 
 Run the evaluation on the [s2n-bignum](https://github.com/awslabs/s2n-bignum) library (~2 min):
 ```bash
-docker run timesec
+./bignum
 ```
 
 When finished, copy the generated pdf (`tables/timesec.pdf`) to the host machine to compare the obtained results with the ones presented in the paper (Table 4):

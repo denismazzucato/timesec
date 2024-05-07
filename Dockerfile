@@ -2,7 +2,7 @@ FROM --platform=linux/amd64 ubuntu:20.04
 
 ENV APT_DEPS build-essential opam ocaml clang git pkg-config libgmp-dev \
              libmpfr-dev llvm-10-dev libclang-10-dev libclang-cpp10-dev \
-             clang-10 rsync m4 curl wget less ca-certificates
+             clang-10 rsync m4 curl wget less ca-certificates nano
 
 ENV OPAM_DEPS apron
 
@@ -50,4 +50,4 @@ RUN apt-get install -y --no-install-recommends texlive-latex-recommended texlive
 
 SHELL ["conda", "run", "--no-capture-output", "-n", "$CONDAENV", "/bin/bash", "-c"]
 
-CMD ["./"]
+CMD ["./bignum.sh"]

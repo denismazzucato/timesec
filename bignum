@@ -1,7 +1,4 @@
 
-# just to start up everything in python (usually works 10x times faster after first execution)
-python timesec.py benchmarks/s2n-bignum --output tmp/bignum-dep-opt.json
-
 rm -f tmp/bignum-dep-opt.json
 
 python timesec.py benchmarks/s2n-bignum --output tmp/bignum-dep-opt.json
