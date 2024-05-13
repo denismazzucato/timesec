@@ -33,11 +33,9 @@ python tables/sv-tables-bounds.py tables/sv-bounds.tex
 python timesec.py benchmarks/s2n-bignum --output tmp/bignum-dep-opt.json
 
 rm -f tmp/bignum-no-dep-no-opt.json
-rm -f tmp/bignum-dep-no-opt.json
 rm -f tmp/bignum-dep-opt.json
 
 python timesec.py benchmarks/s2n-bignum --output tmp/bignum-dep-opt.json
-python timesec.py benchmarks/s2n-bignum --output tmp/bignum-dep-no-opt.json --disable-optimizations
 python timesec.py benchmarks/s2n-bignum --output tmp/bignum-no-dep-no-opt.json --disable-dependencies --disable-optimizations
 
 python tables/bignum-tables-inputs.py tables/bignum-inputs.tex
