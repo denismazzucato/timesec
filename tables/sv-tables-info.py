@@ -85,9 +85,9 @@ def retrieve_statistics(output: Path):
   return (
     sum(number_of_dangerous_input_variables),
     sum(number_of_dangerous_input_variables)+sum(len(v) for v in dangerous_local_variables.values()),
-    sum(number_of_zero_used_input_variables),
-    sum(number_of_zero_used_input_variables)+sum(len(v) for v in zero_used_local_variables.values()),
+    sum(number_of_zero_used_input_variables)+
     sum(number_of_unused_input_variables),
+    sum(number_of_zero_used_input_variables)+sum(len(v) for v in zero_used_local_variables.values())+
     sum(number_of_unused_input_variables)+sum(len(v) for v in unused_local_variables.values()),
   )
 
@@ -116,9 +116,9 @@ preamble = r"""
   \centering
   \caption{Analysis findings for the \svcomp{} benchmarks.}
   \label{tab:svcomp2}
-  \begin{tabular}{c|c|ccc}
-    \multirow{2}{*}{\textsc{Benchmark}} & \multirow{2}{*}{~\makecell{\textsc{Bound} \\ \textsc{Ranges}}~} & \multicolumn{3}{c}{\textsc{Variables}} \\
-    & & \spacearound{\textsc{May Impact}} & \spacearound{\textsc{Zero Impact}} & \spacearound{\textsc{Unused}} \\
+  \begin{tabular}{c|c|cc}
+    \multirow{2}{*}{\textsc{Benchmark}} & \multirow{2}{*}{~\makecell{\textsc{Bound} \\ \textsc{Ranges}}~} & \multicolumn{2}{c}{\textsc{Variables}} \\
+    & & \spacearound{\textsc{May Impact}} & \spacearound{\textsc{Zero Impact}} \\
     \hline\hline
     \multirow{5}{*}{\makecell{\textsc{Termination}\\ \textsc{Crafted} \\ (68 programs)}}
 """
@@ -130,7 +130,7 @@ end = r"""
   \end{tabular}
 \end{table}"""
 
-line = "    & ${}$ & {}/{} & {}/{} & {}/{}"
+line = "    & ${}$ & {}/{} & {}/{}"
 
 first = " \\\\ \n".join([
   line.format(s, *retrieve_statistics(c)) for s, c in zip(str_bounds, crafted)

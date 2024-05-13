@@ -259,26 +259,27 @@ preamble = r"""
 \begin{table}[p]
   \rowcolors{3}{white}{\customrowcolor}
   \centering
-  \caption{Input composition of the \bignum{} library. The variables \textsc{Safe} $\nominalvariabels$ \green{highlighted in green}, while the variables \textsc{Numerical} $\numericalvariables$ \red{in red}. No numerical variable should be \textsc{Maybe Dangerous}.}
+  \caption{Input composition of the \bignum{} library. The variables \textsc{Safe} $\nominalvariabels$ are \green{highlighted in green}, while the variables \textsc{Numerical} $\numericalvariables$ \red{in red}. No numerical variable should be \textsc{Maybe Dangerous}.}
   \label{tab:bignum-inputs}
-  \renewcommand{\arraystretch}{0.67}
+  \renewcommand{\arraystretch}{0.49}
+  % \renewcommand{\arraystretch}{1}
   \begin{adjustbox}{max width=\textwidth}
-  \begin{tabular}{l  cc || ccc}
-    \multirow{2}{*}{\textsc{Program}}  & \multicolumn{2}{c||}{\textsc{Input Variables} $\inputspace$} & \textsc{Maybe} & \textsc{Zero} & \multirow{2}{*}{\textsc{Unused}} \\
-    & \spacearound{\textsc{Safe} $\nominalvariabels$} & \spacearound{\textsc{Numerical} $\numericalvariables$} & \spacearound{\textsc{Dangerous}} & \spacearound{\textsc{Impact}} & \\[2pt]
+  \begin{tabular}{l  cc || cc}
+    \multirow{2}{*}{\textsc{Program}}  & \multicolumn{2}{c||}{\textsc{Input Variables} $\inputspace$} & \textsc{Maybe} & \textsc{Zero} \\
+    & \spacearound{\textsc{Safe} $\nominalvariabels$} & \spacearound{\textsc{Numerical} $\numericalvariables$} & \spacearound{\textsc{Dangerous}} & \spacearound{\textsc{Impact}} \\[2pt]
     \hline\hline
 """
 
-line = "    {} & {} & {} & {} & {} & {}"
+line = "    {} & {} & {} & {} & {}"
 
 def colorize(p, x):
   if x not in nominals[p]:
-    return r"\red{" + x + "}"
+    return r"\red{n" + x + "}"
   else:
-    return r"\green{" + x + "}"
+    return r"\green{s" + x + "}"
 
 sanitize = lambda x: "\\texttt{"+x.replace("_", r"\_").replace(".c", "").replace(r"bignum\_", "").capitalize()+"}"
-from_list = lambda p, x: "$ " + ", ".join([colorize(p, i).replace("param", "p") for i in sorted(x)]) + "$"
+from_list = lambda p, x: "$ " + ", ".join([colorize(p, i).replace("param", "") for i in sorted(x)]) + "$"
 
 first = " \\\\ \n".join([
   line.format(
@@ -286,17 +287,16 @@ first = " \\\\ \n".join([
     from_list(p, nominals[p]),
     from_list(p, set(d)-set(nominals[p])),
     from_list(p, a),
-    from_list(p, b),
-    from_list(p, c)) for p in programs for a, b, c, d in [retrieve_statistics(file, p)]
+    from_list(p, b + c)) for p in programs for a, b, c, d in [retrieve_statistics(file, p)]
 ])
 
 
 end = """\\\\
-    \\hline \\hline & & & & & \\\\
-    \\rowcolor{{white}} \\textsc{{Total Variables:}} &  {} &  {} &  {} &  {} &  {}
+    \\hline \\hline & & & & \\\\
+    \\rowcolor{{white}} \\textsc{{Total Variables:}} &  {} &  {} &  {} & {}
   \\end{{tabular}}
   \\end{{adjustbox}}
-\\end{{table}}""".format(SAFE, NUMERICAL, DANGEROUS, ZERO, UNUSED)
+\\end{{table}}""".format(SAFE, NUMERICAL, DANGEROUS, ZERO + UNUSED)
 print(preamble + first + end)
 with open(argv[1], "w") as f:
   f.write(preamble + first + end)

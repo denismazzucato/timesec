@@ -1,36 +1,40 @@
 # TimeSec
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11127584.svg)](https://doi.org/10.5281/zenodo.11127584)
-
 Artifact documentation for the paper "Quantitative Static Timing Analysis" submitted to SAS 2024. Here we provide the instructions to reproduce the results presented in the paper, namely Table 4 and 5 in Section 7 "Evaluation" (and optionally Table 6 and 7 in Appendix C "SV-Comp Benchmarks").
 
-The artifact is a docker image containing the *TimeSec* tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://zenodo.org/10.5281/zenodo.11127584](https://doi.org/10.5281/zenodo.11127584).
+The artifact is a docker image containing the *TimeSec* tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://doi.org/10.5281/zenodo.11127584](https://doi.org/10.5281/zenodo.11127584).
 The artifact has been tested on a ubuntu low-end machine.
 
-## Kick-the-Tires (<4 minutes)
+## Kick-the-Tires
 
-Load and enter the provided docker image (<1 min):
+The kick-the-tires evaluation consists of loading and running the artifact on the s2n-bignum library to reproduce Table 4 (Section 7 of the paper):
 
-```bash
+
+1) Load and enter the provided docker image:
+```
 docker load < timesec.tar
 docker run -it timesec /bin/bash
 ```
 
-Run the evaluation on the [s2n-bignum](https://github.com/awslabs/s2n-bignum) library (<3 min):
-```bash
+
+2) Run the evaluation on the [s2n-bignum](https://github.com/awslabs/s2n-bignum) library (~5 min):
+```
 ./bignum
 ```
 
-After executing the analysis for all the programs of the s2n-bignum library, the tool outputs the results in the console and generates a pdf file, containing Table 4 of Section 7 of the paper. The pdf file is located at `tables/timesec.pdf`.
-
 > Note that, the program `bignum_modexp.c` is expected to fail due to the lack of function calls' support.
 
-Exit the container:
-```bash
+After executing the analysis for all the programs of the s2n-bignum library, the tool outputs the results in the console and generates a pdf file, containing Table 4 of Section 7 of the paper. The pdf file is located at `tables/timesec.pdf`.
+
+
+3) Exit the container:
+```
 exit
 ```
-and copy the pdf `tables/timesec.pdf` to the host machine to compare the obtained results with the ones presented in the paper (Table 4 of Section 7):
-```bash
+
+
+4) Copy the pdf `tables/timesec.pdf` to the host machine to compare the obtained results with the table presented in the paper:
+```
 docker cp $(docker ps -l -q):/timesec/tables/timesec.pdf .
 ```
 where `docker ps -l -q` returns the container id of the last executed container.
@@ -39,33 +43,40 @@ The pdf file `timesec.pdf` in the current directory contains Table 4 of Section 
 
 
 ## Available Badge
-The tool is available on Zenodo: [https://zenodo.org/10.5281/zenodo.11127584](https://doi.org/10.5281/zenodo.11127584).
+The tool is available on Zenodo: [https://doi.org/10.5281/zenodo.11127584](https://doi.org/10.5281/zenodo.11127584).
 
 ## Functional Badge (~30 minutes)
 
-If already loaded the docker image in the previous step skip this command, otherwise load the provided docker image with (<1 min):
+The evaluation for the Functional Badge consists of loading and running the artifact on the two tables for the s2n-bignum library (Table 4 and 5 of Section 7) and *optionally* on the SV-COMP benchmarks (Table 6 and 7 of Appendix C).
 
-```bash
+
+0) If already loaded the docker image in the previous step skip this command, otherwise load the provided docker image with:
+```
 docker load < timesec.tar
 ```
 
-Enter the loaded docker image (<1 min):
 
-```bash
+1) Enter the loaded docker image:
+```
 docker run -it timesec /bin/bash
 ```
 
-Run the full evaluation on the s2n-bignum library (Table 4 and 5 of Section 7) and on the SV-COMP benchmarks (Table 6 and 7 of Appendix C) (~30 min):
-```bash
+
+2) [With Appendix Tables] Run the full evaluation on the s2n-bignum library (Table 4 and 5 of Section 7) and on the SV-COMP benchmarks (Table 6 and 7 of Appendix C) (~30 min):
+```
 ./all
 ```
-Otherwise, you can skip the benchmarks of Appendix C by running only the evaluation on the s2n-bignum library using the script (~10 min)
-```bash
+
+
+2) [Without Appendix Tables] Otherwise, you can skip the benchmarks of Appendix C by running only the evaluation on the s2n-bignum library using the script (~10 min)
+```
 ./ablation
 ```
 
-When finished, copy the generated pdf to the host machine:
-```bash
+
+3) When finished, exit the container and copy the generated pdf to the host machine:
+```
+exit
 docker cp $(docker ps -l -q):/timesec/tables/timesec.pdf .
 ```
 
@@ -74,16 +85,17 @@ The file `timesec.pdf` in the current directory contains the tables shown in the
 - `./ablation` shows Tables 4 and 5.
 - `./all` shows Tables 4, 5, 6, and 7.
 
-It is important to check the following points in `timesec.pdf`:
-- Table 4:
-  No numerical variable should be maybe dangerous: all the variables listed under the "maybe dangerous" column should start with the letter "s" and be highlighted in green.
-- Table 5:
-  - The number of variables listed under the "maybe dangerous" column should decrease as we add the optimizations of *TimeSec*.
-  - The analysis time should increase as we add the optimizations of *TimeSec*.
-- Table 6:
-  The analysis time should follow the same trend as the one presented in the paper.
-- Table 7:
-  The quantities reported in the table should identical to the ones presented in the paper.
+
+4) It is important to check the following points in `timesec.pdf`:
+  - Table 4:
+    No numerical variable should be maybe dangerous: all the variables listed under the "maybe dangerous" column should start with the letter "s" and be highlighted in green.
+  - Table 5:
+    - The number of variables listed under the "maybe dangerous" column should decrease as we add the optimizations of *TimeSec*.
+    - The analysis time should increase as we add the optimizations of *TimeSec*.
+  - Table 6:
+    The analysis time should follow the same trend as the one presented in the paper.
+  - Table 7:
+    The quantities reported in the table should identical to the ones presented in the paper.
 
 ## Reusable Badge
 
@@ -93,13 +105,13 @@ To evaluate the reusability of *TimeSec* we propose three ways: (1) check the he
 
 Load and enter the provided docker image:
 
-```bash
+```
 docker load < timesec.tar
 docker run -it timesec /bin/bash
 ```
 
 Check the helper menu:
-```bash
+```
 python timesec.py --help
 ```
 
@@ -120,7 +132,7 @@ As you can notice, the number of loop iterations depends more on *x* than on *y*
 > If you customize the example, please note that we do not support the full C standard.
 
 Store this function in a c file:
-```bash
+```
 touch example.c && echo "
 void custom(int x, int y){
   int i = 0;
@@ -132,12 +144,12 @@ void custom(int x, int y){
 ```
 
 Check the content of the newly created `example.c`:
-```bash
+```
 cat example.c
 ```
 
 It can be interesting to study such program with a bounded input space, eg. [0, 10] for both *x* and *y*:
-```bash
+```
 python timesec.py example.c --function custom --input-bounds 0 10
 ```
 > Additionally, add `--debug 1` to increase the verbosity level and get more information about the result of the syntactic analysis, the generated program invariant, and tool flags.

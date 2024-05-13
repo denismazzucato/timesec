@@ -18,10 +18,9 @@
 \newcommand{\depslabel}{\textsc{Deps}}
 \newcommand{\invlabel}{\textsc{Inv}}
 \newcommand{\lplabel}{\textsc{LP}}
-\newcommand{\nodepnoopt}{\textsc{Deps}}
-\newcommand{\depnoopt}{\textsc{Opts}}
-\newcommand{\depopt}{\textsc{Full}}
+\newcommand{\nodepnoopt}{\textsc{No Optimizations}}
 \newcommand{\toolname}{\textsc{TimeSec}}
+\newcommand{\depopt}{\toolname}
 \newcommand{\bignum}{\textsc{S2N-Bignum}}
 \newcommand{\svcomp}{\textsc{SV-COMP}}
 \newcommand{\spacearound}[1]{#1}
@@ -59,9 +58,9 @@
 }{}
 \InputIfFileExists{bignum-ablation.tex}{
 }{}
-\InputIfFileExists{sv-info.tex}{
-}{}
 \InputIfFileExists{sv-bounds.tex}{
+}{}
+\InputIfFileExists{sv-info.tex}{
 }{}
 
 %
