@@ -2,7 +2,7 @@
 
 Artifact documentation for the paper "Quantitative Static Timing Analysis" submitted to SAS 2024. Here we provide the instructions to reproduce the results presented in the paper, namely Table 4 and 5 in Section 7 "Evaluation" (and optionally Table 6 and 7 in Appendix C "SV-Comp Benchmarks").
 
-The artifact is a docker image containing the *TimeSec* tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://doi.org/10.5281/zenodo.11185827](https://doi.org/10.5281/zenodo.11185827).
+The artifact is a docker image containing the *TimeSec* tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://doi.org/10.5281/zenodo.11127583](https://doi.org/10.5281/zenodo.11127583).
 The artifact has been tested on a ubuntu low-end machine.
 
 ## Kick-the-Tires
@@ -43,7 +43,7 @@ The pdf file `timesec.pdf` in the current directory contains Table 4 of Section 
 
 
 ## Available Badge
-The tool is available on Zenodo: [https://doi.org/10.5281/zenodo.11185827](https://doi.org/10.5281/zenodo.11185827).
+The tool is available on Zenodo: [https://doi.org/10.5281/zenodo.11127583](https://doi.org/10.5281/zenodo.11127583).
 
 ## Functional Badge (~30 minutes)
 
