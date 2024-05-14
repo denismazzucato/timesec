@@ -21,7 +21,6 @@ docker run -it timesec /bin/bash
 ```
 ./bignum
 ```
-
 > Note that, the program `bignum_modexp.c` is expected to fail due to the lack of function calls' support.
 
 After executing the analysis for all the programs of the s2n-bignum library, the tool outputs the results in the console and generates a pdf file, containing Table 4 of Section 7 of the paper. The pdf file is located at `tables/timesec.pdf`.
@@ -45,9 +44,9 @@ The pdf file `timesec.pdf` in the current directory contains Table 4 of Section 
 ## Available Badge
 The tool is available on Zenodo: [https://doi.org/10.5281/zenodo.11127583](https://doi.org/10.5281/zenodo.11127583).
 
-## Functional Badge (~30 minutes)
+## Validated Badge (~30 minutes)
 
-The evaluation for the Functional Badge consists of loading and running the artifact on the two tables for the s2n-bignum library (Table 4 and 5 of Section 7) and *optionally* on the SV-COMP benchmarks (Table 6 and 7 of Appendix C).
+The evaluation for the Validated Badge consists of loading and running the artifact on the two tables for the s2n-bignum library (Table 4 and 5 of Section 7) and *optionally* on the SV-COMP benchmarks (Table 6 and 7 of Appendix C).
 
 
 0) If already loaded the docker image in the previous step skip this command, otherwise load the provided docker image with:
@@ -97,7 +96,7 @@ The file `timesec.pdf` in the current directory contains the tables shown in the
   - Table 7:
     The quantities reported in the table should identical to the ones presented in the paper.
 
-## Reusable Badge
+## Extensible Badge
 
 To evaluate the reusability of *TimeSec* we propose three ways: (1) check the helper menu, (2) run the tool on a custom function, (3) look at the project structure, source code, and documentation.
 
