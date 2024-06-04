@@ -5,6 +5,11 @@ Artifact documentation for the paper "Quantitative Static Timing Analysis" submi
 The artifact is a docker image containing the *TimeSec* tool, the benchmarks, and the evaluation scripts. The docker image is available on [https://doi.org/10.5281/zenodo.11127583](https://doi.org/10.5281/zenodo.11127583).
 The artifact has been tested on a ubuntu low-end machine.
 
+## Preliminary Reviews
+We thank the reviewers for their time testing our artifact during this initial stage. As noted by Review 1, the last part of Table 4, speicifcally for the rows starting with `Word_*`, we do have a formatting error *in the paper*. In fact, all the input variables for those programs have to be considered dangerous, as reported in the artifact. We will update the paper.
+
+For reviewer 1, the docker image has been built on an Ubuntu machine, hence the surprisingly long execution time on mac M1. Unfortunately, we are not able to provide a docker image optimized for M1 users, we suggest testing it on Ubuntu if possible.
+
 ## Kick-the-Tires
 
 The kick-the-tires evaluation consists of loading and running the artifact on the s2n-bignum library to reproduce Table 4 (Section 7 of the paper):
