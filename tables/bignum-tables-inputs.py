@@ -281,13 +281,20 @@ def colorize(p, x):
 sanitize = lambda x: "\\texttt{"+x.replace("_", r"\_").replace(".c", "").replace(r"bignum\_", "").capitalize()+"}"
 from_list = lambda p, x: "$ " + ", ".join([colorize(p, i).replace("param", "") for i in sorted(x)]) + "$"
 
+def from_list2(p, x):
+  green_x = [i for i in x if i in nominals[p]]
+  red_x = [i for i in x if i not in nominals[p]]
+  out_green = [r"\green{n" + i + "}" for i in sorted(green_x)]
+  out_red = [r"\red{n" + i + "}" for i in sorted(red_x)]
+  return "$ " + ", ".join(out_green + out_red) + "$"
+
 first = " \\\\ \n".join([
   line.format(
     sanitize(p),
     from_list(p, nominals[p]),
     from_list(p, set(d)-set(nominals[p])),
-    from_list(p, a),
-    from_list(p, b + c)) for p in programs for a, b, c, d in [retrieve_statistics(file, p)]
+    from_list2(p, a),
+    from_list2(p, b + c)) for p in programs for a, b, c, d in [retrieve_statistics(file, p)]
 ])
 
 
