@@ -7,9 +7,9 @@ The artifact has been tested on a ubuntu low-end machine.
 
 ## Preliminary Reviews
 
-We thank the reviewers for their time testing our artifact during this initial stage. As noted by Review 1, the last part of Table 4, specifically for the rows starting with `Word_*`, we do have a formatting error *in the paper*. In fact, all the input variables for those programs have to be considered dangerous, as reported in the artifact. We updated the paper in EasyChair for the artifact submission and will update the final version of the paper upon acceptance.
+We thank the reviewers for their time testing our artifact during this initial stage. As noted by Review 1, the last part of Table 4, specifically for the rows starting with `Word_*`, has a formatting error *in the paper*. In fact, all the input variables for those programs have to be considered dangerous, as correctly reported in the artifact. We updated the paper in EasyChair for the artifact submission and will update the final version of the paper upon acceptance.
 
-For reviewer 1, the docker image has been built on an Ubuntu machine, hence the surprisingly long execution time on mac M1. Unfortunately, we are not able to provide a docker image optimized for M1 users, we suggest testing it on Ubuntu if possible.
+For reviewer 1, the docker image has been built on an Ubuntu machine, hence the surprisingly long execution time on M1. Unfortunately, we are not able to provide a docker image optimized for M1 users, we suggest testing it on Ubuntu if possible.
 
 ## Kick-the-Tires
 
